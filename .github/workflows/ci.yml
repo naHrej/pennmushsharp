@@ -24,6 +24,7 @@ jobs:
       - name: Fetch upstream sources
         run: |
           cd PennMushSharp
+          chmod +x scripts/fetch-upstreams.sh
           scripts/fetch-upstreams.sh
 
       - name: Restore
