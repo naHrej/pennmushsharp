@@ -7,6 +7,7 @@ using Microsoft.Extensions.Options;
 using PennMushSharp.Commands;
 using PennMushSharp.Core;
 using PennMushSharp.Core.Persistence;
+using PennMushSharp.Functions;
 
 namespace PennMushSharp.Runtime;
 
@@ -19,6 +20,7 @@ public sealed class TelnetServer : BackgroundService
   private readonly CommandDispatcher _dispatcher;
   private readonly SessionRegistry _sessionRegistry;
   private readonly AccountService _accountService;
+  private readonly IFunctionEvaluator _functionEvaluator;
   private TcpListener? _listener;
 
   public TelnetServer(
@@ -28,7 +30,8 @@ public sealed class TelnetServer : BackgroundService
     CommandDispatcher dispatcher,
     PasswordVerifier passwordVerifier,
     SessionRegistry sessionRegistry,
-    AccountService accountService)
+    AccountService accountService,
+    IFunctionEvaluator functionEvaluator)
   {
     _logger = logger;
     _options = options.Value;
@@ -37,6 +40,7 @@ public sealed class TelnetServer : BackgroundService
     _passwordVerifier = passwordVerifier;
     _sessionRegistry = sessionRegistry;
     _accountService = accountService;
+    _functionEvaluator = functionEvaluator;
   }
 
   protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -126,7 +130,7 @@ public sealed class TelnetServer : BackgroundService
           continue;
         }
 
-        var context = new CommandContext(actor, output);
+        var context = new CommandContext(actor, output, _functionEvaluator);
         await _dispatcher.DispatchAsync(context, line, cancellationToken);
         if (sessionId != Guid.Empty)
           _sessionRegistry.RecordActivity(sessionId);
@@ -212,14 +216,16 @@ public sealed class TelnetServer : BackgroundService
 
   private sealed class CommandContext : ICommandContext
   {
-    public CommandContext(GameObject actor, IOutputWriter output)
+    public CommandContext(GameObject actor, IOutputWriter output, IFunctionEvaluator functions)
     {
       Actor = actor;
       Output = output;
+      Functions = functions;
     }
 
     public GameObject Actor { get; }
     public IOutputWriter Output { get; }
+    public IFunctionEvaluator Functions { get; }
   }
 
   private static string GetRemoteHost(TcpClient client)

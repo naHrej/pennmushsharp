@@ -4,10 +4,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PennMushSharp.Commands;
+using PennMushSharp.Commands.Parsing;
 using PennMushSharp.Core.Locks;
 using PennMushSharp.Core.Locks.Runtime;
 using PennMushSharp.Core.Metadata;
 using PennMushSharp.Core.Persistence;
+using PennMushSharp.Functions;
 
 namespace PennMushSharp.Runtime;
 
@@ -45,8 +47,11 @@ public static class RuntimeApplication
     services.AddSingleton<AccountService>();
     services.AddSingleton<SessionRegistry>();
     services.AddSingleton<ISessionRegistry>(sp => sp.GetRequiredService<SessionRegistry>());
+    services.AddSingleton<CommandParser>();
     services.AddSingleton(sp => CommandCatalogBuilder.CreateDefault(sp));
     services.AddSingleton<CommandDispatcher>();
+    services.AddSingleton(FunctionRegistry.Empty);
+    services.AddSingleton<IFunctionEvaluator, FunctionEvaluator>();
     services.AddSingleton<TelnetServer>();
     services.AddHostedService(sp => sp.GetRequiredService<TelnetServer>());
     services.AddSingleton<IServerBootstrapper, DefaultServerBootstrapper>();

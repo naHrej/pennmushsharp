@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using PennMushSharp.Commands;
+using PennMushSharp.Commands.Parsing;
 using PennMushSharp.Core;
 using PennMushSharp.Core.Persistence;
+using PennMushSharp.Functions;
 using Xunit;
 
 namespace PennMushSharp.Tests.Commands;
@@ -40,7 +42,8 @@ public sealed class WhoCommandTests
     var output = new TestOutput();
     var context = new TestContext(player, output);
 
-    await command.ExecuteAsync(context, string.Empty);
+    var invocation = new CommandInvocation("WHO", Array.Empty<CommandSwitch>(), null, null, "WHO");
+    await command.ExecuteAsync(context, invocation);
 
     Assert.Equal("Player Name       Loc #    On For  Idle  Cmds Des  Host", output.Lines[0]);
     Assert.Contains("One", output.Lines[1]);
@@ -78,9 +81,19 @@ public sealed class WhoCommandTests
     {
       Actor = actor;
       Output = output;
+      Functions = new PassThroughFunctionEvaluator();
     }
 
     public GameObject Actor { get; }
     public IOutputWriter Output { get; }
+    public IFunctionEvaluator Functions { get; }
+  }
+
+  private sealed class PassThroughFunctionEvaluator : IFunctionEvaluator
+  {
+    public ValueTask<string> EvaluateAsync(GameObject actor, string expression, CancellationToken cancellationToken = default)
+    {
+      return ValueTask.FromResult(expression);
+    }
   }
 }

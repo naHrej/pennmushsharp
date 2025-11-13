@@ -61,18 +61,19 @@ pipeline show how metadata flows into runtime behaviour while we continue fleshi
 persistence.
 
 ## Runtime Host & Commands
-- `PennMushSharp.Runtime` now composes the DI container via `RuntimeApplication` and boots through
-  `DefaultServerBootstrapper`, which can optionally load an initial dump (`PennMushSharp:InitialDumpPath`)
+- `PennMushSharp.Runtime` composes the DI container via `RuntimeApplication` and boots through
+  `DefaultServerBootstrapper`, which optionally loads `data/indb` (or `PennMushSharp:InitialDumpPath`)
   before exposing services like `CommandDispatcher`.
-- `CommandCatalog` / `LookCommand` act as the first slice of the command subsystem; the dispatcher
-  resolves commands by name and executes them asynchronously so higher-level telnet/web sockets can
-  plug in without rewriting the pipeline.
+- The new command parser understands stacked commands (`;`/`&`), switch syntax (`/silent:room`), and
+  divides input into structured `CommandInvocation`s. Metadata from `cmds.c` feeds `CommandCatalog`
+  so canonical names and aliases point to the same handler.
+- `LookCommand`/`WhoCommand` now consume the real dump data (room descriptions, WHO columns) and the
+  dispatcher performs basic permission/switch validation via the metadata catalog ahead of command execution.
 - `TelnetServer` (hosted background service) listens on `PennMushSharp:ListenAddress/ListenPort`
-  (defaults: `127.0.0.1:4201`) and registers live sessions so commands like `WHO` can report active
-  connections. New sessions log in via `CONNECT <name> <password>` (the stock dump ships with
-  `One` and a blank password via `GameStateSeeder`) or create an account with `CREATE <name> <password>` before
-  issuing managed commands. Newly created accounts are persisted as PennMUSH-compatible dumps
-  (default path `PennMushSharp/data/accounts.dump`, override via `PennMushSharp:AccountStorePath`).
+  (default `127.0.0.1:4201`). Clients log in via `CONNECT <name> [<password>]` (the stock dump ships
+  with `One` and a blank password) or `CREATE <name> <password>`. Sessions record host/idle/command
+  stats so WHO can mirror legacy output. Newly created accounts persist as PennMUSH-compatible dumps
+  (default `PennMushSharp/data/accounts.dump`, override via `PennMushSharp:AccountStorePath`).
 
 ## Configuration & Logging
 - `src/PennMushSharp.Runtime/appsettings.json` is copied into the runtime output and provides the default

@@ -1,4 +1,5 @@
 using System.Linq;
+using PennMushSharp.Commands.Parsing;
 using PennMushSharp.Core;
 
 namespace PennMushSharp.Commands;
@@ -29,7 +30,7 @@ public sealed class WhoCommand : ICommand
 
   public string Name => "WHO";
 
-  public async ValueTask ExecuteAsync(ICommandContext context, string arguments, CancellationToken cancellationToken = default)
+  public async ValueTask ExecuteAsync(ICommandContext context, CommandInvocation invocation, CancellationToken cancellationToken = default)
   {
     var sessions = _registry.GetActiveSessions();
     if (sessions.Count == 0)

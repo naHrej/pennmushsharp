@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using PennMushSharp.Commands.Parsing;
 using PennMushSharp.Core;
 using PennMushSharp.Core.Persistence;
 
@@ -16,7 +17,7 @@ public sealed class LookCommand : ICommand
 
   public string Name => "LOOK";
 
-  public async ValueTask ExecuteAsync(ICommandContext context, string arguments, CancellationToken cancellationToken = default)
+  public async ValueTask ExecuteAsync(ICommandContext context, CommandInvocation invocation, CancellationToken cancellationToken = default)
   {
     if (!_gameState.TryGet(context.Actor.DbRef, out var actorRecord) || actorRecord is null)
     {

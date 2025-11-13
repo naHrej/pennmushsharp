@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging.Abstractions;
 using PennMushSharp.Commands;
+using PennMushSharp.Commands.Parsing;
 using PennMushSharp.Core;
+using PennMushSharp.Functions;
 using PennMushSharp.Runtime;
 using Xunit;
 
@@ -15,7 +17,9 @@ public sealed class CommandDispatcherTests
     var catalog = new CommandCatalog();
     var command = new CaptureCommand();
     catalog.Register(command);
-    var dispatcher = new CommandDispatcher(catalog, NullLogger<CommandDispatcher>.Instance);
+    catalog.RegisterAlias("cap", command);
+    var parser = new CommandParser();
+    var dispatcher = new CommandDispatcher(catalog, parser, NullLogger<CommandDispatcher>.Instance);
 
     var actor = new GameObject(
       dbRef: 1,
@@ -39,10 +43,10 @@ public sealed class CommandDispatcherTests
     public bool Executed { get; private set; }
     public string? Arguments { get; private set; }
 
-    public ValueTask ExecuteAsync(ICommandContext context, string arguments, CancellationToken cancellationToken = default)
+    public ValueTask ExecuteAsync(ICommandContext context, CommandInvocation invocation, CancellationToken cancellationToken = default)
     {
       Executed = true;
-      Arguments = arguments;
+      Arguments = invocation.Argument;
       return ValueTask.CompletedTask;
     }
   }
@@ -56,10 +60,19 @@ public sealed class CommandDispatcherTests
 
     public GameObject Actor { get; }
     public IOutputWriter Output => this;
+    public IFunctionEvaluator Functions { get; } = new PassThroughFunctionEvaluator();
 
     public ValueTask WriteLineAsync(string text, CancellationToken cancellationToken = default)
     {
       return ValueTask.CompletedTask;
+    }
+  }
+
+  private sealed class PassThroughFunctionEvaluator : IFunctionEvaluator
+  {
+    public ValueTask<string> EvaluateAsync(GameObject actor, string expression, CancellationToken cancellationToken = default)
+    {
+      return ValueTask.FromResult(expression);
     }
   }
 }

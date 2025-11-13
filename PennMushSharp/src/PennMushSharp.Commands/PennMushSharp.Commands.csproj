@@ -9,5 +9,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../PennMushSharp.Core/PennMushSharp.Core.csproj" />
+    <ProjectReference Include="../PennMushSharp.Functions/PennMushSharp.Functions.csproj" />
   </ItemGroup>
 </Project>

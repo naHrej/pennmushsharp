@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using PennMushSharp.Commands;
+using PennMushSharp.Commands.Parsing;
 using PennMushSharp.Core;
 using PennMushSharp.Core.Locks.Runtime;
 using PennMushSharp.Core.Persistence;
+using PennMushSharp.Functions;
 using Xunit;
 
 namespace PennMushSharp.Tests.Commands;
@@ -20,7 +22,8 @@ public sealed class LookCommandTests
     var output = new TestOutput();
     var context = new TestContext(actor, output);
 
-    await command.ExecuteAsync(context, string.Empty);
+    var invocation = new CommandInvocation("LOOK", Array.Empty<CommandSwitch>(), null, null, "LOOK");
+    await command.ExecuteAsync(context, invocation);
 
     Assert.Equal("The Void (#10)", output.Lines[0]);
     Assert.Equal("You see Number One.", output.Lines[1]);
@@ -88,9 +91,19 @@ public sealed class LookCommandTests
     {
       Actor = actor;
       Output = output;
+      Functions = new PassThroughFunctionEvaluator();
     }
 
     public GameObject Actor { get; }
     public IOutputWriter Output { get; }
+    public IFunctionEvaluator Functions { get; }
+  }
+
+  private sealed class PassThroughFunctionEvaluator : IFunctionEvaluator
+  {
+    public ValueTask<string> EvaluateAsync(GameObject actor, string expression, CancellationToken cancellationToken = default)
+    {
+      return ValueTask.FromResult(expression);
+    }
   }
 }

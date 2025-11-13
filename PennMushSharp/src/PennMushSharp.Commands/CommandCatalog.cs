@@ -1,4 +1,7 @@
+using PennMushSharp.Commands.Metadata;
+using PennMushSharp.Commands.Parsing;
 using PennMushSharp.Core;
+using PennMushSharp.Functions;
 
 namespace PennMushSharp.Commands;
 
@@ -11,19 +14,22 @@ public sealed class CommandCatalog
 
   public void Register(ICommand command) => _commands[command.Name] = command;
 
+  public void RegisterAlias(string alias, ICommand command) => _commands[alias] = command;
+
   public bool TryGet(string name, out ICommand? command) => _commands.TryGetValue(name, out command);
 }
 
 public interface ICommand
 {
   string Name { get; }
-  ValueTask ExecuteAsync(ICommandContext context, string arguments, CancellationToken cancellationToken = default);
+  ValueTask ExecuteAsync(ICommandContext context, CommandInvocation invocation, CancellationToken cancellationToken = default);
 }
 
 public interface ICommandContext
 {
   GameObject Actor { get; }
   IOutputWriter Output { get; }
+  IFunctionEvaluator Functions { get; }
 }
 
 public interface IOutputWriter
