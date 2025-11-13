@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>PennMushSharp.Space</AssemblyName>
+    <RootNamespace>PennMushSharp.Space</RootNamespace>
+    <Description>Spaceflight simulation and Aspace command set for PennMushSharp.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../PennMushSharp.Core/PennMushSharp.Core.csproj" />
+  </ItemGroup>
+</Project>

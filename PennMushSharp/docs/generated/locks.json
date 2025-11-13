@@ -1,0 +1,236 @@
+{
+  "Source": "pennmush/hdrs/lock_tab.h",
+  "GeneratedUtc": "2025-11-11T18:39:31.6862753Z",
+  "Locks": [
+    {
+      "Name": "Basic",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Enter",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Use",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Zone",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Page",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Teleport",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Speech",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Listen",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Command",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Parent",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Link",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Leave",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Drop",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Give",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "From",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Pay",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Receive",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Mail",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Follow",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Examine",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 258
+    },
+    {
+      "Name": "Chzone",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Forward",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 258
+    },
+    {
+      "Name": "Control",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 258
+    },
+    {
+      "Name": "Dropto",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Destroy",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 258
+    },
+    {
+      "Name": "Interact",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "MailForward",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Take",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Open",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Filter",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "InFilter",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "DropIn",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 2
+    },
+    {
+      "Name": "Chown",
+      "DefaultKeyExpression": "TRUE_BOOLEXP",
+      "DefaultCreator": 1,
+      "DefaultFlags": 258
+    }
+  ],
+  "Privileges": [
+    {
+      "Name": "visual",
+      "Symbol": "v",
+      "SetFlags": 1,
+      "ClearFlags": 1
+    },
+    {
+      "Name": "no_inherit",
+      "Symbol": "i",
+      "SetFlags": 2,
+      "ClearFlags": 2
+    },
+    {
+      "Name": "no_clone",
+      "Symbol": "c",
+      "SetFlags": 16,
+      "ClearFlags": 16
+    },
+    {
+      "Name": "wizard",
+      "Symbol": "w",
+      "SetFlags": 4,
+      "ClearFlags": 4
+    },
+    {
+      "Name": "locked",
+      "Symbol": "\u002B",
+      "SetFlags": 8,
+      "ClearFlags": 8
+    }
+  ]
+}

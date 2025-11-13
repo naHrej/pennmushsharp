@@ -1,0 +1,12 @@
+NAME="look_basic"
+HOST="127.0.0.1"
+PORT=4201
+USER="Wizard9"
+PASSWORD="harness"
+COMMANDS=(
+  "look"
+  "who"
+)
+DISCONNECT_COMMAND="QUIT"
+SERVER_EXEC="$(pwd)/scripts/start-legacy-mush.sh"
+SERVER_WORKDIR="../pennmush/game"

@@ -1,0 +1,672 @@
+{
+  "Source": "pennmush/hdrs/flag_tab.h",
+  "GeneratedUtc": "2025-11-11T10:22:14.3739571Z",
+  "Flags": [
+    {
+      "Name": "CHOWN_OK",
+      "Letter": "C",
+      "TypeMask": 65535,
+      "BitPosition": 262144,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "DARK",
+      "Letter": "D",
+      "TypeMask": 65535,
+      "BitPosition": 64,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "GOING",
+      "Letter": "G",
+      "TypeMask": 65535,
+      "BitPosition": 16384,
+      "SetPermissions": 1024,
+      "ClearPermissions": 1024
+    },
+    {
+      "Name": "HAVEN",
+      "Letter": "H",
+      "TypeMask": 8,
+      "BitPosition": 1024,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "TRUST",
+      "Letter": "I",
+      "TypeMask": 65535,
+      "BitPosition": 16777216,
+      "SetPermissions": 32,
+      "ClearPermissions": 32
+    },
+    {
+      "Name": "LINK_OK",
+      "Letter": "L",
+      "TypeMask": 65535,
+      "BitPosition": 32,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "OPAQUE",
+      "Letter": "O",
+      "TypeMask": 65535,
+      "BitPosition": 8388608,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "QUIET",
+      "Letter": "Q",
+      "TypeMask": 65535,
+      "BitPosition": 2048,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "STICKY",
+      "Letter": "S",
+      "TypeMask": 65535,
+      "BitPosition": 256,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "UNFINDABLE",
+      "Letter": "U",
+      "TypeMask": 65535,
+      "BitPosition": 8192,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "VISUAL",
+      "Letter": "V",
+      "TypeMask": 65535,
+      "BitPosition": 1048576,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "WIZARD",
+      "Letter": "W",
+      "TypeMask": 65535,
+      "BitPosition": 16,
+      "SetPermissions": 33056,
+      "ClearPermissions": 288
+    },
+    {
+      "Name": "SAFE",
+      "Letter": "X",
+      "TypeMask": 65535,
+      "BitPosition": 67108864,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "AUDIBLE",
+      "Letter": "a",
+      "TypeMask": 65535,
+      "BitPosition": 268435456,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "DEBUG",
+      "Letter": "b",
+      "TypeMask": 65535,
+      "BitPosition": 33554432,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "NO_WARN",
+      "Letter": "w",
+      "TypeMask": 65535,
+      "BitPosition": 131072,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "ENTER_OK",
+      "Letter": "e",
+      "TypeMask": 65535,
+      "BitPosition": 524288,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "HALT",
+      "Letter": "h",
+      "TypeMask": 65535,
+      "BitPosition": 4096,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "NO_COMMAND",
+      "Letter": "n",
+      "TypeMask": 65535,
+      "BitPosition": 536870912,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "LIGHT",
+      "Letter": "l",
+      "TypeMask": 65535,
+      "BitPosition": 2097152,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "ROYALTY",
+      "Letter": "r",
+      "TypeMask": 65535,
+      "BitPosition": 4194304,
+      "SetPermissions": 32928,
+      "ClearPermissions": 160
+    },
+    {
+      "Name": "TRANSPARENT",
+      "Letter": "t",
+      "TypeMask": 65535,
+      "BitPosition": 512,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "VERBOSE",
+      "Letter": "v",
+      "TypeMask": 65535,
+      "BitPosition": 128,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "ANSI",
+      "Letter": "A",
+      "TypeMask": 8,
+      "BitPosition": 1024,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "COLOR",
+      "Letter": "C",
+      "TypeMask": 8,
+      "BitPosition": 524288,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "MONITOR",
+      "Letter": "M",
+      "TypeMask": 11,
+      "BitPosition": 0,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "NOSPOOF",
+      "Letter": "\u0022",
+      "TypeMask": 8,
+      "BitPosition": 32,
+      "SetPermissions": 8208,
+      "ClearPermissions": 8208
+    },
+    {
+      "Name": "SHARED",
+      "Letter": "Z",
+      "TypeMask": 8,
+      "BitPosition": 2048,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "TRACK_MONEY",
+      "Letter": null,
+      "TypeMask": 8,
+      "BitPosition": 0,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "CONNECTED",
+      "Letter": "c",
+      "TypeMask": 8,
+      "BitPosition": 512,
+      "SetPermissions": 1024,
+      "ClearPermissions": 1024
+    },
+    {
+      "Name": "GAGGED",
+      "Letter": "g",
+      "TypeMask": 8,
+      "BitPosition": 128,
+      "SetPermissions": 256,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "MYOPIC",
+      "Letter": "m",
+      "TypeMask": 8,
+      "BitPosition": 16,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "TERSE",
+      "Letter": "x",
+      "TypeMask": 10,
+      "BitPosition": 8,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "JURY_OK",
+      "Letter": "j",
+      "TypeMask": 8,
+      "BitPosition": 4096,
+      "SetPermissions": 128,
+      "ClearPermissions": 128
+    },
+    {
+      "Name": "JUDGE",
+      "Letter": "J",
+      "TypeMask": 8,
+      "BitPosition": 8192,
+      "SetPermissions": 128,
+      "ClearPermissions": 128
+    },
+    {
+      "Name": "FIXED",
+      "Letter": "F",
+      "TypeMask": 8,
+      "BitPosition": 16384,
+      "SetPermissions": 256,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "UNREGISTERED",
+      "Letter": "?",
+      "TypeMask": 8,
+      "BitPosition": 32768,
+      "SetPermissions": 128,
+      "ClearPermissions": 128
+    },
+    {
+      "Name": "ON-VACATION",
+      "Letter": "o",
+      "TypeMask": 8,
+      "BitPosition": 65536,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "SUSPECT",
+      "Letter": "s",
+      "TypeMask": 8,
+      "BitPosition": 64,
+      "SetPermissions": 37120,
+      "ClearPermissions": 4352
+    },
+    {
+      "Name": "PARANOID",
+      "Letter": null,
+      "TypeMask": 8,
+      "BitPosition": 2097152,
+      "SetPermissions": 8208,
+      "ClearPermissions": 8208
+    },
+    {
+      "Name": "NOACCENTS",
+      "Letter": "~",
+      "TypeMask": 8,
+      "BitPosition": 1048576,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "DESTROY_OK",
+      "Letter": "d",
+      "TypeMask": 2,
+      "BitPosition": 8,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "PUPPET",
+      "Letter": "p",
+      "TypeMask": 2,
+      "BitPosition": 16,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "NO_LEAVE",
+      "Letter": "N",
+      "TypeMask": 2,
+      "BitPosition": 64,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "LISTEN_PARENT",
+      "Letter": "^",
+      "TypeMask": 3,
+      "BitPosition": 0,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "Z_TEL",
+      "Letter": "Z",
+      "TypeMask": 3,
+      "BitPosition": 0,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "ABODE",
+      "Letter": "A",
+      "TypeMask": 1,
+      "BitPosition": 16,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "FLOATING",
+      "Letter": "F",
+      "TypeMask": 1,
+      "BitPosition": 8,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "JUMP_OK",
+      "Letter": "J",
+      "TypeMask": 1,
+      "BitPosition": 32,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "NO_TEL",
+      "Letter": "N",
+      "TypeMask": 1,
+      "BitPosition": 64,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "UNINSPECTED",
+      "Letter": "u",
+      "TypeMask": 1,
+      "BitPosition": 4096,
+      "SetPermissions": 128,
+      "ClearPermissions": 128
+    },
+    {
+      "Name": "CLOUDY",
+      "Letter": "x",
+      "TypeMask": 4,
+      "BitPosition": 8,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "GOING_TWICE",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 1073741824,
+      "SetPermissions": 3072,
+      "ClearPermissions": 3072
+    },
+    {
+      "Name": "KEEPALIVE",
+      "Letter": "k",
+      "TypeMask": 8,
+      "BitPosition": 0,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    },
+    {
+      "Name": "NO_LOG",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 0,
+      "SetPermissions": 37120,
+      "ClearPermissions": 4352
+    },
+    {
+      "Name": "OPEN_OK",
+      "Letter": null,
+      "TypeMask": 1,
+      "BitPosition": 0,
+      "SetPermissions": 16,
+      "ClearPermissions": 16
+    }
+  ],
+  "Powers": [
+    {
+      "Name": "Announce",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 16777216,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Boot",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 16384,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Builder",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 16,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Chat_Privs",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 512,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Functions",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 2097152,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Guest",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 8388608,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Halt",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 524288,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Hide",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 1024,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Idle",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 4096,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Immortal",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 268435712,
+      "SetPermissions": 256,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Link_Anywhere",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 536870912,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Login",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 2048,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Long_Fingers",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 8192,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "No_Pay",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 256,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "No_Quota",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 268435456,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Open_Anywhere",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 1073741824,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Pemit_All",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 134217728,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Player_Create",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 4194304,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Poll",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 65536,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Queue",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 131072,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Quotas",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 32768,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Search",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 1048576,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "See_All",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 128,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "See_Queue",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 262144,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Tport_Anything",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 64,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Tport_Anywhere",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 32,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    },
+    {
+      "Name": "Can_spoof",
+      "Letter": null,
+      "TypeMask": 65535,
+      "BitPosition": 2147483648,
+      "SetPermissions": 33024,
+      "ClearPermissions": 256
+    }
+  ]
+}

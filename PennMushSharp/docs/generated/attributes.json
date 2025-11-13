@@ -1,0 +1,1318 @@
+{
+  "Source": "pennmush/hdrs/atr_tab.h",
+  "GeneratedUtc": "2025-11-11T10:33:34.1748755Z",
+  "Attributes": [
+    {
+      "Name": "AAHEAR",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ABUY",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ACLONE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ACONNECT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ADESCRIBE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ADESTROY",
+      "Flags": 2097540,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ADISCONNECT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ADROP",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AEFAIL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AENTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AFAILURE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AFOLLOW",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AGIVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AHEAR",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AIDESCRIBE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ALEAVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ALFAIL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ALIAS",
+      "Flags": 2097696,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AMAIL",
+      "Flags": 2097156,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AMHEAR",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AMOVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ANAME",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "APAYMENT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ARECEIVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ASUCCESS",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ATPORT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AUFAIL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AUNFOLLOW",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AUSE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AWAY",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AZENTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "AZLEAVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "BUY",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "CHARGES",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "CHATFORMAT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "COMMENT",
+      "Flags": 2097508,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "CONFORMAT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "COST",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "DEBUGFORWARDLIST",
+      "Flags": 2097312,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "DESCFORMAT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "DESCRIBE",
+      "Flags": 52429344,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "DESTINATION",
+      "Flags": 32,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "DOING",
+      "Flags": 33555104,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "DROP",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "EALIAS",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "EFAIL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ENTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "EXITFORMAT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "EXITTO",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "FAILURE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "FILTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "FOLLOW",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "FOLLOWING",
+      "Flags": 2097572,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "FOLLOWERS",
+      "Flags": 2097572,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "FORWARDLIST",
+      "Flags": 2097312,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "GIVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "HAVEN",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "IDESCFORMAT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "IDESCRIBE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "IDLE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "INFILTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "INPREFIX",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "INVFORMAT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LALIAS",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LAST",
+      "Flags": 2097940,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LASTIP",
+      "Flags": 2097428,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LASTFAILED",
+      "Flags": 2097428,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LASTLOGOUT",
+      "Flags": 2097428,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LASTPAGED",
+      "Flags": 2097428,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LASTSITE",
+      "Flags": 2097428,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LEAVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LFAIL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "LISTEN",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "MAILCURF",
+      "Flags": 2097460,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "MAILFILTERS",
+      "Flags": 2097460,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "MAILFILTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "MAILFOLDERS",
+      "Flags": 2097460,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "MAILFORWARDLIST",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "MAILQUOTA",
+      "Flags": 308,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "MAILSIGNATURE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "MONIKER",
+      "Flags": 564,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "MOVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "NAMEACCENT",
+      "Flags": 2097696,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "NAMEFORMAT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OBUY",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ODESCRIBE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ODROP",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OEFAIL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OENTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OFAILURE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OFOLLOW",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OGIVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OIDESCRIBE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OLEAVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OLFAIL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OMOVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ONAME",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OPAYMENT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ORECEIVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OXMOVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OSUCCESS",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OTPORT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OUFAIL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OUNFOLLOW",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OUSE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OUTPAGEFORMAT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OXENTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OXLEAVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OXTPORT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OZENTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "OZLEAVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "PAYMENT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "PAGEFORMAT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "PRICELIST",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "PREFIX",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "RECEIVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "QUEUE",
+      "Flags": 524676,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "REGISTERED_EMAIL",
+      "Flags": 404,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "RQUOTA",
+      "Flags": 80,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "RUNOUT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "SEMAPHORE",
+      "Flags": 524688,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "SEX",
+      "Flags": 2097696,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "SPEECHMOD",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "STARTUP",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "SUCCESS",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "TFPREFIX",
+      "Flags": 2097568,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "TPORT",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "TZ",
+      "Flags": 544,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "UFAIL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "UNFOLLOW",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "USE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VA",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VB",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VC",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VD",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VE",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VF",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VG",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VH",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VI",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VJ",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VK",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VL",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VM",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VN",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VO",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VP",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VQ",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VR",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VRML_URL",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VS",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VT",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VU",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VV",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VW",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VX",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VY",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "VZ",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WA",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WB",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WC",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WD",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WE",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WF",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WG",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WH",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WI",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WJ",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WK",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WL",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WM",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WN",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WO",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WP",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WQ",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WR",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WS",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WT",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WU",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WV",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WW",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WX",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WY",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "WZ",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XA",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XB",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XC",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XD",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XE",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XF",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XG",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XH",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XI",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XJ",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XK",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XL",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XM",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XN",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XO",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XP",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XQ",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XR",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XS",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XT",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XU",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XV",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XW",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XX",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XY",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XZ",
+      "Flags": 0,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "XYXXY",
+      "Flags": 310,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ZENTER",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    },
+    {
+      "Name": "ZLEAVE",
+      "Flags": 2097184,
+      "Creator": 0,
+      "DefaultChunkReference": 0
+    }
+  ],
+  "Aliases": [
+    {
+      "Alias": "DESC",
+      "RealName": "DESCRIBE"
+    },
+    {
+      "Alias": "IDESC",
+      "RealName": "IDESCRIBE"
+    },
+    {
+      "Alias": "SUCC",
+      "RealName": "SUCCESS"
+    },
+    {
+      "Alias": "ASUCC",
+      "RealName": "ASUCCESS"
+    },
+    {
+      "Alias": "OSUCC",
+      "RealName": "OSUCCESS"
+    },
+    {
+      "Alias": "FAIL",
+      "RealName": "FAILURE"
+    },
+    {
+      "Alias": "AFAIL",
+      "RealName": "AFAILURE"
+    },
+    {
+      "Alias": "OFAIL",
+      "RealName": "OFAILURE"
+    }
+  ]
+}

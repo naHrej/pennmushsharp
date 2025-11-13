@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>PennMushSharp.Functions</AssemblyName>
+    <RootNamespace>PennMushSharp.Functions</RootNamespace>
+    <Description>Function registry and evaluation engine for PennMushSharp.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../PennMushSharp.Core/PennMushSharp.Core.csproj" />
+  </ItemGroup>
+</Project>

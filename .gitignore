@@ -1,0 +1,34 @@
+# Global ignores
+.DS_Store
+Thumbs.db
+*.log
+a.out
+
+# Local dotnet CLI cache
+.dotnet-cli/
+.nuget/
+.home/
+
+# Upstream source mirrors / native builds
+pennmush/
+aspace/
+
+# Generated binaries from PennMush build artifacts
+/pennmush/pcre2-10.43/
+/pennmush/pcre2/
+/pennmush/dbtools/build/
+/pennmush/game/log/
+/pennmush/game/netmush
+/pennmush/game/info_slave
+/pennmush/game/ssl_slave
+
+# .NET build outputs
+/PennMushSharp/.vs/
+/PennMushSharp/**/bin/
+/PennMushSharp/**/obj/
+/PennMushSharp/TestResult*/
+/PennMushSharp/tests/characterization/output/
+
+# Packaging artifacts
+*.nupkg
+*.snupkg

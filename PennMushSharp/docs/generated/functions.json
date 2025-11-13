@@ -1,0 +1,3773 @@
+{
+  "Source": "pennmush/src/function.c",
+  "GeneratedUtc": "2025-11-11T18:42:52.3510583Z",
+  "Functions": [
+    {
+      "Name": "@@",
+      "Handler": "fun_null",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "ABS",
+      "Handler": "fun_abs",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ACCENT",
+      "Handler": "fun_accent",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "ACCNAME",
+      "Handler": "fun_accname",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "ADD",
+      "Handler": "fun_add",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "ADDRLOG",
+      "Handler": "fun_addrlog",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "AFTER",
+      "Handler": "fun_after",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "ALIAS",
+      "Handler": "fun_alias",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "ALIGN",
+      "Handler": "fun_align",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "LALIGN",
+      "Handler": "fun_align",
+      "MinArgs": 2,
+      "MaxArgs": 6,
+      "Flags": 0
+    },
+    {
+      "Name": "ALLOF",
+      "Handler": "fun_allof",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "ALPHAMAX",
+      "Handler": "fun_alphamax",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "ALPHAMIN",
+      "Handler": "fun_alphamin",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "AND",
+      "Handler": "fun_and",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "ANDFLAGS",
+      "Handler": "fun_andflags",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ANDLFLAGS",
+      "Handler": "fun_andlflags",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ANDLPOWERS",
+      "Handler": "fun_andlflags",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ANSI",
+      "Handler": "fun_ansi",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "ANSIGEN",
+      "Handler": "fun_ansigen",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "APOSS",
+      "Handler": "fun_aposs",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ART",
+      "Handler": "fun_art",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ATRLOCK",
+      "Handler": "fun_atrlock",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ATTRIB_SET",
+      "Handler": "fun_attrib_set",
+      "MinArgs": 1,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "BAND",
+      "Handler": "fun_band",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "BASECONV",
+      "Handler": "fun_baseconv",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "BEEP",
+      "Handler": "fun_beep",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65664
+    },
+    {
+      "Name": "BEFORE",
+      "Handler": "fun_before",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "BENCHMARK",
+      "Handler": "fun_benchmark",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 1
+    },
+    {
+      "Name": "BNAND",
+      "Handler": "fun_bnand",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "BNOT",
+      "Handler": "fun_bnot",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "BOR",
+      "Handler": "fun_bor",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "BOUND",
+      "Handler": "fun_bound",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "BRACKETS",
+      "Handler": "fun_brackets",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "BXOR",
+      "Handler": "fun_bxor",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "CAND",
+      "Handler": "fun_cand",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65537
+    },
+    {
+      "Name": "NCAND",
+      "Handler": "fun_cand",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65537
+    },
+    {
+      "Name": "CAPSTR",
+      "Handler": "fun_capstr",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "CASE",
+      "Handler": "fun_switch",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "CASEALL",
+      "Handler": "fun_switch",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "CAT",
+      "Handler": "fun_cat",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "CBUFFER",
+      "Handler": "fun_cinfo",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "CBUFFERADD",
+      "Handler": "fun_cbufferadd",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "CDESC",
+      "Handler": "fun_cinfo",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "CEMIT",
+      "Handler": "fun_cemit",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "CFLAGS",
+      "Handler": "fun_cflags",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CHANNELS",
+      "Handler": "fun_channels",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CLFLAGS",
+      "Handler": "fun_cflags",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CLOCK",
+      "Handler": "fun_clock",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CMOGRIFIER",
+      "Handler": "fun_cmogrifier",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "CMSGS",
+      "Handler": "fun_cinfo",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "COLORS",
+      "Handler": "fun_colors",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "COWNER",
+      "Handler": "fun_cowner",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "CRECALL",
+      "Handler": "fun_crecall",
+      "MinArgs": 1,
+      "MaxArgs": 5,
+      "Flags": 65536
+    },
+    {
+      "Name": "CSTATUS",
+      "Handler": "fun_cstatus",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CTITLE",
+      "Handler": "fun_ctitle",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CUSERS",
+      "Handler": "fun_cinfo",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "CWHO",
+      "Handler": "fun_cwho",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "CENTER",
+      "Handler": "fun_center",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "CHILDREN",
+      "Handler": "fun_lsearch",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "CHR",
+      "Handler": "fun_chr",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "CHECKPASS",
+      "Handler": "fun_checkpass",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65600
+    },
+    {
+      "Name": "CLONE",
+      "Handler": "fun_clone",
+      "MinArgs": 1,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "CMDS",
+      "Handler": "fun_cmds",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "COMP",
+      "Handler": "fun_comp",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "CON",
+      "Handler": "fun_con",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "COND",
+      "Handler": "fun_if",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "CONDALL",
+      "Handler": "fun_if",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "CONFIG",
+      "Handler": "fun_config",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "CONN",
+      "Handler": "fun_conn",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "CONNLOG",
+      "Handler": "fun_connlog",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 64
+    },
+    {
+      "Name": "CONNRECORD",
+      "Handler": "fun_connrecord",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 64
+    },
+    {
+      "Name": "CONTROLS",
+      "Handler": "fun_controls",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CONVSECS",
+      "Handler": "fun_convsecs",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CONVUTCSECS",
+      "Handler": "fun_convsecs",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "CONVTIME",
+      "Handler": "fun_convtime",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CONVUTCTIME",
+      "Handler": "fun_convtime",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "COR",
+      "Handler": "fun_cor",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65537
+    },
+    {
+      "Name": "NCOR",
+      "Handler": "fun_cor",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65537
+    },
+    {
+      "Name": "CREATE",
+      "Handler": "fun_create",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "CSECS",
+      "Handler": "fun_csecs",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "CTIME",
+      "Handler": "fun_ctime",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "DEC",
+      "Handler": "fun_dec",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "DECODE64",
+      "Handler": "fun_decode64",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "DECOMPOSE",
+      "Handler": "fun_decompose",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "DECRYPT",
+      "Handler": "fun_decrypt",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "DEFAULT",
+      "Handler": "fun_default",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "STRDELETE",
+      "Handler": "fun_delete",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "DIE",
+      "Handler": "fun_die",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "DIG",
+      "Handler": "fun_dig",
+      "MinArgs": 1,
+      "MaxArgs": 6,
+      "Flags": 0
+    },
+    {
+      "Name": "DIGEST",
+      "Handler": "fun_digest",
+      "MinArgs": 1,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "DIST2D",
+      "Handler": "fun_dist2d",
+      "MinArgs": 4,
+      "MaxArgs": 4,
+      "Flags": 65536
+    },
+    {
+      "Name": "DIST3D",
+      "Handler": "fun_dist3d",
+      "MinArgs": 6,
+      "MaxArgs": 6,
+      "Flags": 65536
+    },
+    {
+      "Name": "DIV",
+      "Handler": "fun_div",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "DOING",
+      "Handler": "fun_doing",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "EDEFAULT",
+      "Handler": "fun_edefault",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 1
+    },
+    {
+      "Name": "EDIT",
+      "Handler": "fun_edit",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "ELEMENTS",
+      "Handler": "fun_elements",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "ELIST",
+      "Handler": "fun_itemize",
+      "MinArgs": 1,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "ELOCK",
+      "Handler": "fun_elock",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "EMIT",
+      "Handler": "fun_emit",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "ENCODE64",
+      "Handler": "fun_encode64",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "ENCRYPT",
+      "Handler": "fun_encrypt",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "ENTRANCES",
+      "Handler": "fun_entrances",
+      "MinArgs": 0,
+      "MaxArgs": 4,
+      "Flags": 65536
+    },
+    {
+      "Name": "ETIME",
+      "Handler": "fun_etime",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "ETIMEFMT",
+      "Handler": "fun_etimefmt",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "EQ",
+      "Handler": "fun_eq",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "EVAL",
+      "Handler": "fun_eval",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "ESCAPE",
+      "Handler": "fun_escape",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "EXIT",
+      "Handler": "fun_exit",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "EXTRACT",
+      "Handler": "fun_extract",
+      "MinArgs": 1,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "FILTER",
+      "Handler": "fun_filter",
+      "MinArgs": 2,
+      "MaxArgs": 33,
+      "Flags": 0
+    },
+    {
+      "Name": "FILTERBOOL",
+      "Handler": "fun_filter",
+      "MinArgs": 2,
+      "MaxArgs": 33,
+      "Flags": 0
+    },
+    {
+      "Name": "FINDABLE",
+      "Handler": "fun_findable",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "FIRST",
+      "Handler": "fun_first",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "FIRSTOF",
+      "Handler": "fun_firstof",
+      "MinArgs": 0,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "FLAGS",
+      "Handler": "fun_flags",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "FLIP",
+      "Handler": "fun_flip",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "FLOORDIV",
+      "Handler": "fun_floordiv",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "FN",
+      "Handler": "fun_fn",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "FOLD",
+      "Handler": "fun_fold",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "FOLDERSTATS",
+      "Handler": "fun_folderstats",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "FOLLOWERS",
+      "Handler": "fun_followers",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "FOLLOWING",
+      "Handler": "fun_following",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "FOREACH",
+      "Handler": "fun_foreach",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "FORMDECODE",
+      "Handler": "fun_formdecode",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "FRACTION",
+      "Handler": "fun_fraction",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "FUNCTIONS",
+      "Handler": "fun_functions",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "FULLALIAS",
+      "Handler": "fun_fullalias",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "FULLNAME",
+      "Handler": "fun_fullname",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "GET",
+      "Handler": "fun_get",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "GETPIDS",
+      "Handler": "fun_lpids",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "GET_EVAL",
+      "Handler": "fun_get_eval",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "GRAB",
+      "Handler": "fun_grab",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "GRABALL",
+      "Handler": "fun_graball",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "GREP",
+      "Handler": "fun_grep",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "PGREP",
+      "Handler": "fun_grep",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "GREPI",
+      "Handler": "fun_grep",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "GT",
+      "Handler": "fun_gt",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "GTE",
+      "Handler": "fun_gte",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "HASATTR",
+      "Handler": "fun_hasattr",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "HASATTRP",
+      "Handler": "fun_hasattr",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "HASATTRPVAL",
+      "Handler": "fun_hasattr",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "HASATTRVAL",
+      "Handler": "fun_hasattr",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "HASFLAG",
+      "Handler": "fun_hasflag",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "HASPOWER",
+      "Handler": "fun_haspower",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "HASTYPE",
+      "Handler": "fun_hastype",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "HEIGHT",
+      "Handler": "fun_height",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "HIDDEN",
+      "Handler": "fun_hidden",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "HMAC",
+      "Handler": "fun_hmac",
+      "MinArgs": 3,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "HOME",
+      "Handler": "fun_home",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "HOST",
+      "Handler": "fun_hostname",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "IBREAK",
+      "Handler": "fun_ibreak",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "IDLE",
+      "Handler": "fun_idlesecs",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "IF",
+      "Handler": "fun_if",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 1
+    },
+    {
+      "Name": "IFELSE",
+      "Handler": "fun_if",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 1
+    },
+    {
+      "Name": "ILEV",
+      "Handler": "fun_ilev",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 65536
+    },
+    {
+      "Name": "INAME",
+      "Handler": "fun_iname",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "INC",
+      "Handler": "fun_inc",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "INDEX",
+      "Handler": "fun_index",
+      "MinArgs": 4,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "LINSERT",
+      "Handler": "fun_insert",
+      "MinArgs": 3,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "INUM",
+      "Handler": "fun_inum",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "IPADDR",
+      "Handler": "fun_ipaddr",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ISDAYLIGHT",
+      "Handler": "fun_isdaylight",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "ISDBREF",
+      "Handler": "fun_isdbref",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ISINT",
+      "Handler": "fun_isint",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ISJSON",
+      "Handler": "fun_isjson",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "ISNUM",
+      "Handler": "fun_isnum",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ISOBJID",
+      "Handler": "fun_isobjid",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ISREGEXP",
+      "Handler": "fun_isregexp",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ISWORD",
+      "Handler": "fun_isword",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ITER",
+      "Handler": "fun_iter",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 1
+    },
+    {
+      "Name": "ITEMS",
+      "Handler": "fun_items",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ITEMIZE",
+      "Handler": "fun_itemize",
+      "MinArgs": 1,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "ITEXT",
+      "Handler": "fun_itext",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "JSON",
+      "Handler": "fun_json",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "JSON_MAP",
+      "Handler": "fun_json_map",
+      "MinArgs": 2,
+      "MaxArgs": 31,
+      "Flags": 65536
+    },
+    {
+      "Name": "JSON_MOD",
+      "Handler": "fun_json_mod",
+      "MinArgs": 3,
+      "MaxArgs": 4,
+      "Flags": 65536
+    },
+    {
+      "Name": "JSON_QUERY",
+      "Handler": "fun_json_query",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "LAST",
+      "Handler": "fun_last",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "LATTR",
+      "Handler": "fun_lattr",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LATTRP",
+      "Handler": "fun_lattr",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LCON",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LCSTR",
+      "Handler": "fun_lcstr",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "LCSTR2",
+      "Handler": "fun_lcstr2",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LCSTR2",
+      "Handler": "fun_lcstr",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LDELETE",
+      "Handler": "fun_ldelete",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "LEFT",
+      "Handler": "fun_left",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "LEMIT",
+      "Handler": "fun_lemit",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "LETQ",
+      "Handler": "fun_letq",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "LEXITS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LFLAGS",
+      "Handler": "fun_lflags",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LINK",
+      "Handler": "fun_link",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "LIST",
+      "Handler": "fun_list",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LISTQ",
+      "Handler": "fun_listq",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LIT",
+      "Handler": "fun_lit",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 2
+    },
+    {
+      "Name": "LJUST",
+      "Handler": "fun_ljust",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "LLOCKFLAGS",
+      "Handler": "fun_lockflags",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LLOCKS",
+      "Handler": "fun_locks",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LMATH",
+      "Handler": "fun_lmath",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "LNUM",
+      "Handler": "fun_lnum",
+      "MinArgs": 1,
+      "MaxArgs": 4,
+      "Flags": 65536
+    },
+    {
+      "Name": "LOC",
+      "Handler": "fun_loc",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LOCALIZE",
+      "Handler": "fun_localize",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 1
+    },
+    {
+      "Name": "LOCATE",
+      "Handler": "fun_locate",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "LOCK",
+      "Handler": "fun_lock",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LOCKFILTER",
+      "Handler": "fun_lockfilter",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "LOCKFLAGS",
+      "Handler": "fun_lockflags",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LOCKOWNER",
+      "Handler": "fun_lockowner",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LOCKS",
+      "Handler": "fun_locks",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LPARENT",
+      "Handler": "fun_lparent",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LPIDS",
+      "Handler": "fun_lpids",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LPLAYERS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LPORTS",
+      "Handler": "fun_lports",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LPOS",
+      "Handler": "fun_lpos",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LSEARCH",
+      "Handler": "fun_lsearch",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "LSEARCHR",
+      "Handler": "fun_lsearch",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "LSET",
+      "Handler": "fun_lset",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LSTATS",
+      "Handler": "fun_lstats",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LT",
+      "Handler": "fun_lt",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "LTE",
+      "Handler": "fun_lte",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "LTHINGS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LVCON",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LVEXITS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LVPLAYERS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LVTHINGS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LWHO",
+      "Handler": "fun_lwho",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LWHOID",
+      "Handler": "fun_lwho",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAIL",
+      "Handler": "fun_mail",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAILLIST",
+      "Handler": "fun_maillist",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAILFROM",
+      "Handler": "fun_mailfrom",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAILSEND",
+      "Handler": "fun_mailsend",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "MAILSTATS",
+      "Handler": "fun_mailstats",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAILDSTATS",
+      "Handler": "fun_mailstats",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAILFSTATS",
+      "Handler": "fun_mailstats",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAILSTATUS",
+      "Handler": "fun_mailstatus",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAILSUBJECT",
+      "Handler": "fun_mailsubject",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAILTIME",
+      "Handler": "fun_mailtime",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "MALIAS",
+      "Handler": "fun_malias",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAP",
+      "Handler": "fun_map",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "MAPSQL",
+      "Handler": "fun_mapsql",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "MATCH",
+      "Handler": "fun_match",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "MATCHALL",
+      "Handler": "fun_matchall",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 65536
+    },
+    {
+      "Name": "MAX",
+      "Handler": "fun_max",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "MEAN",
+      "Handler": "fun_mean",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "MEDIAN",
+      "Handler": "fun_median",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "MEMBER",
+      "Handler": "fun_member",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "MERGE",
+      "Handler": "fun_merge",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "MESSAGE",
+      "Handler": "fun_message",
+      "MinArgs": 3,
+      "MaxArgs": 14,
+      "Flags": 0
+    },
+    {
+      "Name": "MID",
+      "Handler": "fun_mid",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "MIN",
+      "Handler": "fun_min",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "MIX",
+      "Handler": "fun_mix",
+      "MinArgs": 3,
+      "MaxArgs": 33,
+      "Flags": 0
+    },
+    {
+      "Name": "MODULO",
+      "Handler": "fun_modulo",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "MONEY",
+      "Handler": "fun_money",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "MSECS",
+      "Handler": "fun_msecs",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "MTIME",
+      "Handler": "fun_mtime",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "MUDNAME",
+      "Handler": "fun_mudname",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "MUDURL",
+      "Handler": "fun_mudurl",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "MUL",
+      "Handler": "fun_mul",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "MUNGE",
+      "Handler": "fun_munge",
+      "MinArgs": 3,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "MWHO",
+      "Handler": "fun_lwho",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 65536
+    },
+    {
+      "Name": "MWHOID",
+      "Handler": "fun_lwho",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 65536
+    },
+    {
+      "Name": "NAME",
+      "Handler": "fun_name",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "MONIKER",
+      "Handler": "fun_moniker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NAMELIST",
+      "Handler": "fun_namelist",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "NAMEGRAB",
+      "Handler": "fun_namegrab",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "NAMEGRABALL",
+      "Handler": "fun_namegraball",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "NAND",
+      "Handler": "fun_nand",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "NATTR",
+      "Handler": "fun_nattr",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NATTRP",
+      "Handler": "fun_nattr",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NCHILDREN",
+      "Handler": "fun_lsearch",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NCON",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NCOND",
+      "Handler": "fun_if",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "NCONDALL",
+      "Handler": "fun_if",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "NEXITS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NPLAYERS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NEARBY",
+      "Handler": "fun_nearby",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "NEQ",
+      "Handler": "fun_neq",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "NEXT",
+      "Handler": "fun_next",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NEXTDBREF",
+      "Handler": "fun_nextdbref",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "NLSEARCH",
+      "Handler": "fun_lsearch",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "NMWHO",
+      "Handler": "fun_nwho",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "NOR",
+      "Handler": "fun_nor",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "NOT",
+      "Handler": "fun_not",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NSCEMIT",
+      "Handler": "fun_cemit",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "NSEARCH",
+      "Handler": "fun_lsearch",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "NSEMIT",
+      "Handler": "fun_emit",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "NSLEMIT",
+      "Handler": "fun_lemit",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "NSOEMIT",
+      "Handler": "fun_oemit",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "NSPEMIT",
+      "Handler": "fun_pemit",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "NSPROMPT",
+      "Handler": "fun_prompt",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "NSREMIT",
+      "Handler": "fun_remit",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "NSZEMIT",
+      "Handler": "fun_zemit",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "NTHINGS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NUM",
+      "Handler": "fun_num",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NUMVERSION",
+      "Handler": "fun_numversion",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "NULL",
+      "Handler": "fun_null",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "NVCON",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NVEXITS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NVPLAYERS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NVTHINGS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "NWHO",
+      "Handler": "fun_nwho",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "OBJ",
+      "Handler": "fun_obj",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "OBJEVAL",
+      "Handler": "fun_objeval",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 1
+    },
+    {
+      "Name": "OBJID",
+      "Handler": "fun_objid",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "OBJMEM",
+      "Handler": "fun_objmem",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "OEMIT",
+      "Handler": "fun_oemit",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "OOB",
+      "Handler": "fun_oob",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "OPEN",
+      "Handler": "fun_open",
+      "MinArgs": 1,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "OR",
+      "Handler": "fun_or",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "ORD",
+      "Handler": "fun_ord",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ORDINAL",
+      "Handler": "fun_spellnum",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ORFLAGS",
+      "Handler": "fun_orflags",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ORLFLAGS",
+      "Handler": "fun_orlflags",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ORLPOWERS",
+      "Handler": "fun_orlflags",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "OWNER",
+      "Handler": "fun_owner",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "PARENT",
+      "Handler": "fun_parent",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "PCREATE",
+      "Handler": "fun_pcreate",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "PEMIT",
+      "Handler": "fun_pemit",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "PIDINFO",
+      "Handler": "fun_pidinfo",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "PLAYERMEM",
+      "Handler": "fun_playermem",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "PLAYER",
+      "Handler": "fun_player",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "PMATCH",
+      "Handler": "fun_pmatch",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "POLL",
+      "Handler": "fun_poll",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "PORTS",
+      "Handler": "fun_ports",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "POS",
+      "Handler": "fun_pos",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "POSS",
+      "Handler": "fun_poss",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "POWERS",
+      "Handler": "fun_powers",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "PROMPT",
+      "Handler": "fun_prompt",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "PUEBLO",
+      "Handler": "fun_pueblo",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "QUOTA",
+      "Handler": "fun_quota",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "R",
+      "Handler": "fun_r",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "RAND",
+      "Handler": "fun_rand",
+      "MinArgs": 0,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "RANDEXTRACT",
+      "Handler": "fun_randword",
+      "MinArgs": 1,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "RANDWORD",
+      "Handler": "fun_randword",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "RECV",
+      "Handler": "fun_recv",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "REGEDIT",
+      "Handler": "fun_regreplace",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "REGEDITALL",
+      "Handler": "fun_regreplace",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "REGEDITALLI",
+      "Handler": "fun_regreplace",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "REGEDITI",
+      "Handler": "fun_regreplace",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "REGMATCH",
+      "Handler": "fun_regmatch",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "REGMATCHI",
+      "Handler": "fun_regmatch",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "REGRAB",
+      "Handler": "fun_regrab",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "REGRABALL",
+      "Handler": "fun_regrab",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "REGRABALLI",
+      "Handler": "fun_regrab",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "REGRABI",
+      "Handler": "fun_regrab",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "REGLMATCH",
+      "Handler": "fun_regrab",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "REGLMATCHI",
+      "Handler": "fun_regrab",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "REGLMATCHALL",
+      "Handler": "fun_regrab",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "REGLMATCHALLI",
+      "Handler": "fun_regrab",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "REGREP",
+      "Handler": "fun_grep",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "REGREPI",
+      "Handler": "fun_grep",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "REGLATTR",
+      "Handler": "fun_lattr",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "REGLATTRP",
+      "Handler": "fun_lattr",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "REGNATTR",
+      "Handler": "fun_nattr",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "REGNATTRP",
+      "Handler": "fun_nattr",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "REGXATTR",
+      "Handler": "fun_lattr",
+      "MinArgs": 3,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "REGXATTRP",
+      "Handler": "fun_lattr",
+      "MinArgs": 3,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "RESWITCH",
+      "Handler": "fun_reswitch",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "RESWITCHALL",
+      "Handler": "fun_reswitch",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "RESWITCHALLI",
+      "Handler": "fun_reswitch",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "RESWITCHI",
+      "Handler": "fun_reswitch",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "REGISTERS",
+      "Handler": "fun_listq",
+      "MinArgs": 0,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "REMAINDER",
+      "Handler": "fun_remainder",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "REMIT",
+      "Handler": "fun_remit",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "REMOVE",
+      "Handler": "fun_remove",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "RENDER",
+      "Handler": "fun_render",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "REPEAT",
+      "Handler": "fun_repeat",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "LREPLACE",
+      "Handler": "fun_ldelete",
+      "MinArgs": 3,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "REST",
+      "Handler": "fun_rest",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "RESTARTS",
+      "Handler": "fun_restarts",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "RESTARTTIME",
+      "Handler": "fun_restarttime",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "REVWORDS",
+      "Handler": "fun_revwords",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "RIGHT",
+      "Handler": "fun_right",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "RJUST",
+      "Handler": "fun_rjust",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "RLOC",
+      "Handler": "fun_rloc",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "RNUM",
+      "Handler": "fun_rnum",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 196608
+    },
+    {
+      "Name": "ROOM",
+      "Handler": "fun_room",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ROOT",
+      "Handler": "fun_root",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "S",
+      "Handler": "fun_s",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "SCAN",
+      "Handler": "fun_scan",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "SCRAMBLE",
+      "Handler": "fun_scramble",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "SECS",
+      "Handler": "fun_secs",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "SECSCALC",
+      "Handler": "fun_secscalc",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "SECURE",
+      "Handler": "fun_secure",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "SENT",
+      "Handler": "fun_sent",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "SET",
+      "Handler": "fun_set",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "SETQ",
+      "Handler": "fun_setq",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "SETR",
+      "Handler": "fun_setq",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "SETDIFF",
+      "Handler": "fun_setmanip",
+      "MinArgs": 2,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "SETINTER",
+      "Handler": "fun_setmanip",
+      "MinArgs": 2,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "SETSYMDIFF",
+      "Handler": "fun_setmanip",
+      "MinArgs": 2,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "SETUNION",
+      "Handler": "fun_setmanip",
+      "MinArgs": 2,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "SHA0",
+      "Handler": "fun_sha0",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 131072
+    },
+    {
+      "Name": "SHL",
+      "Handler": "fun_shl",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "SHR",
+      "Handler": "fun_shr",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "SHUFFLE",
+      "Handler": "fun_shuffle",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "SIGN",
+      "Handler": "fun_sign",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "SORT",
+      "Handler": "fun_sort",
+      "MinArgs": 1,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "SORTBY",
+      "Handler": "fun_sortby",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "SORTKEY",
+      "Handler": "fun_sortkey",
+      "MinArgs": 2,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "SOUNDEX",
+      "Handler": "fun_soundex",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "SOUNDSLIKE",
+      "Handler": "fun_soundlike",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "SPACE",
+      "Handler": "fun_space",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "SPEAK",
+      "Handler": "fun_speak",
+      "MinArgs": 2,
+      "MaxArgs": 7,
+      "Flags": 0
+    },
+    {
+      "Name": "SPELLNUM",
+      "Handler": "fun_spellnum",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "SPLICE",
+      "Handler": "fun_splice",
+      "MinArgs": 3,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "SQL",
+      "Handler": "fun_sql",
+      "MinArgs": 1,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "SQLESCAPE",
+      "Handler": "fun_sql_escape",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "SQUISH",
+      "Handler": "fun_squish",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "SSL",
+      "Handler": "fun_ssl",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "STARTTIME",
+      "Handler": "fun_starttime",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "STEP",
+      "Handler": "fun_step",
+      "MinArgs": 3,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "STRFIRSTOF",
+      "Handler": "fun_firstof",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "STRALLOF",
+      "Handler": "fun_allof",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "STRCAT",
+      "Handler": "fun_strcat",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "STRINGSECS",
+      "Handler": "fun_stringsecs",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "STRINSERT",
+      "Handler": "fun_str_rep_or_ins",
+      "MinArgs": 3,
+      "MaxArgs": -3,
+      "Flags": 0
+    },
+    {
+      "Name": "STRIPACCENTS",
+      "Handler": "fun_stripaccents",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "STRIPANSI",
+      "Handler": "fun_stripansi",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 65536
+    },
+    {
+      "Name": "STRLEN",
+      "Handler": "fun_strlen",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "STRMATCH",
+      "Handler": "fun_strmatch",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "STRREPLACE",
+      "Handler": "fun_str_rep_or_ins",
+      "MinArgs": 4,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "SUB",
+      "Handler": "fun_sub",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "SUBJ",
+      "Handler": "fun_subj",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "SUGGEST",
+      "Handler": "fun_suggest",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 65536
+    },
+    {
+      "Name": "SWITCH",
+      "Handler": "fun_switch",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "SWITCHALL",
+      "Handler": "fun_switch",
+      "MinArgs": 3,
+      "MaxArgs": 2147483647,
+      "Flags": 1
+    },
+    {
+      "Name": "SLEV",
+      "Handler": "fun_slev",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "STEXT",
+      "Handler": "fun_stext",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "T",
+      "Handler": "fun_t",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "TABLE",
+      "Handler": "fun_table",
+      "MinArgs": 1,
+      "MaxArgs": 5,
+      "Flags": 0
+    },
+    {
+      "Name": "TEL",
+      "Handler": "fun_tel",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 65536
+    },
+    {
+      "Name": "TERMINFO",
+      "Handler": "fun_terminfo",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "TESTLOCK",
+      "Handler": "fun_testlock",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "TEXTENTRIES",
+      "Handler": "fun_textentries",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "TEXTFILE",
+      "Handler": "fun_textfile",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "TEXTSEARCH",
+      "Handler": "fun_textsearch",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "TIME",
+      "Handler": "fun_time",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "TIMECALC",
+      "Handler": "fun_timecalc",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "TIMEFMT",
+      "Handler": "fun_timefmt",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "TIMESTRING",
+      "Handler": "fun_timestring",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "TR",
+      "Handler": "fun_tr",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "TRIM",
+      "Handler": "fun_trim",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "TRIMPENN",
+      "Handler": "fun_trim",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "TRIMTINY",
+      "Handler": "fun_trim",
+      "MinArgs": 1,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "TRUNC",
+      "Handler": "fun_trunc",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "TYPE",
+      "Handler": "fun_type",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "UCSTR",
+      "Handler": "fun_ucstr",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 0
+    },
+    {
+      "Name": "UCSTR2",
+      "Handler": "fun_ucstr2",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "UCSTR2",
+      "Handler": "fun_ucstr",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "UDEFAULT",
+      "Handler": "fun_udefault",
+      "MinArgs": 2,
+      "MaxArgs": 32,
+      "Flags": 1
+    },
+    {
+      "Name": "UFUN",
+      "Handler": "fun_ufun",
+      "MinArgs": 1,
+      "MaxArgs": 31,
+      "Flags": 0
+    },
+    {
+      "Name": "PFUN",
+      "Handler": "fun_pfun",
+      "MinArgs": 1,
+      "MaxArgs": 31,
+      "Flags": 0
+    },
+    {
+      "Name": "ULAMBDA",
+      "Handler": "fun_ufun",
+      "MinArgs": 1,
+      "MaxArgs": 31,
+      "Flags": 0
+    },
+    {
+      "Name": "ULDEFAULT",
+      "Handler": "fun_udefault",
+      "MinArgs": 1,
+      "MaxArgs": 32,
+      "Flags": 16385
+    },
+    {
+      "Name": "ULOCAL",
+      "Handler": "fun_ufun",
+      "MinArgs": 1,
+      "MaxArgs": 31,
+      "Flags": 16384
+    },
+    {
+      "Name": "UNIQUE",
+      "Handler": "fun_unique",
+      "MinArgs": 1,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "UNSETQ",
+      "Handler": "fun_unsetq",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "UPTIME",
+      "Handler": "fun_uptime",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "URLDECODE",
+      "Handler": "fun_urldecode",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 65536
+    },
+    {
+      "Name": "URLENCODE",
+      "Handler": "fun_urlencode",
+      "MinArgs": 1,
+      "MaxArgs": -1,
+      "Flags": 65536
+    },
+    {
+      "Name": "UTCTIME",
+      "Handler": "fun_time",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "V",
+      "Handler": "fun_v",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "VALID",
+      "Handler": "fun_valid",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "VERSION",
+      "Handler": "fun_version",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "VISIBLE",
+      "Handler": "fun_visible",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "WHERE",
+      "Handler": "fun_where",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "WIDTH",
+      "Handler": "fun_width",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "WILDGREP",
+      "Handler": "fun_grep",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "WILDGREPI",
+      "Handler": "fun_grep",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "WIPE",
+      "Handler": "fun_wipe",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "WORDPOS",
+      "Handler": "fun_wordpos",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "WORDS",
+      "Handler": "fun_words",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "WRAP",
+      "Handler": "fun_wrap",
+      "MinArgs": 2,
+      "MaxArgs": 4,
+      "Flags": 0
+    },
+    {
+      "Name": "XATTR",
+      "Handler": "fun_lattr",
+      "MinArgs": 3,
+      "MaxArgs": 4,
+      "Flags": 65536
+    },
+    {
+      "Name": "XATTRP",
+      "Handler": "fun_lattr",
+      "MinArgs": 3,
+      "MaxArgs": 4,
+      "Flags": 65536
+    },
+    {
+      "Name": "XCON",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "XEXITS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "XMWHO",
+      "Handler": "fun_xwho",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "XMWHOID",
+      "Handler": "fun_xwho",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "XPLAYERS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "XGET",
+      "Handler": "fun_xget",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "XOR",
+      "Handler": "fun_xor",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "XTHINGS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "XVCON",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "XVEXITS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "XVPLAYERS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "XVTHINGS",
+      "Handler": "fun_dbwalker",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "XWHO",
+      "Handler": "fun_xwho",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "XWHOID",
+      "Handler": "fun_xwho",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "ZEMIT",
+      "Handler": "fun_zemit",
+      "MinArgs": 2,
+      "MaxArgs": -2,
+      "Flags": 0
+    },
+    {
+      "Name": "ZFUN",
+      "Handler": "fun_zfun",
+      "MinArgs": 1,
+      "MaxArgs": 31,
+      "Flags": 0
+    },
+    {
+      "Name": "ZONE",
+      "Handler": "fun_zone",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ZMWHO",
+      "Handler": "fun_zwho",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "ZWHO",
+      "Handler": "fun_zwho",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "VADD",
+      "Handler": "fun_vadd",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "VCROSS",
+      "Handler": "fun_vcross",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "VSUB",
+      "Handler": "fun_vsub",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "VMAX",
+      "Handler": "fun_vmax",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "VMIN",
+      "Handler": "fun_vmin",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "VMUL",
+      "Handler": "fun_vmul",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "VDOT",
+      "Handler": "fun_vdot",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "VMAG",
+      "Handler": "fun_vmag",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "VDIM",
+      "Handler": "fun_words",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "VUNIT",
+      "Handler": "fun_vunit",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ACOS",
+      "Handler": "fun_acos",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ASIN",
+      "Handler": "fun_asin",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ATAN",
+      "Handler": "fun_atan",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ATAN2",
+      "Handler": "fun_atan2",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "CEIL",
+      "Handler": "fun_ceil",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "COS",
+      "Handler": "fun_cos",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "CTU",
+      "Handler": "fun_ctu",
+      "MinArgs": 3,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "E",
+      "Handler": "fun_e",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "FDIV",
+      "Handler": "fun_fdiv",
+      "MinArgs": 2,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "FMOD",
+      "Handler": "fun_fmod",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "FLOOR",
+      "Handler": "fun_floor",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "LOG",
+      "Handler": "fun_log",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "LN",
+      "Handler": "fun_ln",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "PI",
+      "Handler": "fun_pi",
+      "MinArgs": 0,
+      "MaxArgs": 0,
+      "Flags": 0
+    },
+    {
+      "Name": "POWER",
+      "Handler": "fun_power",
+      "MinArgs": 2,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "ROUND",
+      "Handler": "fun_round",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 65536
+    },
+    {
+      "Name": "SIN",
+      "Handler": "fun_sin",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "SQRT",
+      "Handler": "fun_sqrt",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 65536
+    },
+    {
+      "Name": "STDDEV",
+      "Handler": "fun_stddev",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 65536
+    },
+    {
+      "Name": "TAN",
+      "Handler": "fun_tan",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 65536
+    },
+    {
+      "Name": "HTML",
+      "Handler": "fun_html",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 64
+    },
+    {
+      "Name": "TAG",
+      "Handler": "fun_tag",
+      "MinArgs": 1,
+      "MaxArgs": 2147483647,
+      "Flags": 0
+    },
+    {
+      "Name": "ENDTAG",
+      "Handler": "fun_endtag",
+      "MinArgs": 1,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "TAGWRAP",
+      "Handler": "fun_tagwrap",
+      "MinArgs": 2,
+      "MaxArgs": 3,
+      "Flags": 0
+    },
+    {
+      "Name": "PE_REGS_DUMP",
+      "Handler": "fun_pe_regs_dump",
+      "MinArgs": 0,
+      "MaxArgs": 1,
+      "Flags": 0
+    },
+    {
+      "Name": "WSJSON",
+      "Handler": "fun_websocket_json",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    },
+    {
+      "Name": "WSHTML",
+      "Handler": "fun_websocket_html",
+      "MinArgs": 1,
+      "MaxArgs": 2,
+      "Flags": 0
+    }
+  ],
+  "Aliases": [
+    {
+      "FunctionName": "UFUN",
+      "Alias": "U"
+    },
+    {
+      "FunctionName": "IDLE",
+      "Alias": "IDLESECS"
+    },
+    {
+      "FunctionName": "HOST",
+      "Alias": "HOSTNAME"
+    },
+    {
+      "FunctionName": "FLIP",
+      "Alias": "REVERSE"
+    },
+    {
+      "FunctionName": "E",
+      "Alias": "EXP"
+    },
+    {
+      "FunctionName": "STRDELETE",
+      "Alias": "DELETE"
+    },
+    {
+      "FunctionName": "LREPLACE",
+      "Alias": "REPLACE"
+    },
+    {
+      "FunctionName": "LINSERT",
+      "Alias": "INSERT"
+    },
+    {
+      "FunctionName": "MONIKER",
+      "Alias": "CNAME"
+    },
+    {
+      "FunctionName": "MEAN",
+      "Alias": "AVG"
+    },
+    {
+      "FunctionName": "MATCH",
+      "Alias": "ELEMENT"
+    },
+    {
+      "FunctionName": "SPEAK",
+      "Alias": "SPEAKPENN"
+    }
+  ]
+}

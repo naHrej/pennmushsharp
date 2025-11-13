@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>PennMushSharp.Core</AssemblyName>
+    <RootNamespace>PennMushSharp.Core</RootNamespace>
+    <Description>Core domain model, persistence, and shared primitives for the PennMUSH + Aspace C# port.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\docs\generated\flags.json" Link="Generated\flags.json" />
+    <EmbeddedResource Include="..\..\docs\generated\attributes.json" Link="Generated\attributes.json" />
+    <EmbeddedResource Include="..\..\docs\generated\locks.json" Link="Generated\locks.json" />
+    <EmbeddedResource Include="..\..\docs\generated\functions.json" Link="Generated\functions.json" />
+  </ItemGroup>
+</Project>
