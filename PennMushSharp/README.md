@@ -66,8 +66,10 @@ persistence.
   plug in without rewriting the pipeline.
 - `TelnetServer` (hosted background service) listens on `PennMushSharp:ListenAddress/ListenPort`
   (defaults: `127.0.0.1:4201`) and registers live sessions so commands like `WHO` can report active
-  connections. New sessions are prompted for a player name/password (seeded with `Wizard9` /
-  `harness` via `GameStateSeeder`) before they can run managed commands.
+  connections. New sessions log in via `CONNECT <name> <password>` (seeded with `Wizard9` /
+  `harness` via `GameStateSeeder`) or create an account with `CREATE <name> <password>` before
+  issuing managed commands. Newly created accounts are persisted as PennMUSH-compatible dumps
+  (default path `PennMushSharp/data/accounts.dump`, override via `PennMushSharp:AccountStorePath`).
 
 ## External Dependencies
 The `pennmush/` and `aspace/` directories live at the root of this repo but are ignored by

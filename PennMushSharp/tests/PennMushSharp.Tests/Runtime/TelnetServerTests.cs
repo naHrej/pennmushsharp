@@ -30,15 +30,18 @@ public sealed class TelnetServerTests
       using var reader = new StreamReader(stream, Encoding.UTF8);
       using var writer = new StreamWriter(stream, new UTF8Encoding(false)) { AutoFlush = true };
 
-      await reader.ReadLineAsync(); // Name:
-      await writer.WriteLineAsync("Wizard9");
-      await reader.ReadLineAsync(); // Password:
-      await writer.WriteLineAsync("harness");
+      await reader.ReadLineAsync();
+      await reader.ReadLineAsync();
+      await reader.ReadLineAsync();
 
-      // consume greeting
-      await reader.ReadLineAsync();
-      await reader.ReadLineAsync();
-      await reader.ReadLineAsync();
+      await writer.WriteLineAsync("CONNECT Wizard9 harness");
+
+      for (var i = 0; i < 5; i++)
+      {
+        var line = await reader.ReadLineAsync();
+        if (line is not null && line.Contains("Welcome", StringComparison.OrdinalIgnoreCase))
+          break;
+      }
 
       await writer.WriteLineAsync("LOOK");
       string? response = null;

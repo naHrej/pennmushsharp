@@ -84,6 +84,7 @@ Task tracking should reference this roadmap section to ensure the 1:1 parity req
 | 2025-11-12 | Legacy harness automation | Added `scripts/start-legacy-mush.sh`, seeded credentials, and recorded the first golden transcript so regression tests can exercise the actual C server. |
 | 2025-11-12 | Telnet runtime scaffold | Introduced the hosted telnet server, command dispatcher upgrades (`LOOK`, `WHO`), and session registry + tests so the managed runtime exposes a minimal interactive loop. |
 | 2025-11-12 | Runtime DI + command scaffold | The .NET host composes metadata, persistence, and the new `CommandDispatcher`/`LookCommand`, providing a foundation for future telnet/command subsystems. |
+| 2025-11-12 | Telnet auth commands | Added CONNECT/CREATE flows, password verification, and session tracking so the managed runtime mirrors the legacy login experience. |
 
 ## Tracking Progress
 - Each phase should culminate in a short demoable milestone (e.g., "can connect and run `look`" or "spaceflight tick updates position").

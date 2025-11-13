@@ -28,6 +28,7 @@ aspace/
 /PennMushSharp/**/obj/
 /PennMushSharp/TestResult*/
 /PennMushSharp/tests/characterization/output/
+/PennMushSharp/data/accounts.dump
 
 # Packaging artifacts
 *.nupkg

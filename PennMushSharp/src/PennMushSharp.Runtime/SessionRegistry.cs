@@ -29,3 +29,4 @@ public sealed class SessionRegistry : ISessionRegistry
     return _sessions.Values.ToList();
   }
 }
+

@@ -12,4 +12,6 @@ public sealed class RuntimeOptions
 
   public int DefaultAccountDbRef { get; set; } = 9;
   public string DefaultAccountName { get; set; } = "Wizard9";
+
+  public string AccountStorePath { get; set; } = Path.Combine("data", "accounts.dump");
 }

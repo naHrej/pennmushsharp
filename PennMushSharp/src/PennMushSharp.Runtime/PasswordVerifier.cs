@@ -16,6 +16,27 @@ public sealed class PasswordVerifier
     return false;
   }
 
+  public string HashPassword(string password)
+  {
+    const string algorithm = "sha512";
+    var salt = GenerateSalt();
+    var hash = ComputeSha512(salt + password);
+    var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+    return $"2:{algorithm}:{salt}{hash}:{timestamp}";
+  }
+
+  private static string GenerateSalt()
+  {
+    const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    Span<char> salt = stackalloc char[2];
+    var random = RandomNumberGenerator.Create();
+    Span<byte> buffer = stackalloc byte[2];
+    random.GetBytes(buffer);
+    salt[0] = chars[buffer[0] % chars.Length];
+    salt[1] = chars[buffer[1] % chars.Length];
+    return new string(salt);
+  }
+
   private static bool VerifyHashedPassword(string stored, string password)
   {
     var segments = stored.Split(':', StringSplitOptions.None);

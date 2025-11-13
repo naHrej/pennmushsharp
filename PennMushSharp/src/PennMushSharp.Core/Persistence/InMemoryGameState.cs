@@ -7,6 +7,7 @@ public sealed class InMemoryGameState
   private readonly IMutableLockStore _lockStore;
   private readonly Dictionary<int, GameObjectRecord> _objects = new();
   private readonly Dictionary<string, GameObjectRecord> _objectsByName = new(StringComparer.OrdinalIgnoreCase);
+  private int _nextDbRef = 1;
 
   public InMemoryGameState(IMutableLockStore lockStore)
   {
@@ -20,6 +21,9 @@ public sealed class InMemoryGameState
       _objectsByName.Remove(previous.Name);
     }
 
+    if (record.Owner is null)
+      record.Owner = record.DbRef;
+
     _objects[record.DbRef] = record;
     if (!string.IsNullOrWhiteSpace(record.Name))
     {
@@ -30,6 +34,9 @@ public sealed class InMemoryGameState
     {
       _lockStore.SetLock(record.DbRef, new StoredLock(lockName, expression));
     }
+
+    if (record.DbRef >= _nextDbRef)
+      _nextDbRef = record.DbRef + 1;
   }
 
   public bool TryGet(int dbRef, out GameObjectRecord? record)
@@ -42,5 +49,18 @@ public sealed class InMemoryGameState
   public bool TryGet(string name, out GameObjectRecord? record)
   {
     return _objectsByName.TryGetValue(name, out record);
+  }
+
+  public GameObjectRecord Allocate(string name, string hashedPassword)
+  {
+    var record = new GameObjectRecord
+    {
+      DbRef = _nextDbRef++,
+      Name = name,
+      Owner = null
+    };
+    record.Attributes["XYXXY"] = hashedPassword;
+    Upsert(record);
+    return record;
   }
 }

@@ -18,6 +18,7 @@ public sealed class TelnetServer : BackgroundService
   private readonly PasswordVerifier _passwordVerifier;
   private readonly CommandDispatcher _dispatcher;
   private readonly SessionRegistry _sessionRegistry;
+  private readonly AccountService _accountService;
   private TcpListener? _listener;
 
   public TelnetServer(
@@ -26,7 +27,8 @@ public sealed class TelnetServer : BackgroundService
     InMemoryGameState gameState,
     CommandDispatcher dispatcher,
     PasswordVerifier passwordVerifier,
-    SessionRegistry sessionRegistry)
+    SessionRegistry sessionRegistry,
+    AccountService accountService)
   {
     _logger = logger;
     _options = options.Value;
@@ -34,6 +36,7 @@ public sealed class TelnetServer : BackgroundService
     _dispatcher = dispatcher;
     _passwordVerifier = passwordVerifier;
     _sessionRegistry = sessionRegistry;
+    _accountService = accountService;
   }
 
   protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -86,27 +89,22 @@ public sealed class TelnetServer : BackgroundService
 
   private async Task HandleClientAsync(TcpClient client, CancellationToken cancellationToken)
   {
-    using var _ = client;
+    using var disposableClient = client;
 
     using var stream = client.GetStream();
     using var writer = new StreamWriter(stream, new UTF8Encoding(false)) { AutoFlush = true };
     using var reader = new StreamReader(stream, Encoding.UTF8);
 
-    var record = await AuthenticateAsync(reader, writer, cancellationToken);
-    if (record is null)
-      return;
+    await writer.WriteLineAsync("PennMushSharp telnet server.");
+    await writer.WriteLineAsync("Use CONNECT <name> <password> to log in or CREATE <name> <password> to register.");
+    await writer.WriteLineAsync("Type QUIT to disconnect.");
 
-    var actor = new GameObject(record.DbRef, record.Name ?? $"#{record.DbRef}");
-    var sessionId = _sessionRegistry.Register(actor);
+    var output = new TelnetOutputWriter(writer);
+    GameObject? actor = null;
+    Guid sessionId = Guid.Empty;
 
     try
     {
-      await writer.WriteLineAsync("Welcome to PennMushSharp!");
-      await writer.WriteLineAsync("Type LOOK or WHO to exercise the current runtime.");
-      await writer.WriteLineAsync("Type QUIT to disconnect.");
-
-      var context = new CommandContext(actor, new TelnetOutputWriter(writer));
-
       while (!cancellationToken.IsCancellationRequested)
       {
         var line = await reader.ReadLineAsync();
@@ -120,6 +118,14 @@ public sealed class TelnetServer : BackgroundService
         if (string.IsNullOrWhiteSpace(line))
           continue;
 
+        if (actor is null)
+        {
+          if (!await HandlePreAuthAsync(line, writer))
+            await writer.WriteLineAsync("Unknown command. Use CONNECT <name> <password>.");
+          continue;
+        }
+
+        var context = new CommandContext(actor, output);
         await _dispatcher.DispatchAsync(context, line, cancellationToken);
       }
     }
@@ -129,40 +135,60 @@ public sealed class TelnetServer : BackgroundService
     }
     finally
     {
-      _sessionRegistry.Unregister(sessionId);
+      if (sessionId != Guid.Empty)
+        _sessionRegistry.Unregister(sessionId);
     }
-  }
 
-  private async Task<GameObjectRecord?> AuthenticateAsync(StreamReader reader, StreamWriter writer, CancellationToken cancellationToken)
-  {
-    for (var attempt = 0; attempt < 3; attempt++)
+    async Task<bool> HandlePreAuthAsync(string commandLine, StreamWriter writerInner)
     {
-      await writer.WriteLineAsync("Name:");
-      var name = await reader.ReadLineAsync();
-      if (string.IsNullOrWhiteSpace(name))
+      var parts = commandLine.Split(' ', 3, StringSplitOptions.RemoveEmptyEntries);
+      if (parts.Length == 0)
+        return false;
+
+      var keyword = parts[0];
+
+      if (keyword.Equals("CONNECT", StringComparison.OrdinalIgnoreCase))
       {
-        await writer.WriteLineAsync("Please provide a player name.");
-        continue;
+        if (parts.Length < 3)
+        {
+          await writerInner.WriteLineAsync("Usage: CONNECT <name> <password>");
+          return true;
+        }
+
+        if (_accountService.TryConnect(parts[1], parts[2], out var connected))
+        {
+          actor = connected;
+          sessionId = _sessionRegistry.Register(actor);
+          await writerInner.WriteLineAsync($"Welcome, {actor.Name}!");
+          return true;
+        }
+
+        await writerInner.WriteLineAsync("Invalid credentials.");
+        return true;
       }
 
-      name = name.Trim();
-
-      if (!_gameState.TryGet(name, out var record) || record is null)
+      if (keyword.Equals("CREATE", StringComparison.OrdinalIgnoreCase))
       {
-        await writer.WriteLineAsync("Unknown player.");
-        continue;
+        if (parts.Length < 3)
+        {
+          await writerInner.WriteLineAsync("Usage: CREATE <name> <password>");
+          return true;
+        }
+
+        if (_gameState.TryGet(parts[1], out _))
+        {
+          await writerInner.WriteLineAsync("That name is already taken.");
+          return true;
+        }
+
+        actor = _accountService.Create(parts[1], parts[2]);
+        sessionId = _sessionRegistry.Register(actor);
+        await writerInner.WriteLineAsync($"Created {actor.Name}. Welcome!");
+        return true;
       }
 
-      await writer.WriteLineAsync("Password:");
-      var password = (await reader.ReadLineAsync() ?? string.Empty).Trim();
-      if (_passwordVerifier.Verify(record, password))
-        return record;
-
-      await writer.WriteLineAsync("Invalid password.");
+      return false;
     }
-
-    await writer.WriteLineAsync("Too many failed attempts.");
-    return null;
   }
 
   private sealed class TelnetOutputWriter : IOutputWriter

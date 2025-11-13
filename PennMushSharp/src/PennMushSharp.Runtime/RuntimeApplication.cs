@@ -28,9 +28,12 @@ public static class RuntimeApplication
     services.AddSingleton<ILockExpressionEngine>(_ => SimpleLockExpressionEngine.Instance);
     services.AddSingleton<ILockService, LockEvaluator>();
     services.AddSingleton<TextDumpParser>();
+    services.AddSingleton<TextDumpWriter>();
     services.AddSingleton<InMemoryGameState>();
     services.AddSingleton<GameStateLoader>();
     services.AddSingleton<PasswordVerifier>();
+    services.AddSingleton<IAccountRepository, TextDumpAccountRepository>();
+    services.AddSingleton<AccountService>();
     services.AddSingleton<SessionRegistry>();
     services.AddSingleton<ISessionRegistry>(sp => sp.GetRequiredService<SessionRegistry>());
     services.AddSingleton(sp => CommandCatalogBuilder.CreateDefault(sp));

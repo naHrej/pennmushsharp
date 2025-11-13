@@ -14,6 +14,7 @@ public sealed class DefaultServerBootstrapper : IServerBootstrapper
   private readonly ILockService _lockService;
   private readonly GameStateLoader _loader;
   private readonly RuntimeOptions _options;
+  private readonly IAccountRepository _repository;
 
   public DefaultServerBootstrapper(
     ILogger<DefaultServerBootstrapper> logger,
@@ -21,7 +22,8 @@ public sealed class DefaultServerBootstrapper : IServerBootstrapper
     InMemoryGameState gameState,
     ILockService lockService,
     GameStateLoader loader,
-    IOptions<RuntimeOptions> options)
+    IOptions<RuntimeOptions> options,
+    IAccountRepository repository)
   {
     _logger = logger;
     _catalogs = catalogs;
@@ -29,6 +31,7 @@ public sealed class DefaultServerBootstrapper : IServerBootstrapper
     _lockService = lockService;
     _loader = loader;
     _options = options.Value;
+    _repository = repository;
   }
 
   public async Task StartAsync(CancellationToken cancellationToken = default)
@@ -39,6 +42,8 @@ public sealed class DefaultServerBootstrapper : IServerBootstrapper
     }
 
     GameStateSeeder.EnsureDefaultWizard(_gameState, _options.DefaultAccountDbRef, _options.DefaultAccountName);
+    foreach (var record in _repository.LoadAll())
+      _gameState.Upsert(record);
 
     _logger.LogInformation(
       "Runtime bootstrap complete. Flags={FlagCount}, Attributes={AttributeCount}, Locks={LockCount}, Functions={FunctionCount}",
