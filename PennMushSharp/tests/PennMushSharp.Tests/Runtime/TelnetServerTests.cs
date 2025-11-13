@@ -52,7 +52,7 @@ public sealed class TelnetServerTests
           break;
       }
 
-      Assert.Contains("Room Zero", response, StringComparison.OrdinalIgnoreCase);
+      Assert.Contains("One", response, StringComparison.OrdinalIgnoreCase);
 
       await writer.WriteLineAsync("QUIT");
     }

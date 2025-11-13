@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using PennMushSharp.Core.Persistence;
 
 namespace PennMushSharp.Commands;
 
@@ -8,7 +9,8 @@ public static class CommandCatalogBuilder
   {
     var catalog = new CommandCatalog();
     var registry = provider.GetRequiredService<ISessionRegistry>();
-    catalog.Register(new LookCommand());
+    var gameState = provider.GetRequiredService<InMemoryGameState>();
+    catalog.Register(new LookCommand(gameState));
     catalog.Register(new WhoCommand(registry));
     return catalog;
   }
