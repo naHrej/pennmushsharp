@@ -42,8 +42,13 @@ public sealed class DefaultServerBootstrapper : IServerBootstrapper
   public async Task StartAsync(CancellationToken cancellationToken = default)
   {
     var dumpPath = ResolvePath(_options.InitialDumpPath);
-    if (!string.IsNullOrWhiteSpace(dumpPath))
+    if (string.IsNullOrWhiteSpace(dumpPath))
     {
+      _logger.LogInformation("No initial dump configured. Skipping bootstrap load.");
+    }
+    else
+    {
+      _logger.LogInformation("Resolved initial dump path to {DumpPath}", dumpPath);
       await _loader.LoadAsync(dumpPath, cancellationToken);
     }
 

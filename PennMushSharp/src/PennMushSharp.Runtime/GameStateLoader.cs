@@ -27,6 +27,7 @@ public sealed class GameStateLoader
       return 0;
     }
 
+    _logger.LogInformation("Loading initial dump from {DumpPath}...", path);
     await using var stream = File.OpenRead(path);
     var count = 0;
     foreach (var record in _parser.Parse(stream))

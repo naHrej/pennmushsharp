@@ -22,10 +22,9 @@ public sealed class LookCommandTests
 
     await command.ExecuteAsync(context, string.Empty);
 
-    Assert.Contains("The Void", output.Lines[0]);
-    Assert.Contains("You see Number One.", output.Lines[1]);
-    Assert.Contains("Contents:", output.Lines[3]);
-    Assert.Contains("One", output.Lines[4]);
+    Assert.Equal("The Void (#10)", output.Lines[0]);
+    Assert.Equal("You see Number One.", output.Lines[1]);
+    Assert.Equal("Contents: Candle", output.Lines[2]);
   }
 
   private static InMemoryGameState BuildState()
@@ -48,11 +47,21 @@ public sealed class LookCommandTests
       Name = "One",
       Type = GameObjectType.Player,
       Location = room.DbRef,
+      Next = 3
+    };
+
+    var candle = new GameObjectRecord
+    {
+      DbRef = 3,
+      Name = "Candle",
+      Type = GameObjectType.Thing,
+      Location = room.DbRef,
       Next = -1
     };
 
     state.Upsert(room);
     state.Upsert(player);
+    state.Upsert(candle);
     return state;
   }
 

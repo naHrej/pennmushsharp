@@ -28,23 +28,16 @@ public sealed class LookCommand : ICommand
     var roomName = targetRecord.Name ?? $"#{targetRecord.DbRef}";
     var description = GetAttributeValue(targetRecord, "DESCRIBE") ?? "You see nothing special.";
 
-    await context.Output.WriteLineAsync(roomName, cancellationToken);
+    await context.Output.WriteLineAsync($"{roomName} (#{targetRecord.DbRef})", cancellationToken);
     await context.Output.WriteLineAsync(description, cancellationToken);
-    await context.Output.WriteLineAsync(string.Empty, cancellationToken);
 
-    var contents = EnumerateContents(targetRecord).ToList();
-    if (contents.Count == 0)
-    {
-      await context.Output.WriteLineAsync("Contents: (empty)", cancellationToken);
-      return;
-    }
+    var contentNames = EnumerateContents(targetRecord, context.Actor.DbRef)
+      .Select(GetDisplayName)
+      .ToList();
 
-    await context.Output.WriteLineAsync("Contents:", cancellationToken);
-    foreach (var item in contents)
+    if (contentNames.Count > 0)
     {
-      var label = DescribeType(item.Type);
-      var name = item.Name ?? $"#{item.DbRef}";
-      await context.Output.WriteLineAsync($"  {name} [{label}]", cancellationToken);
+      await context.Output.WriteLineAsync($"Contents: {string.Join(", ", contentNames)}", cancellationToken);
     }
   }
 
@@ -55,7 +48,7 @@ public sealed class LookCommand : ICommand
     return fallback;
   }
 
-  private IEnumerable<GameObjectRecord> EnumerateContents(GameObjectRecord record)
+  private IEnumerable<GameObjectRecord> EnumerateContents(GameObjectRecord record, int actorDbRef)
   {
     var currentDbRef = record.Contents;
     var visited = new HashSet<int>();
@@ -67,7 +60,9 @@ public sealed class LookCommand : ICommand
       if (!_gameState.TryGet(value, out var current) || current is null)
         yield break;
 
-      yield return current;
+      if (current.DbRef != actorDbRef)
+        yield return current;
+
       currentDbRef = current.Next;
     }
   }
@@ -77,14 +72,8 @@ public sealed class LookCommand : ICommand
     return record.Attributes.TryGetValue(attributeName, out var attribute) ? attribute.Value : null;
   }
 
-  private static string DescribeType(GameObjectType type) => type switch
+  private static string GetDisplayName(GameObjectRecord record)
   {
-    GameObjectType.Room => "room",
-    GameObjectType.Player => "player",
-    GameObjectType.Exit => "exit",
-    GameObjectType.Thing => "thing",
-    GameObjectType.Program => "program",
-    GameObjectType.Garbage => "garbage",
-    _ => "object"
-  };
+    return string.IsNullOrWhiteSpace(record.Name) ? $"#{record.DbRef}" : record.Name;
+  }
 }

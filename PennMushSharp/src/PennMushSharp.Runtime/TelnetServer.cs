@@ -94,6 +94,7 @@ public sealed class TelnetServer : BackgroundService
     using var stream = client.GetStream();
     using var writer = new StreamWriter(stream, new UTF8Encoding(false)) { AutoFlush = true };
     using var reader = new StreamReader(stream, Encoding.UTF8);
+    var remoteHost = GetRemoteHost(client);
 
     await writer.WriteLineAsync("PennMushSharp telnet server.");
     await writer.WriteLineAsync("Use CONNECT <name> [<password>] to log in or CREATE <name> <password> to register.");
@@ -127,6 +128,8 @@ public sealed class TelnetServer : BackgroundService
 
         var context = new CommandContext(actor, output);
         await _dispatcher.DispatchAsync(context, line, cancellationToken);
+        if (sessionId != Guid.Empty)
+          _sessionRegistry.RecordActivity(sessionId);
       }
     }
     catch (Exception ex)
@@ -159,7 +162,7 @@ public sealed class TelnetServer : BackgroundService
         if (_accountService.TryConnect(parts[1], suppliedPassword, out var connected))
         {
           actor = connected;
-          sessionId = _sessionRegistry.Register(actor);
+          sessionId = _sessionRegistry.Register(actor, remoteHost);
           await writerInner.WriteLineAsync($"Welcome, {actor.Name}!");
           return true;
         }
@@ -183,7 +186,7 @@ public sealed class TelnetServer : BackgroundService
         }
 
         actor = _accountService.Create(parts[1], parts[2]);
-        sessionId = _sessionRegistry.Register(actor);
+        sessionId = _sessionRegistry.Register(actor, remoteHost);
         await writerInner.WriteLineAsync($"Created {actor.Name}. Welcome!");
         return true;
       }
@@ -217,5 +220,12 @@ public sealed class TelnetServer : BackgroundService
 
     public GameObject Actor { get; }
     public IOutputWriter Output { get; }
+  }
+
+  private static string GetRemoteHost(TcpClient client)
+  {
+    if (client.Client.RemoteEndPoint is IPEndPoint endpoint)
+      return endpoint.Address.ToString();
+    return "unknown";
   }
 }

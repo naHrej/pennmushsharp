@@ -21,6 +21,11 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Fetch upstream sources
+        run: |
+          cd PennMushSharp
+          scripts/fetch-upstreams.sh
+
       - name: Restore
         run: dotnet restore PennMushSharp/PennMushSharp.sln
 

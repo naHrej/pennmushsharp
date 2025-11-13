@@ -99,7 +99,7 @@ public sealed class SimpleLockExpressionEngine : ILockExpressionEngine
     {
       SkipWhitespace();
       var start = _index;
-      while (_index < _expr.Length && !char.IsWhiteSpace(_expr[_index]) && _expr[_index] is not '&' and not '|' and not ')' )
+      while (_index < _expr.Length && !char.IsWhiteSpace(_expr[_index]) && _expr[_index] is not '&' and not '|' and not ')')
         _index++;
       if (start == _index)
         throw new FormatException();

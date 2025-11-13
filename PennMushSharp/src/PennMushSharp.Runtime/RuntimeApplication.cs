@@ -1,3 +1,4 @@
+using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,7 +15,13 @@ public static class RuntimeApplication
 {
   public static IHost BuildHost(string[]? args = null)
   {
-    var builder = Host.CreateApplicationBuilder(args ?? Array.Empty<string>());
+    var normalizedArgs = args ?? Array.Empty<string>();
+    var builder = Host.CreateApplicationBuilder(normalizedArgs);
+    var executableConfig = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
+    if (File.Exists(executableConfig))
+      builder.Configuration.AddJsonFile(executableConfig, optional: true, reloadOnChange: false);
+    if (normalizedArgs.Length > 0)
+      builder.Configuration.AddCommandLine(normalizedArgs);
     ConfigureLogging(builder);
     ConfigureServices(builder.Services, builder.Configuration);
     return builder.Build();
