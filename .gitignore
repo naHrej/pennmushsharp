@@ -33,3 +33,6 @@ aspace/
 # Packaging artifacts
 *.nupkg
 *.snupkg
+
+# allow checked-in characterization goldens
+!PennMushSharp/tests/characterization/golden/*.log
