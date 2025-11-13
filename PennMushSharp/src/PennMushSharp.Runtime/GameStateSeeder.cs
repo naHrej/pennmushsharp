@@ -4,7 +4,7 @@ namespace PennMushSharp.Runtime;
 
 public static class GameStateSeeder
 {
-  private const string DefaultHashedPassword = "2:sha512:Azb94a1b669c25bc6548da57fbddc76ebb54af4fa56e3be685d9c78173ab8f50bc2fc21e52677e83825099b84f8c3677097c47c60a6ca1fcc1d5feb60cd2b52d4d:1731490000";
+  private const string? DefaultHashedPassword = null;
 
   public static void EnsureDefaultWizard(InMemoryGameState state, int dbRef, string name)
   {
@@ -17,7 +17,8 @@ public static class GameStateSeeder
       Name = name,
       Owner = dbRef
     };
-    record.Attributes["XYXXY"] = DefaultHashedPassword;
+    if (!string.IsNullOrEmpty(DefaultHashedPassword))
+      record.SetAttribute("XYXXY", DefaultHashedPassword, dbRef);
     state.Upsert(record);
   }
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Text;
 
 namespace PennMushSharp.Core.Persistence;
@@ -11,49 +12,58 @@ public sealed class TextDumpWriter
     foreach (var record in records.OrderBy(r => r.DbRef))
     {
       writer.WriteLine($"!{record.DbRef}");
-      WriteQuoted(writer, "name", record.Name ?? $"Player{record.DbRef}");
-      writer.WriteLine($"owner #{record.Owner ?? record.DbRef}");
-      writer.WriteLine("location #0");
-      writer.WriteLine("contents #-1");
-      writer.WriteLine("exits #0");
-      writer.WriteLine("next #-1");
-      writer.WriteLine("parent #-1");
+      WriteQuoted(writer, "name", record.Name ?? $"#{record.DbRef}");
+      WriteDbRef(writer, "owner", record.Owner ?? record.DbRef);
+      WriteDbRef(writer, "location", record.Location ?? -1);
+      WriteDbRef(writer, "contents", record.Contents ?? -1);
+      WriteDbRef(writer, "exits", record.Exits ?? -1);
+      WriteDbRef(writer, "next", record.Next ?? -1);
+      WriteDbRef(writer, "parent", record.Parent ?? -1);
+      WriteDbRef(writer, "home", record.Home ?? -1);
+      WriteDbRef(writer, "zone", record.Zone ?? -1);
+      WriteDbRef(writer, "dropto", record.Dropto ?? -1);
+      writer.WriteLine($"type {record.Type.ToPennMushCode()}");
+      writer.WriteLine($"pennies {record.Pennies ?? 0}");
+      WriteQuoted(writer, "flags", string.Join(' ', record.Flags));
+
       writer.WriteLine($"lockcount {record.Locks.Count}");
-      foreach (var (lockName, expression) in record.Locks)
-      {
-        WriteLock(writer, lockName, expression);
-      }
+      foreach (var lockRecord in record.Locks.Values.OrderBy(l => l.Name, StringComparer.OrdinalIgnoreCase))
+        WriteLock(writer, lockRecord);
 
       writer.WriteLine($"attrcount {record.Attributes.Count}");
-      foreach (var (attrName, value) in record.Attributes)
-      {
-        WriteAttribute(writer, attrName, value, record.Owner ?? record.DbRef);
-      }
+      foreach (var attribute in record.Attributes.Values.OrderBy(a => a.Name, StringComparer.OrdinalIgnoreCase))
+        WriteAttribute(writer, attribute);
     }
 
     writer.WriteLine("***END OF DUMP***");
   }
 
-  private static void WriteLock(StreamWriter writer, string lockName, string expression)
+  private static void WriteLock(StreamWriter writer, LockRecord lockRecord)
   {
-    WriteQuoted(writer, " type", lockName);
-    writer.WriteLine("  creator #1");
-    writer.WriteLine("  flags \"\"");
-    writer.WriteLine("  derefs 0");
-    WriteQuoted(writer, "  key", expression);
+    WriteQuoted(writer, " type", lockRecord.Name);
+    WriteDbRef(writer, "  creator", lockRecord.Creator);
+    WriteQuoted(writer, "  flags", lockRecord.Flags);
+    writer.WriteLine($"  derefs {lockRecord.Derefs}");
+    WriteQuoted(writer, "  key", lockRecord.Key);
   }
 
-  private static void WriteAttribute(StreamWriter writer, string name, string value, int owner)
+  private static void WriteAttribute(StreamWriter writer, AttributeRecord attribute)
   {
-    WriteQuoted(writer, " name", name);
-    writer.WriteLine($"  owner #{owner}");
-    writer.WriteLine("  flags \"\"");
-    writer.WriteLine("  derefs 0");
-    WriteQuoted(writer, "  value", value);
+    WriteQuoted(writer, " name", attribute.Name);
+    WriteDbRef(writer, "  owner", attribute.Owner);
+    WriteQuoted(writer, "  flags", attribute.Flags);
+    writer.WriteLine($"  derefs {attribute.Derefs}");
+    WriteQuoted(writer, "  value", attribute.Value);
+  }
+
+  private static void WriteDbRef(StreamWriter writer, string label, int value)
+  {
+    writer.WriteLine($"{label} #{value}");
   }
 
   private static void WriteQuoted(StreamWriter writer, string prefix, string text)
   {
+    text ??= string.Empty;
     var escaped = text
       .Replace("\\", "\\\\")
       .Replace("\"", "\\\"");

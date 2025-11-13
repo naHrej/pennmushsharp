@@ -8,12 +8,12 @@ public sealed class PasswordVerifier
 {
   public bool Verify(GameObjectRecord record, string password)
   {
-    if (record.Attributes.TryGetValue("XYXXY", out var stored) && !string.IsNullOrWhiteSpace(stored))
+    if (record.Attributes.TryGetValue("XYXXY", out var stored) && !string.IsNullOrWhiteSpace(stored.Value))
     {
-      return VerifyHashedPassword(stored, password);
+      return VerifyHashedPassword(stored.Value, password);
     }
 
-    return false;
+    return string.IsNullOrEmpty(password);
   }
 
   public string HashPassword(string password)

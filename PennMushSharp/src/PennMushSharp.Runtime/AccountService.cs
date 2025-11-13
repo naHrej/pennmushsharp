@@ -28,7 +28,7 @@ public sealed class AccountService
     if (!_passwordVerifier.Verify(record, password))
       return false;
 
-    actor = new GameObject(record.DbRef, record.Name ?? $"#{record.DbRef}");
+    actor = GameObject.FromRecord(record);
     return true;
   }
 
@@ -37,6 +37,6 @@ public sealed class AccountService
     var hash = _passwordVerifier.HashPassword(password);
     var record = _gameState.Allocate(name, hash);
     _repository.Save(record);
-    return new GameObject(record.DbRef, record.Name ?? $"#{record.DbRef}");
+    return GameObject.FromRecord(record);
   }
 }

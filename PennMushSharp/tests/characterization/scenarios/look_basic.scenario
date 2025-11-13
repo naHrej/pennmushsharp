@@ -1,8 +1,8 @@
 NAME="look_basic"
 HOST="127.0.0.1"
 PORT=4201
-USER="Wizard9"
-PASSWORD="harness"
+USER="One"
+PASSWORD=""
 COMMANDS=(
   "look"
   "who"

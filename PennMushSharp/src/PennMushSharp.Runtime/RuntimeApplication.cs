@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using PennMushSharp.Commands;
 using PennMushSharp.Core.Locks;
 using PennMushSharp.Core.Locks.Runtime;
@@ -14,6 +15,7 @@ public static class RuntimeApplication
   public static IHost BuildHost(string[]? args = null)
   {
     var builder = Host.CreateApplicationBuilder(args ?? Array.Empty<string>());
+    ConfigureLogging(builder);
     ConfigureServices(builder.Services, builder.Configuration);
     return builder.Build();
   }
@@ -41,5 +43,17 @@ public static class RuntimeApplication
     services.AddSingleton<TelnetServer>();
     services.AddHostedService(sp => sp.GetRequiredService<TelnetServer>());
     services.AddSingleton<IServerBootstrapper, DefaultServerBootstrapper>();
+  }
+
+  private static void ConfigureLogging(HostApplicationBuilder builder)
+  {
+    builder.Logging.ClearProviders();
+    builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
+    builder.Logging.AddSimpleConsole(options =>
+    {
+      options.TimestampFormat = "HH:mm:ss.fff ";
+      options.IncludeScopes = true;
+      options.SingleLine = true;
+    });
   }
 }

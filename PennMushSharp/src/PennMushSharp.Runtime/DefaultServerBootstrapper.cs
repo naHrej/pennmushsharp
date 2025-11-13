@@ -1,3 +1,5 @@
+using System.IO;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PennMushSharp.Core.Locks.Runtime;
@@ -15,6 +17,7 @@ public sealed class DefaultServerBootstrapper : IServerBootstrapper
   private readonly GameStateLoader _loader;
   private readonly RuntimeOptions _options;
   private readonly IAccountRepository _repository;
+  private readonly string _contentRoot;
 
   public DefaultServerBootstrapper(
     ILogger<DefaultServerBootstrapper> logger,
@@ -23,7 +26,8 @@ public sealed class DefaultServerBootstrapper : IServerBootstrapper
     ILockService lockService,
     GameStateLoader loader,
     IOptions<RuntimeOptions> options,
-    IAccountRepository repository)
+    IAccountRepository repository,
+    IHostEnvironment environment)
   {
     _logger = logger;
     _catalogs = catalogs;
@@ -32,13 +36,15 @@ public sealed class DefaultServerBootstrapper : IServerBootstrapper
     _loader = loader;
     _options = options.Value;
     _repository = repository;
+    _contentRoot = environment.ContentRootPath;
   }
 
   public async Task StartAsync(CancellationToken cancellationToken = default)
   {
-    if (!string.IsNullOrWhiteSpace(_options.InitialDumpPath))
+    var dumpPath = ResolvePath(_options.InitialDumpPath);
+    if (!string.IsNullOrWhiteSpace(dumpPath))
     {
-      await _loader.LoadAsync(_options.InitialDumpPath, cancellationToken);
+      await _loader.LoadAsync(dumpPath, cancellationToken);
     }
 
     GameStateSeeder.EnsureDefaultWizard(_gameState, _options.DefaultAccountDbRef, _options.DefaultAccountName);
@@ -54,6 +60,14 @@ public sealed class DefaultServerBootstrapper : IServerBootstrapper
 
     _logger.LogDebug("Lock service ready: {ServiceType}", _lockService.GetType().Name);
     _logger.LogTrace("In-memory state type: {Type}", _gameState.GetType().Name);
+  }
 
+  private string? ResolvePath(string? configured)
+  {
+    if (string.IsNullOrWhiteSpace(configured))
+      return null;
+    if (Path.IsPathRooted(configured))
+      return configured;
+    return Path.GetFullPath(Path.Combine(_contentRoot, configured));
   }
 }

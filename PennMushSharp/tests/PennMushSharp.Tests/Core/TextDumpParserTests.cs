@@ -17,8 +17,8 @@ public sealed class TextDumpParserTests
 
     Assert.Equal(2, records.Count);
     Assert.Equal(2, records[0].Locks.Count);
-    Assert.Equal("#5", records[0].Locks["Control"]);
-    Assert.Equal("TRUE_BOOLEXP", records[0].Locks["Use"]);
+    Assert.Equal("#5", records[0].Locks["Control"].Key);
+    Assert.Equal("TRUE_BOOLEXP", records[0].Locks["Use"].Key);
     Assert.Single(records[1].Locks);
   }
 
@@ -42,7 +42,7 @@ public sealed class TextDumpParserTests
     Assert.Equal(9, record.DbRef);
     Assert.Equal("Wizard9", record.Name);
     Assert.Equal(9, record.Owner);
-    Assert.Equal(new[] { "WIZARD", "SAFE", "ANSI" }, record.Flags);
+    Assert.Equal(new[] { "ANSI", "SAFE", "WIZARD" }, record.Flags.OrderBy(f => f));
   }
 
   [Fact]
@@ -73,8 +73,10 @@ public sealed class TextDumpParserTests
     using var reader = new StringReader(dump);
 
     var record = parser.Parse(reader).Single();
-    Assert.Equal("=#9", record.Locks["Basic"]);
-    Assert.Equal(" ", record.Attributes["ICLOC"]);
-    Assert.Equal("Hello, World!", record.Attributes["GREETING"]);
+    Assert.Equal("=#9", record.Locks["Basic"].Key);
+    Assert.Equal(1, record.Locks["Basic"].Creator);
+    Assert.Equal(" ", record.Attributes["ICLOC"].Value);
+    Assert.Equal("locked", record.Attributes["ICLOC"].Flags);
+    Assert.Equal("Hello, World!", record.Attributes["GREETING"].Value);
   }
 }

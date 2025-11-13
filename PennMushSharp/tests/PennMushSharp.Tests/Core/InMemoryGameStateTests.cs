@@ -13,7 +13,7 @@ public sealed class InMemoryGameStateTests
     var state = new InMemoryGameState(lockStore);
 
     var record = new GameObjectRecord { DbRef = 5 };
-    record.Locks["Control"] = "#5";
+    record.SetLock("Control", "#5");
 
     state.Upsert(record);
 

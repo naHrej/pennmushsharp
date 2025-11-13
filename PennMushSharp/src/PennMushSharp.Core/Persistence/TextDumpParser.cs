@@ -14,8 +14,8 @@ public sealed class TextDumpParser
   public IEnumerable<GameObjectRecord> Parse(TextReader reader)
   {
     GameObjectRecord? current = null;
-    string? pendingLockName = null;
-    string? pendingAttributeName = null;
+    LockRecord? pendingLock = null;
+    AttributeRecord? pendingAttribute = null;
     string? line;
 
     while ((line = reader.ReadLine()) is not null)
@@ -31,26 +31,28 @@ public sealed class TextDumpParser
         yield break;
       }
 
-      var indent = CountIndentation(normalized);
-      var content = normalized[indent..];
-
-      if (content.Length > 0 && content[0] == '!' && TryParseDbRef(content.AsSpan(1), out var newDbRef))
+      if (normalized.StartsWith("***END RECORD***", StringComparison.Ordinal))
       {
         if (current is not null)
+        {
           yield return current;
-        current = new GameObjectRecord { DbRef = newDbRef };
-        pendingLockName = null;
-        pendingAttributeName = null;
+          current = null;
+          pendingAttribute = null;
+          pendingLock = null;
+        }
         continue;
       }
 
-      if (content.StartsWith('#') && TryParseDbRef(content.AsSpan(1), out var legacyDbRef))
+      var indent = CountIndentation(normalized);
+      var content = normalized[indent..];
+
+      if (TryStartRecord(content, out var dbRef))
       {
         if (current is not null)
           yield return current;
-        current = new GameObjectRecord { DbRef = legacyDbRef };
-        pendingLockName = null;
-        pendingAttributeName = null;
+        current = new GameObjectRecord { DbRef = dbRef };
+        pendingAttribute = null;
+        pendingLock = null;
         continue;
       }
 
@@ -63,61 +65,210 @@ public sealed class TextDumpParser
         continue;
       }
 
-      if (indent == 0)
+      if (indent == 0 && HandleTopLevelLine(current, content))
+        continue;
+
+      if (indent > 0 && content.StartsWith("type ", StringComparison.Ordinal) && content.Contains('"'))
       {
-        if (content.StartsWith("name ", StringComparison.Ordinal))
+        pendingLock = new LockRecord(ParseQuotedValue(content))
         {
-          current.Name = ParseQuotedValue(content);
-          continue;
-        }
+          Creator = current.Owner ?? current.DbRef
+        };
+        continue;
+      }
 
-        if (content.StartsWith("owner ", StringComparison.Ordinal))
+      if (pendingLock is not null && HandleStructuredLockLine(pendingLock, current, content))
+      {
+        if (content.StartsWith("key ", StringComparison.Ordinal))
+          pendingLock = null;
+        continue;
+      }
+
+      if (indent > 0 && content.StartsWith("name ", StringComparison.Ordinal))
+      {
+        pendingAttribute = new AttributeRecord(ParseQuotedValue(content))
         {
-          current.Owner = ParseNumber(content);
-          continue;
-        }
-
-        if (content.StartsWith("flags ", StringComparison.Ordinal))
-        {
-          PopulateFlags(current, ParseQuotedValue(content));
-          continue;
-        }
-
+          Owner = current.Owner ?? current.DbRef
+        };
         continue;
       }
 
-      if (content.StartsWith("name ", StringComparison.Ordinal))
+      if (pendingAttribute is not null && HandleAttributeLine(pendingAttribute, current, content))
       {
-        pendingAttributeName = ParseQuotedValue(content);
-        continue;
-      }
-
-      if (pendingAttributeName is not null && content.StartsWith("value ", StringComparison.Ordinal))
-      {
-        var attrValue = ParseQuotedValue(content);
-        current.Attributes[pendingAttributeName] = attrValue;
-        pendingAttributeName = null;
-        continue;
-      }
-
-      if (content.StartsWith("type \"", StringComparison.Ordinal))
-      {
-        pendingLockName = ParseQuotedValue(content);
-        continue;
-      }
-
-      if (pendingLockName is not null && content.StartsWith("key ", StringComparison.Ordinal))
-      {
-        var expr = ParseQuotedValue(content);
-        if (!string.IsNullOrWhiteSpace(pendingLockName))
-          current.Locks[pendingLockName] = expr;
-        pendingLockName = null;
+        if (content.StartsWith("value ", StringComparison.Ordinal))
+          pendingAttribute = null;
         continue;
       }
     }
 
     if (current is not null)
       yield return current;
+  }
+
+  private static bool HandleTopLevelLine(GameObjectRecord record, string content)
+  {
+    if (content.StartsWith("name ", StringComparison.Ordinal))
+    {
+      record.Name = ParseQuotedValue(content);
+      return true;
+    }
+
+    if (content.StartsWith("owner ", StringComparison.Ordinal))
+    {
+      record.Owner = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("location ", StringComparison.Ordinal))
+    {
+      record.Location = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("contents ", StringComparison.Ordinal))
+    {
+      record.Contents = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("exits ", StringComparison.Ordinal))
+    {
+      record.Exits = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("next ", StringComparison.Ordinal))
+    {
+      record.Next = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("parent ", StringComparison.Ordinal))
+    {
+      record.Parent = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("home ", StringComparison.Ordinal))
+    {
+      record.Home = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("zone ", StringComparison.Ordinal))
+    {
+      record.Zone = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("dropto ", StringComparison.Ordinal))
+    {
+      record.Dropto = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("pennies ", StringComparison.Ordinal))
+    {
+      record.Pennies = ParseNumber(content);
+      return true;
+    }
+
+    if (content.StartsWith("type ", StringComparison.Ordinal))
+    {
+      var typeCode = ParseNumber(content);
+      if (typeCode is not null)
+        record.Type = GameObjectTypeExtensions.FromPennMushCode(typeCode.Value);
+      return true;
+    }
+
+    if (content.StartsWith("flags ", StringComparison.Ordinal))
+    {
+      PopulateFlags(record, ParseQuotedValue(content));
+      return true;
+    }
+
+    if (content.StartsWith("lockcount ", StringComparison.Ordinal) ||
+        content.StartsWith("attrcount ", StringComparison.Ordinal))
+    {
+      return true;
+    }
+
+    return false;
+  }
+
+  private static bool HandleStructuredLockLine(LockRecord pendingLock, GameObjectRecord record, string content)
+  {
+    if (content.StartsWith("creator ", StringComparison.Ordinal))
+    {
+      pendingLock.Creator = ParseNumber(content) ?? pendingLock.Creator;
+      return true;
+    }
+
+    if (content.StartsWith("flags ", StringComparison.Ordinal))
+    {
+      pendingLock.Flags = ParseQuotedValue(content);
+      return true;
+    }
+
+    if (content.StartsWith("derefs ", StringComparison.Ordinal))
+    {
+      pendingLock.Derefs = ParseNumber(content) ?? pendingLock.Derefs;
+      return true;
+    }
+
+    if (content.StartsWith("key ", StringComparison.Ordinal))
+    {
+      pendingLock.Key = ParseQuotedValue(content);
+      record.Locks[pendingLock.Name] = pendingLock;
+      return true;
+    }
+
+    return false;
+  }
+
+  private static bool HandleAttributeLine(AttributeRecord attribute, GameObjectRecord record, string content)
+  {
+    if (content.StartsWith("owner ", StringComparison.Ordinal))
+    {
+      attribute.Owner = ParseNumber(content) ?? attribute.Owner;
+      return true;
+    }
+
+    if (content.StartsWith("flags ", StringComparison.Ordinal))
+    {
+      attribute.Flags = ParseQuotedValue(content);
+      return true;
+    }
+
+    if (content.StartsWith("derefs ", StringComparison.Ordinal))
+    {
+      attribute.Derefs = ParseNumber(content) ?? attribute.Derefs;
+      return true;
+    }
+
+    if (content.StartsWith("value ", StringComparison.Ordinal))
+    {
+      attribute.Value = ParseQuotedValue(content);
+      record.Attributes[attribute.Name] = attribute;
+      return true;
+    }
+
+    return false;
+  }
+
+  private static bool TryStartRecord(string content, out int dbRef)
+  {
+    dbRef = 0;
+    if (content.Length == 0)
+      return false;
+
+    if (content[0] == '!' && TryParseDbRef(content.AsSpan(1), out dbRef))
+      return true;
+
+    if (content[0] == '#' && TryParseDbRef(content.AsSpan(1), out dbRef))
+      return true;
+
+    return false;
   }
 
   private static int CountIndentation(string line)
@@ -210,6 +361,6 @@ public sealed class TextDumpParser
     var name = content.Substring(6, separator - 6).Trim();
     var expr = content[(separator + 1)..].Trim();
     if (!string.IsNullOrEmpty(name))
-      record.Locks[name] = expr;
+      record.SetLock(name, expr);
   }
 }

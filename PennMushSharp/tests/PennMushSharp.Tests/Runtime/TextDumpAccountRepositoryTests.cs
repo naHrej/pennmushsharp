@@ -24,7 +24,7 @@ public sealed class TextDumpAccountRepositoryTests
         Name = "Tester",
         Owner = 5
       };
-      record.Attributes["XYXXY"] = "hash";
+      record.SetAttribute("XYXXY", "hash", owner: 5);
 
       repository.Save(record);
 
@@ -32,7 +32,7 @@ public sealed class TextDumpAccountRepositoryTests
       Assert.Single(records);
       Assert.Equal(5, records.First().DbRef);
       Assert.Equal("Tester", records.First().Name);
-      Assert.Equal("hash", records.First().Attributes["XYXXY"]);
+      Assert.Equal("hash", records.First().Attributes["XYXXY"].Value);
     }
     finally
     {

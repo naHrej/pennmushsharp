@@ -30,9 +30,9 @@ public sealed class InMemoryGameState
       _objectsByName[record.Name] = record;
     }
 
-    foreach (var (lockName, expression) in record.Locks)
+    foreach (var lockRecord in record.Locks.Values)
     {
-      _lockStore.SetLock(record.DbRef, new StoredLock(lockName, expression));
+      _lockStore.SetLock(record.DbRef, new StoredLock(lockRecord.Name, lockRecord.Key));
     }
 
     if (record.DbRef >= _nextDbRef)
@@ -59,7 +59,7 @@ public sealed class InMemoryGameState
       Name = name,
       Owner = null
     };
-    record.Attributes["XYXXY"] = hashedPassword;
+    record.SetAttribute("XYXXY", hashedPassword, record.DbRef);
     Upsert(record);
     return record;
   }

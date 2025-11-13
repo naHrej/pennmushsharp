@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.Extensions.Logging.Abstractions;
 using PennMushSharp.Commands;
 using PennMushSharp.Core;
@@ -16,7 +17,16 @@ public sealed class CommandDispatcherTests
     catalog.Register(command);
     var dispatcher = new CommandDispatcher(catalog, NullLogger<CommandDispatcher>.Instance);
 
-    var context = new TestContext(new GameObject(1, "One"));
+    var actor = new GameObject(
+      dbRef: 1,
+      name: "One",
+      type: GameObjectType.Player,
+      owner: 1,
+      location: null,
+      flags: Array.Empty<string>(),
+      attributes: new Dictionary<string, string>(),
+      locks: new Dictionary<string, string>());
+    var context = new TestContext(actor);
     await dispatcher.DispatchAsync(context, "capture payload");
 
     Assert.True(command.Executed);

@@ -54,7 +54,7 @@ Once transcripts look correct, copy them into a stable location
 - Use `scripts/start-legacy-mush.sh` as `SERVER_EXEC` to spin up the freshly built PennMUSH tree in
   `../pennmush/game`. The script copies `game/data/indb.seed.gz` into `indb.gz` before every launch
   so you start from an identical world snapshot each run.
-- The seeded database contains the wizard account `Wizard9` with the password `harness`. Scenarios
+- The seeded database contains the wizard account `One` with no password. Scenarios
   can authenticate with those credentials (as `look_basic.scenario` does) to issue commands such as
   `look`/`who` during transcript capture.
 

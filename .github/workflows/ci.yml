@@ -33,5 +33,18 @@ jobs:
       - name: Test
         run: dotnet test PennMushSharp/PennMushSharp.sln --configuration Release --no-build
 
+      - name: Characterization harness (dry run)
+        run: |
+          shopt -s nullglob
+          scenarios=(PennMushSharp/tests/characterization/scenarios/*.scenario)
+          if [ ${#scenarios[@]} -eq 0 ]; then
+            echo "No characterization scenarios found."
+            exit 1
+          fi
+          for scenario in "${scenarios[@]}"; do
+            echo "Dry running $scenario"
+            bash PennMushSharp/scripts/characterize.sh --scenario "$scenario" --dry-run
+          done
+
       - name: Verify characterization artifacts are up to date
         run: git diff --exit-code -- tests/characterization/golden

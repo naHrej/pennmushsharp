@@ -96,7 +96,7 @@ public sealed class TelnetServer : BackgroundService
     using var reader = new StreamReader(stream, Encoding.UTF8);
 
     await writer.WriteLineAsync("PennMushSharp telnet server.");
-    await writer.WriteLineAsync("Use CONNECT <name> <password> to log in or CREATE <name> <password> to register.");
+    await writer.WriteLineAsync("Use CONNECT <name> [<password>] to log in or CREATE <name> <password> to register.");
     await writer.WriteLineAsync("Type QUIT to disconnect.");
 
     var output = new TelnetOutputWriter(writer);
@@ -149,13 +149,14 @@ public sealed class TelnetServer : BackgroundService
 
       if (keyword.Equals("CONNECT", StringComparison.OrdinalIgnoreCase))
       {
-        if (parts.Length < 3)
+        if (parts.Length < 2)
         {
-          await writerInner.WriteLineAsync("Usage: CONNECT <name> <password>");
+          await writerInner.WriteLineAsync("Usage: CONNECT <name> [<password>]");
           return true;
         }
 
-        if (_accountService.TryConnect(parts[1], parts[2], out var connected))
+        var suppliedPassword = parts.Length >= 3 ? parts[2] : string.Empty;
+        if (_accountService.TryConnect(parts[1], suppliedPassword, out var connected))
         {
           actor = connected;
           sessionId = _sessionRegistry.Register(actor);

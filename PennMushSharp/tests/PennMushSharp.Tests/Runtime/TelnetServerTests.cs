@@ -34,7 +34,7 @@ public sealed class TelnetServerTests
       await reader.ReadLineAsync();
       await reader.ReadLineAsync();
 
-      await writer.WriteLineAsync("CONNECT Wizard9 harness");
+      await writer.WriteLineAsync("CONNECT One");
 
       for (var i = 0; i < 5; i++)
       {

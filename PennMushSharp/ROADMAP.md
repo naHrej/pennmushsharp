@@ -14,7 +14,7 @@ Recreate the classic PennMUSH server plus the Aspace spaceflight engine as a mod
 | --- | --- | --- |
 | 0. Discovery & Tooling | Capture requirements, choose .NET stack, set up CI/testing harness. | Repo layout (`PennMushSharp.sln`), coding conventions, baseline CI workflow, characterization test harness against existing C server. |
 | 1. Core Runtime Skeleton | Stand up the process host, configuration system, logging, dependency injection. | `PennMushSharp.Runtime` project, config loader, structured logging, basic service container. |
-| 2. Database & Object Model | Port dbref/object schema, attributes, flags, lock parsing, persistence adapters. | `PennMushSharp.Core` with object/attribute data types, binary/text DB loaders, serialization tests ensuring compatibility with PennMUSH dumps. |
+| 2. Database & Object Model | Port dbref/object schema, attributes, flags, lock parsing, persistence adapters. | `PennMushSharp.Core` with object/attribute data types, text DB loaders/serializers, serialization tests ensuring compatibility with PennMUSH text dumps. (Binary dumps are intentionally out of scope; convert via stock PennMUSH + `@dump` when needed.) |
 | 3. Command & Function Engine | Reimplement command parser, executor, permissions, + all builtin functions (string/math/logical/etc). | Command pipeline abstractions, function registry/evaluator, unit tests mirroring PennMUSH behaviour. |
 | 4. Game Systems | Port core behaviours (look, movement, building, mail, chat, queues, events). | Modules per subsystem with integration tests; minimal playable loop without spaceflight. |
 | 5. Networking & Client IO | Implement telnet/WebSocket adapters, connection management, ANSI pipeline. | Network gateway project, session/auth handling, compatibility tests with common MU* clients. |
@@ -64,7 +64,7 @@ Task tracking should reference this roadmap section to ensure the 1:1 parity req
 - ✅ Flag/power, attribute, lock, and builtin function extraction pipelines generate JSON snapshots from the C sources and are embedded via `FlagCatalog`, `AttributeCatalog`, `LockCatalog`, and `FunctionCatalog`.
 - ✅ Metadata regeneration script (`scripts/regenerate-metadata.sh`) runs every extractor to keep the docs in sync.
 - ✅ Text dump parser + in-memory state ingest modern PennMUSH dumps so lock metadata and attributes can flow directly into runtime services.
-- ✅ Characterization harness drives the real PennMUSH binary via `scripts/start-legacy-mush.sh`, resetting the seeded database (`Wizard9` / `harness`) before each transcript capture so tests can diff deterministic output.
+- ✅ Characterization harness drives the real PennMUSH binary via `scripts/start-legacy-mush.sh`, resetting the seeded database (`One` / _no password_) before each transcript capture so tests can diff deterministic output.
 - ⏳ Runtime hardening (network/telnet loops, command implementations) and CI remain outstanding for Phase 0.
 
 ## Progress Log

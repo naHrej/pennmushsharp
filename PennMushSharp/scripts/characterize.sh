@@ -11,6 +11,7 @@ Options:
   -d, --command-delay  Seconds to wait between commands (default: 1).
   -g, --golden         Also copy the transcript into the golden directory for the scenario.
       --golden-dir     Override the default golden directory (tests/characterization/golden).
+      --dry-run        Validate the scenario without connecting to a server.
 USAGE
 }
 
@@ -19,6 +20,7 @@ OUTPUT_DIR="tests/characterization/output"
 COMMAND_DELAY=1
 UPDATE_GOLDEN=false
 GOLDEN_DIR="tests/characterization/golden"
+DRY_RUN=false
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -42,6 +44,10 @@ while [[ $# -gt 0 ]]; do
       GOLDEN_DIR=$2
       shift 2
       ;;
+    --dry-run)
+      DRY_RUN=true
+      shift
+      ;;
     -h|--help)
       usage
       exit 0
@@ -53,11 +59,6 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
-
-if ! command -v nc >/dev/null 2>&1; then
-  echo "nc (netcat) is required to run the characterization harness." >&2
-  exit 1
-fi
 
 if [[ -z "$SCENARIO" ]]; then
   echo "Scenario file is required." >&2
@@ -80,6 +81,32 @@ source "$SCENARIO"
 : "${PASSWORD:=}" 
 if ! declare -p COMMANDS >/dev/null 2>&1; then
   echo "Scenario must define COMMANDS array." >&2
+  exit 1
+fi
+
+if [[ -n "${SERVER_EXEC:-}" && ! -f "$SERVER_EXEC" ]]; then
+  echo "SERVER_EXEC '$SERVER_EXEC' does not exist." >&2
+  exit 1
+fi
+
+if [[ "$DRY_RUN" == true ]]; then
+  echo "Dry run for scenario '$NAME':"
+  echo "  Host: $HOST"
+  echo "  Port: $PORT"
+  echo "  User: $USER"
+  echo "  Commands:"
+  for cmd in "${COMMANDS[@]}"; do
+    echo "    - $cmd"
+  done
+  if [[ -n "${SERVER_EXEC:-}" ]]; then
+    echo "  Server executable: $SERVER_EXEC"
+    [[ -n "${SERVER_WORKDIR:-}" ]] && echo "  Server workdir: $SERVER_WORKDIR"
+  fi
+  exit 0
+fi
+
+if ! command -v nc >/dev/null 2>&1; then
+  echo "nc (netcat) is required to run the characterization harness." >&2
   exit 1
 fi
 

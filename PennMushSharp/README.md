@@ -35,8 +35,8 @@ roadmap to guide the 1:1 parity effort. See `ROADMAP.md` for phase planning.
 - When the legacy C binary is unavailable, rely on the checked-in stock dumps and metadata catalogs;
   the new persistence layer (see below) lets us continue porting without needing to execute the
   upstream server for every change.
-- `scripts/start-legacy-mush.sh` resets the stock PennMUSH database (currently seeded with
-  `Wizard9` / `harness`) and launches `pennmush/game/netmush` so the harness can reproduce the exact
+- `scripts/start-legacy-mush.sh` resets the stock PennMUSH database (seeded with the wizard account
+  `One` / _no password_) and launches `pennmush/game/netmush` so the harness can reproduce the exact
   same world state before every transcript capture.
 
 ## Persistence & Metadata Ingestion
@@ -48,6 +48,9 @@ roadmap to guide the 1:1 parity effort. See `ROADMAP.md` for phase planning.
   permission checks.
 - This pipeline forms the basis of the eventual database adapter: once we finalize serialization,
   the runtime can boot entirely from archived dumps without needing the original C process on hand.
+- Binary dump compatibility is intentionally out of scope for now. Administrators with historical
+  `.bin` databases can load them into stock PennMUSH and issue a text `@dump`, then ingest the result
+  with PennMushSharp for parity development.
 
 ## Runtime Metadata Access
 `PennMushSharp.Core.Metadata.MetadataCatalogs` exposes singleton access to the
@@ -66,10 +69,20 @@ persistence.
   plug in without rewriting the pipeline.
 - `TelnetServer` (hosted background service) listens on `PennMushSharp:ListenAddress/ListenPort`
   (defaults: `127.0.0.1:4201`) and registers live sessions so commands like `WHO` can report active
-  connections. New sessions log in via `CONNECT <name> <password>` (seeded with `Wizard9` /
-  `harness` via `GameStateSeeder`) or create an account with `CREATE <name> <password>` before
+  connections. New sessions log in via `CONNECT <name> <password>` (the stock dump ships with
+  `One` and a blank password via `GameStateSeeder`) or create an account with `CREATE <name> <password>` before
   issuing managed commands. Newly created accounts are persisted as PennMUSH-compatible dumps
   (default path `PennMushSharp/data/accounts.dump`, override via `PennMushSharp:AccountStorePath`).
+
+## Configuration & Logging
+- `src/PennMushSharp.Runtime/appsettings.json` is copied into the runtime output and provides the default
+  `PennMushSharp` option set (listen address/port, dump paths, seeded account) plus logging levels. Edit this
+  file or drop an `appsettings.Development.json` next to it to override values locally. Environment variables
+  such as `DOTNET_ENVIRONMENT=Development` or `PennMushSharp__ListenPort=4202` also flow through the generic
+  host configuration pipeline.
+- Logging is configured via `Microsoft.Extensions.Logging` using the `Logging` section in `appsettings.json`
+  and emits structured console traces with timestamps and scopes so background services can be observed
+  while the host runs indefinitely (Ctrl+C to stop).
 
 ## External Dependencies
 The `pennmush/` and `aspace/` directories live at the root of this repo but are ignored by
@@ -85,3 +98,8 @@ PENNMUSH_REF=1.8.9p2 ASPACE_REF=main scripts/fetch-upstreams.sh
 By default the script clones `https://github.com/pennmush/pennmush` and
 `https://github.com/aspace-sim/aspace`. Override `PENNMUSH_REPO`, `PENNMUSH_REF`,
 `ASPACE_REPO`, or `ASPACE_REF` as needed.
+
+## Coding Conventions
+See `docs/coding-conventions.md` for formatting, naming, and test expectations. CI runs
+`dotnet format` and the characterization checks, so ensure local changes follow those
+guidelines before opening a pull request.

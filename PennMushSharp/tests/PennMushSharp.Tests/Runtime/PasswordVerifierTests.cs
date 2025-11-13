@@ -12,11 +12,21 @@ public sealed class PasswordVerifierTests
   public void Verify_ReturnsTrueForValidPasswords()
   {
     var record = new GameObjectRecord { DbRef = 9 };
-    record.Attributes["XYXXY"] = Hashed;
+    record.SetAttribute("XYXXY", Hashed, owner: 9);
 
     var verifier = new PasswordVerifier();
 
     Assert.True(verifier.Verify(record, "harness"));
     Assert.False(verifier.Verify(record, "wrong"));
+  }
+
+  [Fact]
+  public void Verify_AllowsBlankPasswordWhenNoHash()
+  {
+    var record = new GameObjectRecord { DbRef = 1 };
+    var verifier = new PasswordVerifier();
+
+    Assert.True(verifier.Verify(record, ""));
+    Assert.False(verifier.Verify(record, "anything"));
   }
 }
