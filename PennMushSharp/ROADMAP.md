@@ -15,8 +15,8 @@ Recreate the classic PennMUSH server plus the Aspace spaceflight engine as a mod
 | 0. Discovery & Tooling | Capture requirements, choose .NET stack, set up CI/testing harness. | Repo layout (`PennMushSharp.sln`), coding conventions, baseline CI workflow, characterization test harness against existing C server. |
 | 1. Core Runtime Skeleton | Stand up the process host, configuration system, logging, dependency injection. | `PennMushSharp.Runtime` project, config loader, structured logging, basic service container. |
 | 2. Database & Object Model | Port dbref/object schema, attributes, flags, lock parsing, persistence adapters. | `PennMushSharp.Core` with object/attribute data types, text DB loaders/serializers, serialization tests ensuring compatibility with PennMUSH text dumps. (Binary dumps are intentionally out of scope; convert via stock PennMUSH + `@dump` when needed.) |
-| 3. Command & Function Engine | Reimplement command parser, executor, permissions, + all builtin functions (string/math/logical/etc). | ✅ Parser supports stacking, switches, metadata-driven aliases, and permissions. 🚧 Next: full command table import, PennMUSH function evaluator, integration tests driving expressions. |
-| 4. Game Systems | Port core behaviours (look, movement, building, mail, chat, queues, events). | Modules per subsystem with integration tests; minimal playable loop without spaceflight. |
+| 3. Command & Function Engine | Reimplement command parser, executor, permissions, + all builtin functions (string/math/logical/etc). | ✅ Parser supports stacking, switches, metadata-driven aliases, and permissions. 🚧 Next: load full `command.c` metadata, implement the function evaluator (with modernized `%q`/`%0+` semantics: string-keyed `%qfoo` and unlimited `%10+` args), and build expression tests. |
+| 4. Game Systems | Port core behaviours (look, movement, building, mail, chat, queues, events). | Modules per subsystem with integration tests; minimal playable loop without spaceflight. Includes configurable HTML5/CSS output templates so commands can emit both classic text and rich markup for modern clients, plus a modern scheduler/task queue that lifts legacy limits while honoring PennMUSH throttles. |
 | 5. Networking & Client IO | Implement telnet/WebSocket adapters, connection management, ANSI pipeline. | Network gateway project, session/auth handling, compatibility tests with common MU* clients. |
 | 6. Spaceflight Integration | Bring over Aspace simulation: data structures, physics loop, command set, UI. | `PennMushSharp.Space` project, tick scheduler, command bindings, telemetry/logging. |
 | 7. Tooling & Extensibility | Scripting hooks, plugin surface, admin tooling. | Plugin SDK, scripting bridge (potentially Roslyn or Lua), admin CLI/web panel stubs. |
@@ -60,12 +60,34 @@ The goal is to tick each row off only when its underlying behaviour, configurati
 Task tracking should reference this roadmap section to ensure the 1:1 parity requirement remains visible for every deliverable.
 
 ## Current Status (Phase 0)
-- ✅ Solution + project scaffolding is in place with shared build props, editor config, and initial tests.
-- ✅ Flag/power, attribute, lock, and builtin function extraction pipelines generate JSON snapshots from the C sources and are embedded via `FlagCatalog`, `AttributeCatalog`, `LockCatalog`, and `FunctionCatalog`.
-- ✅ Metadata regeneration script (`scripts/regenerate-metadata.sh`) runs every extractor to keep the docs in sync.
-- ✅ Text dump parser + in-memory state ingest modern PennMUSH dumps so lock metadata and attributes can flow directly into runtime services.
-- ✅ Characterization harness drives the real PennMUSH binary via `scripts/start-legacy-mush.sh`, resetting the seeded database (`One` / _no password_) before each transcript capture so tests can diff deterministic output.
-- ⏳ Runtime hardening (network/telnet loops, command implementations) and CI remain outstanding for Phase 0.
+- ✅ **Tooling & Standards:** Repo scaffolding, shared `Directory.Build.props`, `.editorconfig`, and linting/test workflows are live in CI. `scripts/fetch-upstreams.sh`/`regenerate-metadata.sh` keep external sources and generated docs synchronized.
+- ✅ **Metadata Extraction:** Flag, attribute, lock, function, and command table extractors emit `docs/generated/*.json` snapshots that are embedded by the runtime catalogs to guarantee perfect parity with upstream headers.
+- ✅ **Documentation:** README/roadmap/domain-model docs spell out compatibility guarantees, modernization goals (HTML5 output, extended registers/args), and onboarding instructions for the harness and runtime host.
+- ✅ **Characterization Harness:** `scripts/start-legacy-mush.sh`+`scripts/characterize.sh` boot the C server, reset the seeded DB (`One` / no password), capture golden transcripts, and enforce coverage through `CharacterizationGoldenTests`.
+- ✅ **Dump Compatibility:** `TextDumpParser`, `InMemoryGameState`, and lock services ingest stock PennMUSH text dumps—including the checked-in `data/indb`—so we can develop against real data without running netmush locally.
+- ✅ **Runtime Skeleton:** The telnet host, session registry, command dispatcher (`LOOK`, `WHO`, `@EVAL`), and metadata-driven parser are wired through DI, giving us a stable execution harness for later phases.
+
+## Current Status (Phase 1 – Core Runtime Skeleton)
+- ✅ **Host & Configuration:** `RuntimeApplication` builds a `HostApplicationBuilder` pipeline with layered config sources, environment overrides, and `appsettings.json` support. Launch profiles + `launch.json` ensure F5 launches the telnet server with the correct working directory.
+- ✅ **Logging & Diagnostics:** Structured console logging with timestamped scopes is standardized across runtime services; telnet/timer services log bootstrap and shutdown events for harness visibility.
+- ✅ **Dependency Injection Surface:** All foundational services (metadata catalogs, lock services, persistence adapters, session registry, command dispatcher) are registered through Microsoft.Extensions.DependencyInjection, enabling unit tests to compose real hosts.
+- ✅ **Session & Auth Loop:** `TelnetServer` hosts CONNECT/CREATE flows, password verification, session tracking, and command dispatching, so the managed runtime already supports a full login + command loop off the stock dump.
+- ⚙️ **Next for Phase 1:** Harden graceful shutdown (e.g., CTS fan-out), add health probes, and expose structured metrics hooks so later phases (network multiplexers, queues) can observe the runtime host.
+
+## Current Status (Phase 2 – Database & Object Model)
+- ✅ **Schema Parity:** `GameObjectRecord`/`GameObject` mirror PennMUSH dbrefs, owners, flags, attributes, locks, and list/contents pointers so command modules can navigate the exact same topology as the C engine.
+- ✅ **Text Dump IO:** `TextDumpParser` + `TextDumpWriter` handle the modern text dump syntax, including attribute blocks, locks, compression markers, and metadata banners. The runtime boots from the checked-in `data/indb` and any stock dump dropped into `PennMushSharp/data/`.
+- ✅ **Lock & Attribute Catalogs:** Extracted metadata feeds `LockEvaluator`, `LockMetadataService`, and `InMemoryLockStore`, allowing live lock evaluation immediately after ingesting a dump.
+- ✅ **Account/Persistence Bridges:** `TextDumpAccountRepository`, `AccountService`, and `PasswordVerifier` operate directly on dump data so telnet auth can create/connect characters without bespoke storage.
+- ✅ **Modernization Decisions:** Binary dump compatibility is intentionally deferred (documented in README/ROADMAP), with guidance to round-trip through stock PennMUSH for conversions.
+- ⚙️ **Next for Phase 2:** Implement pluggable persistence backends (e.g., JSON/SQL providers), differential dumps, and validation tooling to compare in-memory state against golden dumps as part of CI.
+
+## Current Status (Phase 3 – Command & Function Engine)
+- ✅ **Parser & Metadata:** `CommandParser` splits stacked commands (`;`, `&`), switch/argument tokens, and produces structured `CommandInvocation`s. Extracted `command.c` metadata drives aliases, switch declarations, wizard gating, and type flags so dispatch mirrors PennMUSH tables.
+- ✅ **Dispatcher Pipeline:** `CommandDispatcher` validates switches/permissions, evaluates expressions unless `/NOEVAL`/`CMD_T_NOPARSE` apply, and feeds commands real metadata context, matching legacy parsing behaviour.
+- ✅ **Command Coverage (Initial):** `LOOK`, `WHO`, and `@EVAL` run against real dump data, respect PennMUSH semantics (no self in contents, WHO columns/idle calculations), and are exercised via golden transcript tests.
+- ✅ **Expression & Function Evaluators:** Nested `[]` expressions, `%q` registers (now unlimited and string-keyed), and `%0+` arguments resolve through the new evaluator stack; `SETQ` already works end-to-end, and the infrastructure is ready for bulk function imports.
+- ⚙️ **In Progress:** Import the remainder of the builtin command metadata, expand the function registry (string/math/list/JSON families), wire permissions/queues, and add characterization fixtures (LOOK/WHO/… scenarios) to drive behavioural parity tests for each command family.
 
 ## Progress Log
 | Date (UTC) | Milestone | Notes |

@@ -11,4 +11,7 @@
     <ProjectReference Include="../PennMushSharp.Core/PennMushSharp.Core.csproj" />
     <ProjectReference Include="../PennMushSharp.Functions/PennMushSharp.Functions.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\docs\generated\commands.json" Link="Generated\commands.json" />
+  </ItemGroup>
 </Project>

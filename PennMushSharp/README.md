@@ -17,6 +17,16 @@ roadmap to guide the 1:1 parity effort. See `ROADMAP.md` for phase planning.
   powering `PennMushSharp.Core.Locks.LockCatalog`.
 - `tools/FunctionTableExtractor`: reads `function.c` to produce
   `docs/generated/functions.json`, consumed by `PennMushSharp.Core.Functions.FunctionCatalog`.
+- `tools/CommandTableExtractor`: parses `src/command.c` to capture the canonical command metadata
+  (type flags, switch lists) into `docs/generated/commands.json`. The runtime loads this snapshot so
+  the command parser/permissions stay aligned with upstream PennMUSH.
+- PennMushSharp’s function evaluator will preserve PennMUSH semantics but lifts legacy limits:
+  `%q` registers become string-keyed (`setq(foo,bar)` -> `%qfoo`), and command arguments are no longer
+  capped at ten (`%10`, `%11`, etc. resolve when provided). Classic names (`%q0-%qz`, `%0-%9`) continue to
+  work for compatibility.
+- Output formatting keeps the plain-text telnet stream but plans for opt-in HTML5/CSS templates per
+  command so modern clients can render richer UI without breaking legacy users. These templates will
+  be configurable in-game once the telemetry/publishing pipeline is in place.
 - `scripts/characterize.sh`: drives the legacy PennMUSH binary using scenario files
   under `tests/characterization/scenarios/` to capture golden transcripts.
 - `scripts/fetch-upstreams.sh`: clones/updates the upstream C sources (`pennmush` and

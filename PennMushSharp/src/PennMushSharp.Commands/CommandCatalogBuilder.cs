@@ -13,6 +13,18 @@ public static class CommandCatalogBuilder
     var gameState = provider.GetRequiredService<InMemoryGameState>();
     RegisterWithMetadata(catalog, new LookCommand(gameState));
     RegisterWithMetadata(catalog, new WhoCommand(registry));
+
+    CommandMetadataCatalog.RegisterOverride(new CommandDefinition(
+      name: "@EVAL",
+      category: "utility",
+      wizardOnly: false,
+      aliases: Array.Empty<string>(),
+      switches: Array.Empty<CommandSwitchDefinition>(),
+      handler: "cmd_eval",
+      typeFlags: 0,
+      flags: Array.Empty<string>(),
+      powers: Array.Empty<string>()));
+    RegisterWithMetadata(catalog, new EvalCommand());
     return catalog;
   }
 

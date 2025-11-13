@@ -50,11 +50,19 @@ public static class RuntimeApplication
     services.AddSingleton<CommandParser>();
     services.AddSingleton(sp => CommandCatalogBuilder.CreateDefault(sp));
     services.AddSingleton<CommandDispatcher>();
-    services.AddSingleton(FunctionRegistry.Empty);
+    services.AddSingleton(CreateFunctionRegistry());
     services.AddSingleton<IFunctionEvaluator, FunctionEvaluator>();
+    services.AddSingleton<IExpressionEvaluator, ExpressionEvaluator>();
     services.AddSingleton<TelnetServer>();
     services.AddHostedService(sp => sp.GetRequiredService<TelnetServer>());
     services.AddSingleton<IServerBootstrapper, DefaultServerBootstrapper>();
+  }
+
+  private static FunctionRegistry CreateFunctionRegistry()
+  {
+    var builder = new FunctionRegistryBuilder();
+    builder.Add(new PennMushSharp.Functions.Builtins.SetqFunction());
+    return builder.Build();
   }
 
   private static void ConfigureLogging(HostApplicationBuilder builder)

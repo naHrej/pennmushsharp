@@ -77,23 +77,45 @@ public sealed class WhoCommandTests
 
   private sealed class TestContext : ICommandContext
   {
+    private readonly RegisterSet _registers = new();
+
     public TestContext(GameObject actor, IOutputWriter output)
     {
       Actor = actor;
       Output = output;
       Functions = new PassThroughFunctionEvaluator();
+      Expressions = new PassThroughExpressionEvaluator();
     }
 
     public GameObject Actor { get; }
     public IOutputWriter Output { get; }
     public IFunctionEvaluator Functions { get; }
+    public IExpressionEvaluator Expressions { get; }
+
+    public FunctionExecutionContext CreateFunctionContext(string? rawArguments)
+    {
+      return FunctionExecutionContext.FromRegisters(Actor, _registers, rawArguments);
+    }
+
+    public void ResetRegisters()
+    {
+      _registers.ClearAll();
+    }
   }
 
   private sealed class PassThroughFunctionEvaluator : IFunctionEvaluator
   {
-    public ValueTask<string> EvaluateAsync(GameObject actor, string expression, CancellationToken cancellationToken = default)
+    public ValueTask<string> EvaluateAsync(FunctionExecutionContext context, string expression, CancellationToken cancellationToken = default)
     {
       return ValueTask.FromResult(expression);
+    }
+  }
+
+  private sealed class PassThroughExpressionEvaluator : IExpressionEvaluator
+  {
+    public ValueTask<string> EvaluateAsync(FunctionExecutionContext context, string input, CancellationToken cancellationToken = default)
+    {
+      return ValueTask.FromResult(input);
     }
   }
 }

@@ -1,28 +1,32 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Runtime", "src/PennMushSharp.Runtime/PennMushSharp.Runtime.csproj", "{79A55E7A-0A7A-4B40-AA1A-F59FF3945685}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Runtime", "src\PennMushSharp.Runtime\PennMushSharp.Runtime.csproj", "{79A55E7A-0A7A-4B40-AA1A-F59FF3945685}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Core", "src/PennMushSharp.Core/PennMushSharp.Core.csproj", "{AB78CF82-26F0-4422-9348-719925D9D0D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Core", "src\PennMushSharp.Core\PennMushSharp.Core.csproj", "{AB78CF82-26F0-4422-9348-719925D9D0D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Commands", "src/PennMushSharp.Commands/PennMushSharp.Commands.csproj", "{477DCFD6-E7C4-479C-81AB-3AAED4FA0DE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Commands", "src\PennMushSharp.Commands\PennMushSharp.Commands.csproj", "{477DCFD6-E7C4-479C-81AB-3AAED4FA0DE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Functions", "src/PennMushSharp.Functions/PennMushSharp.Functions.csproj", "{87A71172-80EB-4996-A5DD-A499F1368F35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Functions", "src\PennMushSharp.Functions\PennMushSharp.Functions.csproj", "{87A71172-80EB-4996-A5DD-A499F1368F35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Space", "src/PennMushSharp.Space/PennMushSharp.Space.csproj", "{CFEB2936-6745-4DAB-A3CF-9D0DA639D09B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Space", "src\PennMushSharp.Space\PennMushSharp.Space.csproj", "{CFEB2936-6745-4DAB-A3CF-9D0DA639D09B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Tests", "tests/PennMushSharp.Tests/PennMushSharp.Tests.csproj", "{97749B85-0AF0-4CF6-B7B9-083D371AB59D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PennMushSharp.Tests", "tests\PennMushSharp.Tests\PennMushSharp.Tests.csproj", "{97749B85-0AF0-4CF6-B7B9-083D371AB59D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagTableExtractor", "tools/FlagTableExtractor/FlagTableExtractor.csproj", "{05EBF3F8-29BC-4BBD-BBED-A71D104F080D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagTableExtractor", "tools\FlagTableExtractor\FlagTableExtractor.csproj", "{05EBF3F8-29BC-4BBD-BBED-A71D104F080D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extraction.Shared", "tools/Extraction.Shared/Extraction.Shared.csproj", "{B7F5D9CC-9C71-4E2B-B0F0-91ECC815C3C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extraction.Shared", "tools\Extraction.Shared\Extraction.Shared.csproj", "{B7F5D9CC-9C71-4E2B-B0F0-91ECC815C3C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributeTableExtractor", "tools/AttributeTableExtractor/AttributeTableExtractor.csproj", "{6BF8D507-0BAD-4E2C-B877-D246349DF6C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributeTableExtractor", "tools\AttributeTableExtractor\AttributeTableExtractor.csproj", "{6BF8D507-0BAD-4E2C-B877-D246349DF6C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockTableExtractor", "tools/LockTableExtractor/LockTableExtractor.csproj", "{B1D6CC6D-1683-4A56-9358-5FBA31D9986C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockTableExtractor", "tools\LockTableExtractor\LockTableExtractor.csproj", "{B1D6CC6D-1683-4A56-9358-5FBA31D9986C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionTableExtractor", "tools/FunctionTableExtractor/FunctionTableExtractor.csproj", "{CF6267FB-28A8-434B-8A03-31CA8D1C255B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionTableExtractor", "tools\FunctionTableExtractor\FunctionTableExtractor.csproj", "{CF6267FB-28A8-434B-8A03-31CA8D1C255B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{C9E9C43F-AA9D-4FC0-B422-D81A2FE5F68A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandTableExtractor", "tools\CommandTableExtractor\CommandTableExtractor.csproj", "{2BC87C30-D654-4B46-ACCA-C0B0B5970C7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,8 +78,15 @@ Global
 		{CF6267FB-28A8-434B-8A03-31CA8D1C255B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF6267FB-28A8-434B-8A03-31CA8D1C255B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF6267FB-28A8-434B-8A03-31CA8D1C255B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC87C30-D654-4B46-ACCA-C0B0B5970C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC87C30-D654-4B46-ACCA-C0B0B5970C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC87C30-D654-4B46-ACCA-C0B0B5970C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC87C30-D654-4B46-ACCA-C0B0B5970C7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2BC87C30-D654-4B46-ACCA-C0B0B5970C7B} = {C9E9C43F-AA9D-4FC0-B422-D81A2FE5F68A}
 	EndGlobalSection
 EndGlobal

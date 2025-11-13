@@ -1,51 +1,65 @@
 using System.Collections.Concurrent;
+using System.Linq;
+using System.Text.Json;
 
 namespace PennMushSharp.Commands.Metadata;
 
 public static class CommandMetadataCatalog
 {
-  private static readonly IReadOnlyList<CommandDefinition> Definitions = new List<CommandDefinition>
-  {
-    new(
-      "LOOK",
-      category: "information",
-      wizardOnly: false,
-      aliases: new[] { "L" },
-      switches: Array.Empty<CommandSwitchDefinition>()),
-    new(
-      "WHO",
-      category: "information",
-      wizardOnly: false,
-      aliases: Array.Empty<string>(),
-      switches: Array.Empty<CommandSwitchDefinition>()),
-    new(
-      "@PAGE",
-      category: "communication",
-      wizardOnly: false,
-      aliases: new[] { "PAGE", "P" },
-      switches: new[]
-      {
-        new CommandSwitchDefinition("quiet", requiresArgument: false),
-        new CommandSwitchDefinition("silent", requiresArgument: false),
-        new CommandSwitchDefinition("override", requiresArgument: false)
-      }),
-    new(
-      "@DIG",
-      category: "building",
-      wizardOnly: false,
-      aliases: Array.Empty<string>(),
-      switches: new[]
-      {
-        new CommandSwitchDefinition("teleport", requiresArgument: false),
-        new CommandSwitchDefinition("quiet", requiresArgument: false)
-      })
-  };
-
   private static readonly ConcurrentDictionary<string, CommandDefinition> DefinitionsByName = new(
-    Definitions.ToDictionary(d => d.Name, StringComparer.OrdinalIgnoreCase));
+    LoadDefinitions());
 
   public static bool TryGet(string name, out CommandDefinition? definition)
   {
     return DefinitionsByName.TryGetValue(name, out definition);
+  }
+
+  public static void RegisterOverride(CommandDefinition definition)
+  {
+    ArgumentNullException.ThrowIfNull(definition);
+    DefinitionsByName[definition.Name] = definition;
+  }
+
+  private static Dictionary<string, CommandDefinition> LoadDefinitions()
+  {
+    var assembly = typeof(CommandMetadataCatalog).Assembly;
+    using var stream = assembly.GetManifestResourceStream("PennMushSharp.Commands.Generated.commands.json")
+      ?? throw new InvalidOperationException("Embedded command metadata not found.");
+
+    var snapshot = JsonSerializer.Deserialize<CommandMetadataSnapshot>(stream, new JsonSerializerOptions
+    {
+      PropertyNameCaseInsensitive = true
+    }) ?? throw new InvalidOperationException("Failed to deserialize command metadata snapshot.");
+
+    var map = new Dictionary<string, CommandDefinition>(StringComparer.OrdinalIgnoreCase);
+    foreach (var record in snapshot.Commands)
+    {
+      var definition = Convert(record);
+      map[definition.Name] = definition;
+    }
+
+    return map;
+  }
+
+  private static CommandDefinition Convert(CommandMetadataRecord record)
+  {
+    var wizardOnly = record.Flags.Any(f => string.Equals(f, "WIZARD", StringComparison.OrdinalIgnoreCase))
+      || record.Powers.Any()
+      || (record.TypeFlags & 0x08000000) != 0; // CMD_T_GOD
+
+    var switches = record.Switches
+      .Select(name => new CommandSwitchDefinition(name, requiresArgument: false))
+      .ToList();
+
+    return new CommandDefinition(
+      record.Name,
+      record.Category ?? "builtin",
+      wizardOnly,
+      Array.Empty<string>(),
+      switches,
+      record.Handler,
+      record.TypeFlags,
+      record.Flags,
+      record.Powers);
   }
 }

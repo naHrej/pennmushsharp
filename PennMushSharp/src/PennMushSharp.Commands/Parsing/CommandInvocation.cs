@@ -16,6 +16,11 @@ public sealed class CommandInvocation
   public string? Target { get; }
   public string? Argument { get; }
   public string Raw { get; }
+
+  public CommandInvocation With(string? target, string? argument)
+  {
+    return new CommandInvocation(Name, Switches, target, argument, Raw);
+  }
 }
 
 public sealed class CommandSwitch

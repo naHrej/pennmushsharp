@@ -9,4 +9,5 @@ pushd "${ROOT_DIR}" >/dev/null
  dotnet run --project tools/AttributeTableExtractor/AttributeTableExtractor.csproj --configuration Release
  dotnet run --project tools/LockTableExtractor/LockTableExtractor.csproj --configuration Release
  dotnet run --project tools/FunctionTableExtractor/FunctionTableExtractor.csproj --configuration Release
+ dotnet run --project tools/CommandTableExtractor/CommandTableExtractor.csproj --configuration Release
 popd >/dev/null

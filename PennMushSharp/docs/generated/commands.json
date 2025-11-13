@@ -1,0 +1,2141 @@
+{
+  "Source": "pennmush/src/command.c",
+  "GeneratedUtc": "2025-11-13T19:00:23.1479505Z",
+  "Commands": [
+    {
+      "Name": "@@",
+      "Handler": "cmd_null",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531904,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@ALLHALT",
+      "Handler": "cmd_allhalt",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": [
+        "HALT"
+      ]
+    },
+    {
+      "Name": "@ALLQUOTA",
+      "Handler": "cmd_allquota",
+      "Category": "builtin",
+      "Switches": [
+        "QUIET"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": [
+        "QUOTA"
+      ]
+    },
+    {
+      "Name": "@ASSERT",
+      "Handler": "cmd_assert",
+      "Category": "builtin",
+      "Switches": [
+        "INLINE",
+        "QUEUED"
+      ],
+      "TypeFlags": 4026532993,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@ATRCHOWN",
+      "Handler": "cmd_atrchown",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@ATRLOCK",
+      "Handler": "cmd_atrlock",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@ATTRIBUTE",
+      "Handler": "cmd_attribute",
+      "Category": "builtin",
+      "Switches": [
+        "ACCESS",
+        "DELETE",
+        "RENAME",
+        "RETROACTIVE",
+        "LIMIT",
+        "ENUM",
+        "DECOMPILE"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@BOOT",
+      "Handler": "cmd_boot",
+      "Category": "builtin",
+      "Switches": [
+        "PORT",
+        "ME",
+        "SILENT"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@BREAK",
+      "Handler": "cmd_break",
+      "Category": "builtin",
+      "Switches": [
+        "INLINE",
+        "QUEUED"
+      ],
+      "TypeFlags": 4026532993,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CEMIT",
+      "Handler": "cmd_cemit",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "NOISY",
+        "SILENT",
+        "SPOOF"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CHANNEL",
+      "Handler": "cmd_channel",
+      "Category": "builtin",
+      "Switches": [
+        "LIST",
+        "ADD",
+        "DELETE",
+        "RENAME",
+        "MOGRIFIER",
+        "NAME",
+        "PRIVS",
+        "QUIET",
+        "DECOMPILE",
+        "\u0022",
+        "\u0022DESCRIBE",
+        "CHOWN",
+        "WIPE",
+        "MUTE",
+        "UNMUTE",
+        "GAG",
+        "UNGAG",
+        "HIDE",
+        "UNHIDE",
+        "WHAT",
+        "\u0022",
+        "\u0022TITLE",
+        "BRIEF",
+        "RECALL",
+        "BUFFER",
+        "COMBINE",
+        "UNCOMBINE",
+        "ON",
+        "JOIN",
+        "OFF",
+        "LEAVE",
+        "\u0022",
+        "\u0022WHO"
+      ],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CHAT",
+      "Handler": "cmd_chat",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CHOWN",
+      "Handler": "cmd_chown",
+      "Category": "builtin",
+      "Switches": [
+        "PRESERVE"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CHOWNALL",
+      "Handler": "cmd_chownall",
+      "Category": "builtin",
+      "Switches": [
+        "PRESERVE",
+        "THINGS",
+        "ROOMS",
+        "EXITS"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@CHZONE",
+      "Handler": "cmd_chzone",
+      "Category": "builtin",
+      "Switches": [
+        "PRESERVE"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CHZONEALL",
+      "Handler": "cmd_chzoneall",
+      "Category": "builtin",
+      "Switches": [
+        "PRESERVE"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CLIST",
+      "Handler": "cmd_clist",
+      "Category": "builtin",
+      "Switches": [
+        "FULL"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CLOCK",
+      "Handler": "cmd_clock",
+      "Category": "builtin",
+      "Switches": [
+        "JOIN",
+        "SPEAK",
+        "MOD",
+        "SEE",
+        "HIDE"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CLONE",
+      "Handler": "cmd_clone",
+      "Category": "builtin",
+      "Switches": [
+        "PRESERVE"
+      ],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@COMMAND",
+      "Handler": "cmd_command",
+      "Category": "builtin",
+      "Switches": [
+        "ADD",
+        "ALIAS",
+        "CLONE",
+        "DELETE",
+        "EQSPLIT",
+        "LSARGS",
+        "RSARGS",
+        "NOEVAL",
+        "ON",
+        "OFF",
+        "\u0022",
+        "\u0022QUIET",
+        "ENABLE",
+        "DISABLE",
+        "RESTRICT",
+        "NOPARSE",
+        "RSNOPARSE"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CONFIG",
+      "Handler": "cmd_config",
+      "Category": "builtin",
+      "Switches": [
+        "SET",
+        "SAVE",
+        "LOWERCASE",
+        "LIST"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CPATTR",
+      "Handler": "cmd_cpattr",
+      "Category": "builtin",
+      "Switches": [
+        "CONVERT",
+        "NOFLAGCOPY"
+      ],
+      "TypeFlags": 4026532097,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@CREATE",
+      "Handler": "cmd_create",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@DBCK",
+      "Handler": "cmd_dbck",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@DECOMPILE",
+      "Handler": "cmd_decompile",
+      "Category": "builtin",
+      "Switches": [
+        "DB",
+        "NAME",
+        "PREFIX",
+        "TF",
+        "FLAGS",
+        "ATTRIBS",
+        "SKIPDEFAULTS"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@DESTROY",
+      "Handler": "cmd_destroy",
+      "Category": "builtin",
+      "Switches": [
+        "OVERRIDE"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@DIG",
+      "Handler": "cmd_dig",
+      "Category": "builtin",
+      "Switches": [
+        "TELEPORT"
+      ],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@DISABLE",
+      "Handler": "cmd_disable",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@DOLIST",
+      "Handler": "cmd_dolist",
+      "Category": "builtin",
+      "Switches": [
+        "NOTIFY",
+        "DELIMIT",
+        "INPLACE",
+        "INLINE",
+        "LOCALIZE",
+        "CLEARREGS",
+        "NOBREAK"
+      ],
+      "TypeFlags": 4026532993,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@DRAIN",
+      "Handler": "cmd_notify_drain",
+      "Category": "builtin",
+      "Switches": [
+        "ALL",
+        "ANY"
+      ],
+      "TypeFlags": 4026532097,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@DUMP",
+      "Handler": "cmd_dump",
+      "Category": "builtin",
+      "Switches": [
+        "PARANOID",
+        "DEBUG",
+        "NOFORK"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@EDIT",
+      "Handler": "cmd_edit",
+      "Category": "builtin",
+      "Switches": [
+        "FIRST",
+        "CHECK",
+        "QUIET",
+        "REGEXP",
+        "NOCASE",
+        "ALL"
+      ],
+      "TypeFlags": 4034921729,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@ELOCK",
+      "Handler": "cmd_elock",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034922497,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@EMIT",
+      "Handler": "cmd_emit",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "SPOOF"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@ENABLE",
+      "Handler": "cmd_enable",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@ENTRANCES",
+      "Handler": "cmd_entrances",
+      "Category": "builtin",
+      "Switches": [
+        "EXITS",
+        "THINGS",
+        "PLAYERS",
+        "ROOMS"
+      ],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@EUNLOCK",
+      "Handler": "cmd_eunlock",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034922496,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@FIND",
+      "Handler": "cmd_find",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@FIRSTEXIT",
+      "Handler": "cmd_firstexit",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531856,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@FLAG",
+      "Handler": "cmd_flag",
+      "Category": "builtin",
+      "Switches": [
+        "ADD",
+        "TYPE",
+        "LETTER",
+        "LIST",
+        "RESTRICT",
+        "DELETE",
+        "ALIAS",
+        "DISABLE",
+        "ENABLE",
+        "DEBUG",
+        "DECOMPILE"
+      ],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@FORCE",
+      "Handler": "cmd_force",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "INPLACE",
+        "INLINE",
+        "LOCALIZE",
+        "CLEARREGS",
+        "NOBREAK"
+      ],
+      "TypeFlags": 4034920577,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@FUNCTION",
+      "Handler": "cmd_function",
+      "Category": "builtin",
+      "Switches": [
+        "ALIAS",
+        "BUILTIN",
+        "CLONE",
+        "DELETE",
+        "ENABLE",
+        "DISABLE",
+        "PRESERVE",
+        "RESTORE",
+        "RESTRICT"
+      ],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@GREP",
+      "Handler": "cmd_grep",
+      "Category": "builtin",
+      "Switches": [
+        "LIST",
+        "PRINT",
+        "ILIST",
+        "IPRINT",
+        "REGEXP",
+        "WILD",
+        "NOCASE",
+        "PARENT"
+      ],
+      "TypeFlags": 4034921473,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@HALT",
+      "Handler": "cmd_halt",
+      "Category": "builtin",
+      "Switches": [
+        "ALL",
+        "NOEVAL",
+        "PID"
+      ],
+      "TypeFlags": 4026531969,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@HIDE",
+      "Handler": "cmd_hide",
+      "Category": "builtin",
+      "Switches": [
+        "NO",
+        "OFF",
+        "YES",
+        "ON"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@HOOK",
+      "Handler": "cmd_hook",
+      "Category": "builtin",
+      "Switches": [
+        "LIST",
+        "AFTER",
+        "BEFORE",
+        "EXTEND",
+        "IGSWITCH",
+        "IGNORE",
+        "OVERRIDE",
+        "INPLACE",
+        "INLINE",
+        "\u0022",
+        "\u0022LOCALIZE",
+        "CLEARREGS",
+        "NOBREAK"
+      ],
+      "TypeFlags": 4026532097,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": [
+        "hook"
+      ]
+    },
+    {
+      "Name": "@HTTP",
+      "Handler": "cmd_fetch",
+      "Category": "builtin",
+      "Switches": [
+        "DELETE",
+        "POST",
+        "PUT"
+      ],
+      "TypeFlags": 4039115009,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@IFELSE",
+      "Handler": "cmd_ifelse",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026533121,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@INCLUDE",
+      "Handler": "cmd_include",
+      "Category": "builtin",
+      "Switches": [
+        "LOCALIZE",
+        "CLEARREGS",
+        "NOBREAK"
+      ],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@KICK",
+      "Handler": "cmd_kick",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@LEMIT",
+      "Handler": "cmd_lemit",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "NOISY",
+        "SILENT",
+        "SPOOF"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@LINK",
+      "Handler": "cmd_link",
+      "Category": "builtin",
+      "Switches": [
+        "PRESERVE"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@LIST",
+      "Handler": "cmd_list",
+      "Category": "builtin",
+      "Switches": [
+        "LOWERCASE",
+        "MOTD",
+        "LOCKS",
+        "FLAGS",
+        "FUNCTIONS",
+        "POWERS",
+        "COMMANDS",
+        "ATTRIBS",
+        "\u0022",
+        "\u0022ALLOCATIONS",
+        "ALL",
+        "BUILTIN",
+        "LOCAL"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@LISTMOTD",
+      "Handler": "cmd_motd",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@LOCK",
+      "Handler": "cmd_lock",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4068474881,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@LOG",
+      "Handler": "cmd_log",
+      "Category": "builtin",
+      "Switches": [
+        "CHECK",
+        "CMD",
+        "CONN",
+        "ERR",
+        "TRACE",
+        "WIZ",
+        "RECALL"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@LOGWIPE",
+      "Handler": "cmd_logwipe",
+      "Category": "builtin",
+      "Switches": [
+        "CHECK",
+        "CMD",
+        "CONN",
+        "ERR",
+        "TRACE",
+        "WIZ",
+        "ROTATE",
+        "TRIM",
+        "WIPE"
+      ],
+      "TypeFlags": 4169138176,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@LSET",
+      "Handler": "cmd_lset",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@MAIL",
+      "Handler": "cmd_mail",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "NOSIG",
+        "STATS",
+        "CSTATS",
+        "DSTATS",
+        "FSTATS",
+        "DEBUG",
+        "NUKE",
+        "FOLDERS",
+        "\u0022",
+        "\u0022UNFOLDER",
+        "LIST",
+        "READ",
+        "UNREAD",
+        "CLEAR",
+        "UNCLEAR",
+        "STATUS",
+        "PURGE",
+        "FILE",
+        "TAG",
+        "\u0022",
+        "\u0022UNTAG",
+        "FWD",
+        "FORWARD",
+        "SEND",
+        "SILENT",
+        "URGENT",
+        "REVIEW",
+        "RETRACT"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@MALIAS",
+      "Handler": "cmd_malias",
+      "Category": "builtin",
+      "Switches": [
+        "SET",
+        "CREATE",
+        "DESTROY",
+        "DESCRIBE",
+        "RENAME",
+        "STATS",
+        "CHOWN",
+        "NUKE",
+        "ADD",
+        "REMOVE",
+        "\u0022",
+        "\u0022LIST",
+        "ALL",
+        "WHO",
+        "MEMBERS",
+        "USEFLAG",
+        "SEEFLAG"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@MAPSQL",
+      "Handler": "cmd_mapsql",
+      "Category": "builtin",
+      "Switches": [
+        "NOTIFY",
+        "COLNAMES",
+        "SPOOF"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@MESSAGE",
+      "Handler": "cmd_message",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "SPOOF",
+        "NOSPOOF",
+        "REMIT",
+        "OEMIT",
+        "SILENT",
+        "NOISY"
+      ],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@MONIKER",
+      "Handler": "cmd_moniker",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@MOTD",
+      "Handler": "cmd_motd",
+      "Category": "builtin",
+      "Switches": [
+        "CONNECT",
+        "LIST",
+        "WIZARD",
+        "DOWN",
+        "FULL",
+        "CLEAR"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@MVATTR",
+      "Handler": "cmd_mvattr",
+      "Category": "builtin",
+      "Switches": [
+        "CONVERT",
+        "NOFLAGCOPY"
+      ],
+      "TypeFlags": 4026532097,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NAME",
+      "Handler": "cmd_name",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4039114753,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NEWPASSWORD",
+      "Handler": "cmd_newpassword",
+      "Category": "builtin",
+      "Switches": [
+        "GENERATE"
+      ],
+      "TypeFlags": 4026532865,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@NOTIFY",
+      "Handler": "cmd_notify_drain",
+      "Category": "builtin",
+      "Switches": [
+        "ALL",
+        "ANY",
+        "SETQ"
+      ],
+      "TypeFlags": 4026532097,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NSCEMIT",
+      "Handler": "cmd_cemit",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "NOISY",
+        "SILENT"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NSEMIT",
+      "Handler": "cmd_emit",
+      "Category": "builtin",
+      "Switches": [
+        "ROOM",
+        "NOEVAL",
+        "SILENT"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NSLEMIT",
+      "Handler": "cmd_lemit",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "NOISY",
+        "SILENT"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NSOEMIT",
+      "Handler": "cmd_oemit",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NSPEMIT",
+      "Handler": "cmd_pemit",
+      "Category": "builtin",
+      "Switches": [
+        "LIST",
+        "SILENT",
+        "NOISY",
+        "NOEVAL"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NSPROMPT",
+      "Handler": "cmd_prompt",
+      "Category": "builtin",
+      "Switches": [
+        "SILENT",
+        "NOISY",
+        "NOEVAL"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NSREMIT",
+      "Handler": "cmd_remit",
+      "Category": "builtin",
+      "Switches": [
+        "LIST",
+        "NOEVAL",
+        "NOISY",
+        "SILENT"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NSZEMIT",
+      "Handler": "cmd_zemit",
+      "Category": "builtin",
+      "Switches": [
+        "NOISY",
+        "SILENT"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@NUKE",
+      "Handler": "cmd_nuke",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@OEMIT",
+      "Handler": "cmd_oemit",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "SPOOF"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@OPEN",
+      "Handler": "cmd_open",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@PARENT",
+      "Handler": "cmd_parent",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@PASSWORD",
+      "Handler": "cmd_password",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 272630849,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@PCREATE",
+      "Handler": "cmd_pcreate",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026532097,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@PEMIT",
+      "Handler": "cmd_pemit",
+      "Category": "builtin",
+      "Switches": [
+        "LIST",
+        "CONTENTS",
+        "SILENT",
+        "NOISY",
+        "NOEVAL",
+        "PORT",
+        "SPOOF"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@POLL",
+      "Handler": "cmd_poll",
+      "Category": "builtin",
+      "Switches": [
+        "CLEAR"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@POOR",
+      "Handler": "cmd_poor",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@POWER",
+      "Handler": "cmd_power",
+      "Category": "builtin",
+      "Switches": [
+        "ADD",
+        "TYPE",
+        "LETTER",
+        "LIST",
+        "RESTRICT",
+        "DELETE",
+        "ALIAS",
+        "DISABLE",
+        "ENABLE",
+        "DECOMPILE"
+      ],
+      "TypeFlags": 4026532097,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@PROMPT",
+      "Handler": "cmd_prompt",
+      "Category": "builtin",
+      "Switches": [
+        "SILENT",
+        "NOISY",
+        "NOEVAL",
+        "SPOOF"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@PS",
+      "Handler": "cmd_ps",
+      "Category": "builtin",
+      "Switches": [
+        "ALL",
+        "SUMMARY",
+        "COUNT",
+        "QUICK",
+        "DEBUG"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@PURGE",
+      "Handler": "cmd_purge",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@QUOTA",
+      "Handler": "cmd_quota",
+      "Category": "builtin",
+      "Switches": [
+        "ALL",
+        "SET"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@READCACHE",
+      "Handler": "cmd_readcache",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@RECYCLE",
+      "Handler": "cmd_destroy",
+      "Category": "builtin",
+      "Switches": [
+        "OVERRIDE"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@REJECTMOTD",
+      "Handler": "cmd_motd",
+      "Category": "builtin",
+      "Switches": [
+        "CLEAR"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@REMIT",
+      "Handler": "cmd_remit",
+      "Category": "builtin",
+      "Switches": [
+        "LIST",
+        "NOEVAL",
+        "NOISY",
+        "SILENT",
+        "SPOOF"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@RESPOND",
+      "Handler": "cmd_respond",
+      "Category": "builtin",
+      "Switches": [
+        "HEADER",
+        "TYPE"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@RESTART",
+      "Handler": "cmd_restart",
+      "Category": "builtin",
+      "Switches": [
+        "ALL"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@RETRY",
+      "Handler": "cmd_retry",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034921729,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@RWALL",
+      "Handler": "cmd_rwall",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "EMIT"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD",
+        "ROYALTY"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@SCAN",
+      "Handler": "cmd_scan",
+      "Category": "builtin",
+      "Switches": [
+        "ROOM",
+        "SELF",
+        "ZONE",
+        "GLOBALS"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@SEARCH",
+      "Handler": "cmd_search",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026533121,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@SELECT",
+      "Handler": "cmd_select",
+      "Category": "builtin",
+      "Switches": [
+        "NOTIFY",
+        "REGEXP",
+        "INPLACE",
+        "INLINE",
+        "LOCALIZE",
+        "CLEARREGS",
+        "NOBREAK"
+      ],
+      "TypeFlags": 4026533121,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@SET",
+      "Handler": "cmd_set",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@SHUTDOWN",
+      "Handler": "cmd_shutdown",
+      "Category": "builtin",
+      "Switches": [
+        "PANIC",
+        "REBOOT",
+        "PARANOID"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@SITELOCK",
+      "Handler": "cmd_sitelock",
+      "Category": "builtin",
+      "Switches": [
+        "BAN",
+        "CHECK",
+        "REGISTER",
+        "REMOVE",
+        "NAME",
+        "PLAYER"
+      ],
+      "TypeFlags": 4026532097,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@SKIP",
+      "Handler": "cmd_ifelse",
+      "Category": "builtin",
+      "Switches": [
+        "IFELSE"
+      ],
+      "TypeFlags": 4026533121,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@SLAVE",
+      "Handler": "cmd_slave",
+      "Category": "builtin",
+      "Switches": [
+        "RESTART"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@SOCKSET",
+      "Handler": "cmd_sockset",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@SQL",
+      "Handler": "cmd_sql",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": [
+        "SQL_OK"
+      ]
+    },
+    {
+      "Name": "@SQUOTA",
+      "Handler": "cmd_squota",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@STATS",
+      "Handler": "cmd_stats",
+      "Category": "builtin",
+      "Switches": [
+        "CHUNKS",
+        "FREESPACE",
+        "PAGING",
+        "REGIONS",
+        "TABLES",
+        "FLAGS"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@SUGGEST",
+      "Handler": "cmd_suggest",
+      "Category": "builtin",
+      "Switches": [
+        "ADD",
+        "DELETE",
+        "LIST"
+      ],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@SWEEP",
+      "Handler": "cmd_sweep",
+      "Category": "builtin",
+      "Switches": [
+        "CONNECTED",
+        "HERE",
+        "INVENTORY",
+        "EXITS"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@SWITCH",
+      "Handler": "cmd_switch",
+      "Category": "builtin",
+      "Switches": [
+        "NOTIFY",
+        "FIRST",
+        "ALL",
+        "REGEXP",
+        "INPLACE",
+        "INLINE",
+        "LOCALIZE",
+        "CLEARREGS",
+        "NOBREAK"
+      ],
+      "TypeFlags": 4034921729,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@TELEPORT",
+      "Handler": "cmd_teleport",
+      "Category": "builtin",
+      "Switches": [
+        "SILENT",
+        "INSIDE",
+        "LIST"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@TRIGGER",
+      "Handler": "cmd_trigger",
+      "Category": "builtin",
+      "Switches": [
+        "CLEARREGS",
+        "SPOOF",
+        "INLINE",
+        "NOBREAK",
+        "LOCALIZE",
+        "INPLACE",
+        "MATCH"
+      ],
+      "TypeFlags": 4034920705,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@ULOCK",
+      "Handler": "cmd_ulock",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034922497,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@UNDESTROY",
+      "Handler": "cmd_undestroy",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@UNLINK",
+      "Handler": "cmd_unlink",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@UNLOCK",
+      "Handler": "cmd_unlock",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4068474881,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@UNRECYCLE",
+      "Handler": "cmd_undestroy",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@UPTIME",
+      "Handler": "cmd_uptime",
+      "Category": "builtin",
+      "Switches": [
+        "MORTAL"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@UUNLOCK",
+      "Handler": "cmd_uunlock",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034922496,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@VERB",
+      "Handler": "cmd_verb",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026532097,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@VERSION",
+      "Handler": "cmd_version",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@WAIT",
+      "Handler": "cmd_wait",
+      "Category": "builtin",
+      "Switches": [
+        "PID",
+        "UNTIL"
+      ],
+      "TypeFlags": 4026532993,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@WALL",
+      "Handler": "cmd_wall",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "EMIT"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD",
+        "ROYALTY"
+      ],
+      "Powers": [
+        "ANNOUNCE"
+      ]
+    },
+    {
+      "Name": "@WARNINGS",
+      "Handler": "cmd_warnings",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531841,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@WCHECK",
+      "Handler": "cmd_wcheck",
+      "Category": "builtin",
+      "Switches": [
+        "ALL",
+        "ME"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@WHEREIS",
+      "Handler": "cmd_whereis",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@WIPE",
+      "Handler": "cmd_wipe",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "@WIZMOTD",
+      "Handler": "cmd_motd",
+      "Category": "builtin",
+      "Switches": [
+        "CLEAR"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@WIZWALL",
+      "Handler": "cmd_wizwall",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "EMIT"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [
+        "WIZARD"
+      ],
+      "Powers": []
+    },
+    {
+      "Name": "@ZEMIT",
+      "Handler": "cmd_zemit",
+      "Category": "builtin",
+      "Switches": [
+        "NOISY",
+        "SILENT"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "ADDCOM",
+      "Handler": "cmd_addcom",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "ATTRIB_SET",
+      "Handler": "command_atrset",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4035182593,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "BRIEF",
+      "Handler": "cmd_brief",
+      "Category": "builtin",
+      "Switches": [
+        "OPAQUE"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "BUY",
+      "Handler": "cmd_buy",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "COMLIST",
+      "Handler": "cmd_comlist",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "COMTITLE",
+      "Handler": "cmd_comtitle",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "DELCOM",
+      "Handler": "cmd_delcom",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "DESERT",
+      "Handler": "cmd_desert",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1342177280,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "DISMISS",
+      "Handler": "cmd_dismiss",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1342177280,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "DOING",
+      "Handler": "cmd_who_doing",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "DROP",
+      "Handler": "cmd_drop",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1342177280,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "EMPTY",
+      "Handler": "cmd_empty",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1350565888,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "ENTER",
+      "Handler": "cmd_enter",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "EXAMINE",
+      "Handler": "cmd_examine",
+      "Category": "builtin",
+      "Switches": [
+        "ALL",
+        "BRIEF",
+        "DEBUG",
+        "MORTAL",
+        "OPAQUE",
+        "PARENT"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "FOLLOW",
+      "Handler": "cmd_follow",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1350565888,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "GET",
+      "Handler": "cmd_get",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1350565888,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "GIVE",
+      "Handler": "cmd_give",
+      "Category": "builtin",
+      "Switches": [
+        "SILENT"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "GOTO",
+      "Handler": "cmd_goto",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1342177280,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "HOME",
+      "Handler": "cmd_home",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1342177280,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "HUH_COMMAND",
+      "Handler": "cmd_huh_command",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026798144,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "INVENTORY",
+      "Handler": "cmd_inventory",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "LEAVE",
+      "Handler": "cmd_leave",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1342177280,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "LOOK",
+      "Handler": "cmd_look",
+      "Category": "builtin",
+      "Switches": [
+        "OUTSIDE",
+        "OPAQUE"
+      ],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "PAGE",
+      "Handler": "cmd_page",
+      "Category": "builtin",
+      "Switches": [
+        "LIST",
+        "NOEVAL",
+        "PORT",
+        "OVERRIDE"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "POSE",
+      "Handler": "cmd_pose",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "NOSPACE"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "SAY",
+      "Handler": "cmd_say",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "SCORE",
+      "Handler": "cmd_score",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "SEMIPOSE",
+      "Handler": "cmd_semipose",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "SESSION",
+      "Handler": "cmd_session",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "TEACH",
+      "Handler": "cmd_teach",
+      "Category": "builtin",
+      "Switches": [
+        "LIST"
+      ],
+      "TypeFlags": 4026531904,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "THINK",
+      "Handler": "cmd_think",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL"
+      ],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "UNFOLLOW",
+      "Handler": "cmd_unfollow",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 1350565888,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "UNIMPLEMENTED_COMMAND",
+      "Handler": "cmd_unimplemented",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026798144,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "USE",
+      "Handler": "cmd_use",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4034920448,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "WARN_ON_MISSING",
+      "Handler": "cmd_warn_on_missing",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026798144,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "WHISPER",
+      "Handler": "cmd_whisper",
+      "Category": "builtin",
+      "Switches": [
+        "LIST",
+        "NOISY",
+        "SILENT",
+        "NOEVAL"
+      ],
+      "TypeFlags": 4034920449,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "WHO",
+      "Handler": "cmd_who",
+      "Category": "builtin",
+      "Switches": [],
+      "TypeFlags": 4026531840,
+      "Flags": [],
+      "Powers": []
+    },
+    {
+      "Name": "WITH",
+      "Handler": "cmd_with",
+      "Category": "builtin",
+      "Switches": [
+        "NOEVAL",
+        "ROOM"
+      ],
+      "TypeFlags": 1342177281,
+      "Flags": [],
+      "Powers": []
+    }
+  ]
+}

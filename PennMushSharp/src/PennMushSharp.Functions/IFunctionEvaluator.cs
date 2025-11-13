@@ -4,5 +4,5 @@ namespace PennMushSharp.Functions;
 
 public interface IFunctionEvaluator
 {
-  ValueTask<string> EvaluateAsync(GameObject actor, string expression, CancellationToken cancellationToken = default);
+  ValueTask<string> EvaluateAsync(FunctionExecutionContext context, string expression, CancellationToken cancellationToken = default);
 }

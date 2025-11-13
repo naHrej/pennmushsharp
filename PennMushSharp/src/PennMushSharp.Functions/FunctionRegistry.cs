@@ -1,5 +1,6 @@
+using System.Collections.Generic;
 using System.Collections.Immutable;
-using PennMushSharp.Core;
+using System.Linq;
 
 namespace PennMushSharp.Functions;
 
@@ -20,7 +21,7 @@ public sealed class FunctionRegistry
 public interface IFunction
 {
   string Name { get; }
-  ValueTask<string> InvokeAsync(GameObject invoker, IReadOnlyList<string> arguments, CancellationToken cancellationToken = default);
+  ValueTask<string> InvokeAsync(FunctionExecutionContext context, IReadOnlyList<string> arguments, CancellationToken cancellationToken = default);
 }
 
 public sealed class FunctionRegistryBuilder

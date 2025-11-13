@@ -30,6 +30,9 @@ public interface ICommandContext
   GameObject Actor { get; }
   IOutputWriter Output { get; }
   IFunctionEvaluator Functions { get; }
+  IExpressionEvaluator Expressions { get; }
+  FunctionExecutionContext CreateFunctionContext(string? rawArguments);
+  void ResetRegisters();
 }
 
 public interface IOutputWriter

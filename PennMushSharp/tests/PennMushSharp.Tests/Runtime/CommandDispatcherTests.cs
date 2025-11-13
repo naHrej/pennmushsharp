@@ -19,7 +19,11 @@ public sealed class CommandDispatcherTests
     catalog.Register(command);
     catalog.RegisterAlias("cap", command);
     var parser = new CommandParser();
-    var dispatcher = new CommandDispatcher(catalog, parser, NullLogger<CommandDispatcher>.Instance);
+    var dispatcher = new CommandDispatcher(
+      catalog,
+      parser,
+      new PassThroughExpressionEvaluator(),
+      NullLogger<CommandDispatcher>.Instance);
 
     var actor = new GameObject(
       dbRef: 1,
@@ -53,14 +57,22 @@ public sealed class CommandDispatcherTests
 
   private sealed class TestContext : ICommandContext, IOutputWriter
   {
+    private readonly RegisterSet _registers = new();
+
     public TestContext(GameObject actor)
     {
       Actor = actor;
+      Expressions = new PassThroughExpressionEvaluator();
     }
 
     public GameObject Actor { get; }
     public IOutputWriter Output => this;
     public IFunctionEvaluator Functions { get; } = new PassThroughFunctionEvaluator();
+    public IExpressionEvaluator Expressions { get; }
+    public FunctionExecutionContext CreateFunctionContext(string? rawArguments) =>
+      FunctionExecutionContext.FromRegisters(Actor, _registers, rawArguments);
+
+    public void ResetRegisters() => _registers.ClearAll();
 
     public ValueTask WriteLineAsync(string text, CancellationToken cancellationToken = default)
     {
@@ -70,9 +82,17 @@ public sealed class CommandDispatcherTests
 
   private sealed class PassThroughFunctionEvaluator : IFunctionEvaluator
   {
-    public ValueTask<string> EvaluateAsync(GameObject actor, string expression, CancellationToken cancellationToken = default)
+    public ValueTask<string> EvaluateAsync(FunctionExecutionContext context, string expression, CancellationToken cancellationToken = default)
     {
       return ValueTask.FromResult(expression);
+    }
+  }
+
+  private sealed class PassThroughExpressionEvaluator : IExpressionEvaluator
+  {
+    public ValueTask<string> EvaluateAsync(FunctionExecutionContext context, string input, CancellationToken cancellationToken = default)
+    {
+      return ValueTask.FromResult(input);
     }
   }
 }

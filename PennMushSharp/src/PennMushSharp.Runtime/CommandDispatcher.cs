@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using PennMushSharp.Commands;
 using PennMushSharp.Commands.Metadata;
 using PennMushSharp.Commands.Parsing;
+using PennMushSharp.Functions;
 
 namespace PennMushSharp.Runtime;
 
@@ -10,11 +11,17 @@ public sealed class CommandDispatcher
   private readonly CommandCatalog _catalog;
   private readonly CommandParser _parser;
   private readonly ILogger<CommandDispatcher> _logger;
+  private readonly IExpressionEvaluator _expressionEvaluator;
 
-  public CommandDispatcher(CommandCatalog catalog, CommandParser parser, ILogger<CommandDispatcher> logger)
+  public CommandDispatcher(
+    CommandCatalog catalog,
+    CommandParser parser,
+    IExpressionEvaluator expressionEvaluator,
+    ILogger<CommandDispatcher> logger)
   {
     _catalog = catalog;
     _parser = parser;
+    _expressionEvaluator = expressionEvaluator;
     _logger = logger;
   }
 
@@ -33,7 +40,8 @@ public sealed class CommandDispatcher
         continue;
       }
 
-      if (CommandMetadataCatalog.TryGet(command.Name, out var metadata) && metadata is not null)
+      CommandDefinition? metadata = null;
+      if (CommandMetadataCatalog.TryGet(command.Name, out metadata) && metadata is not null)
       {
         if (metadata.WizardOnly)
         {
@@ -45,7 +53,9 @@ public sealed class CommandDispatcher
           continue;
       }
 
-      await command.ExecuteAsync(context, invocation, cancellationToken);
+      var preparedInvocation = await PrepareInvocationAsync(context, invocation, metadata, cancellationToken);
+      await command.ExecuteAsync(context, preparedInvocation, cancellationToken);
+      context.ResetRegisters();
     }
   }
 
@@ -72,5 +82,68 @@ public sealed class CommandDispatcher
     }
 
     return true;
+  }
+
+  private async ValueTask<CommandInvocation> PrepareInvocationAsync(
+    ICommandContext context,
+    CommandInvocation invocation,
+    CommandDefinition? metadata,
+    CancellationToken cancellationToken)
+  {
+    var target = invocation.Target;
+    var argument = invocation.Argument;
+    var shouldEvalTarget = target is not null && ShouldEvaluateTarget(metadata, invocation);
+    var shouldEvalArgument = argument is not null && ShouldEvaluateArgument(metadata, invocation);
+
+    if (!shouldEvalTarget && !shouldEvalArgument)
+      return invocation;
+
+    var execContext = context.CreateFunctionContext(invocation.Argument);
+
+    if (shouldEvalTarget && target is not null)
+      target = await _expressionEvaluator.EvaluateAsync(execContext, target, cancellationToken);
+
+    if (shouldEvalArgument && argument is not null)
+      argument = await _expressionEvaluator.EvaluateAsync(execContext, argument, cancellationToken);
+
+    if (target == invocation.Target && argument == invocation.Argument)
+      return invocation;
+
+    return invocation.With(target, argument);
+  }
+
+  private static bool ShouldEvaluateTarget(CommandDefinition? metadata, CommandInvocation invocation)
+  {
+    if (metadata is null)
+      return !HasNoEvalSwitch(invocation);
+
+    if ((metadata.TypeFlags & CommandTypeFlags.NoParse) != 0)
+      return false;
+
+    if (HasNoEvalSwitch(invocation))
+    {
+      var hasEqSplit = (metadata.TypeFlags & CommandTypeFlags.EqSplit) != 0;
+      if (!hasEqSplit)
+        return false;
+    }
+
+    return true;
+  }
+
+  private static bool ShouldEvaluateArgument(CommandDefinition? metadata, CommandInvocation invocation)
+  {
+    if ((metadata?.TypeFlags & CommandTypeFlags.RsNoParse) != 0)
+      return false;
+
+    if (HasNoEvalSwitch(invocation))
+      return false;
+
+    return true;
+  }
+
+  private static bool HasNoEvalSwitch(CommandInvocation invocation)
+  {
+    return invocation.Switches.Any(
+      s => s.Name.Equals("NOEVAL", StringComparison.OrdinalIgnoreCase));
   }
 }

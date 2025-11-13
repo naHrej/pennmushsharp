@@ -21,6 +21,7 @@ public sealed class TelnetServer : BackgroundService
   private readonly SessionRegistry _sessionRegistry;
   private readonly AccountService _accountService;
   private readonly IFunctionEvaluator _functionEvaluator;
+  private readonly IExpressionEvaluator _expressionEvaluator;
   private TcpListener? _listener;
 
   public TelnetServer(
@@ -31,7 +32,8 @@ public sealed class TelnetServer : BackgroundService
     PasswordVerifier passwordVerifier,
     SessionRegistry sessionRegistry,
     AccountService accountService,
-    IFunctionEvaluator functionEvaluator)
+    IFunctionEvaluator functionEvaluator,
+    IExpressionEvaluator expressionEvaluator)
   {
     _logger = logger;
     _options = options.Value;
@@ -41,6 +43,7 @@ public sealed class TelnetServer : BackgroundService
     _sessionRegistry = sessionRegistry;
     _accountService = accountService;
     _functionEvaluator = functionEvaluator;
+    _expressionEvaluator = expressionEvaluator;
   }
 
   protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -130,7 +133,7 @@ public sealed class TelnetServer : BackgroundService
           continue;
         }
 
-        var context = new CommandContext(actor, output, _functionEvaluator);
+        var context = new CommandContext(actor, output, _functionEvaluator, _expressionEvaluator);
         await _dispatcher.DispatchAsync(context, line, cancellationToken);
         if (sessionId != Guid.Empty)
           _sessionRegistry.RecordActivity(sessionId);
@@ -216,16 +219,30 @@ public sealed class TelnetServer : BackgroundService
 
   private sealed class CommandContext : ICommandContext
   {
-    public CommandContext(GameObject actor, IOutputWriter output, IFunctionEvaluator functions)
+    private readonly RegisterSet _registers = new();
+
+    public CommandContext(GameObject actor, IOutputWriter output, IFunctionEvaluator functions, IExpressionEvaluator expressions)
     {
       Actor = actor;
       Output = output;
       Functions = functions;
+      Expressions = expressions;
     }
 
     public GameObject Actor { get; }
     public IOutputWriter Output { get; }
     public IFunctionEvaluator Functions { get; }
+    public IExpressionEvaluator Expressions { get; }
+
+    public FunctionExecutionContext CreateFunctionContext(string? rawArguments)
+    {
+      return FunctionExecutionContext.FromRegisters(Actor, _registers, rawArguments);
+    }
+
+    public void ResetRegisters()
+    {
+      _registers.ClearAll();
+    }
   }
 
   private static string GetRemoteHost(TcpClient client)

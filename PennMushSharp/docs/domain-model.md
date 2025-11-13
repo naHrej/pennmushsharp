@@ -32,3 +32,43 @@ flags, locks, and attribute tables. Initial extraction will come from the legacy
 - The extractor parses `src/function.c`, recording builtin functions, min/max argument
   counts, parser flags, and alias relationships. `PennMushSharp.Core.Functions.FunctionCatalog`
   consumes the snapshot to drive the future function evaluator.
+
+## Command Catalog
+- Run `dotnet run --project tools/CommandTableExtractor` to regenerate
+  `docs/generated/commands.json`.
+- The extractor inspects `pennmush/src/command.c` (and associated headers) to capture
+  the canonical command metadata, including type flags, required switches, and privilege hints.
+  `PennMushSharp.Commands.Metadata.CommandMetadataCatalog` loads this JSON so the new parser and
+  permission checks stay aligned with the upstream tables. Custom/extended commands can register
+  overrides at runtime, so we can diverge when needed without editing the generated snapshot.
+
+## Modernization Notes (Backward-Compatible Goals)
+- **Evaluator Registers:** Legacy `%0-%9`/`%q0-%qz` slots were artifacts of fixed-size arrays. The
+  new evaluator lifts these limits: `%10+` resolves automatically, and `%q` registers are keyed by
+  arbitrary identifiers (`setq(foo,bar)` -> `%qfoo`). Classic names still work, so softcode written
+  for PennMUSH remains valid while modern code can name registers explicitly.
+
+- **Switch Flexibility:** Canonical switch names remain uppercase tokens sourced from the metadata,
+  but the dispatcher now supports metadata overrides so native commands/functions can opt into
+  richer validation or alias sets without editing the C tables. This keeps compliance while allowing
+  new commands to grow beyond the legacy model.
+
+- **Permission Model:** Flags/powers from `command.c` are honored, yet PennMushSharp layers on
+  extensible policies (role configs, ACL hooks) without changing existing behavior. Commands with no
+  metadata fall back to legacy-style execution, so local extensions can coexist with upstream data.
+
+- **Output Formatting:** Traditional telnet text stays the default, but the runtime is designed to
+  emit optional HTML5/CSS fragments for modern clients. A future goal is per-command output templates
+  (configurable in-game) that can produce both classic text and rich markup simultaneously.
+
+- **Queues/Async:** The managed scheduler lifts command queue limits imposed by PennMUSH’s C structure
+  while respecting its throttling semantics. Modern features (async tasks, larger queues) can be
+  configured without breaking scripts that rely on the original behavior.
+
+- **Persistence:** Text dump compatibility is maintained, but the in-memory model can serialize to
+  other stores (JSON, SQL, object databases) so modern deployments don’t have to rely on legacy
+  formats. Import/export of PennMUSH dumps remains available for interoperability.
+
+- **Hooks/Plugins:** Legacy `@hook`s still fire, yet the runtime can expose managed extension points
+  (events, DI services) for admins who want to plug in .NET code. When no managed hook is registered
+  the system behaves exactly like PennMUSH.
