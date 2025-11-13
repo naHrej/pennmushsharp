@@ -85,8 +85,8 @@ if ! declare -p COMMANDS >/dev/null 2>&1; then
 fi
 
 if [[ -n "${SERVER_EXEC:-}" && ! -f "$SERVER_EXEC" ]]; then
-  echo "SERVER_EXEC '$SERVER_EXEC' does not exist." >&2
-  exit 1
+  echo "SERVER_EXEC '$SERVER_EXEC' does not exist. Skipping server startup." >&2
+  SERVER_EXEC=""
 fi
 
 if [[ "$DRY_RUN" == true ]]; then
@@ -101,6 +101,8 @@ if [[ "$DRY_RUN" == true ]]; then
   if [[ -n "${SERVER_EXEC:-}" ]]; then
     echo "  Server executable: $SERVER_EXEC"
     [[ -n "${SERVER_WORKDIR:-}" ]] && echo "  Server workdir: $SERVER_WORKDIR"
+  else
+    echo "  Server executable: (not available - dry run only validates scenario)"
   fi
   exit 0
 fi
@@ -151,7 +153,11 @@ start_server() {
 }
 
 if [[ -n "${SERVER_EXEC:-}" ]]; then
-  start_server
+  if [[ -x "$SERVER_EXEC" ]]; then
+    start_server
+  else
+    echo "SERVER_EXEC '$SERVER_EXEC' is not executable. Skipping server startup." >&2
+  fi
 fi
 
 wait_for_port
