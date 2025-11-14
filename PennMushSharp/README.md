@@ -24,6 +24,12 @@ roadmap to guide the 1:1 parity effort. See `ROADMAP.md` for phase planning.
   `%q` registers become string-keyed (`setq(foo,bar)` -> `%qfoo`), and command arguments are no longer
   capped at ten (`%10`, `%11`, etc. resolve when provided). Classic names (`%q0-%qz`, `%0-%9`) continue to
   work for compatibility.
+- The builtin function catalog is now metadata-driven. `FunctionRegistryBuilder` consumes the generated
+  `functions.json` snapshot, enforces PennMUSH min/max arity, and wires aliases so adding a new `IFunction`
+  automatically lights up every legacy spelling. Initial implementations cover the register helpers
+  (`SETQ`, `SETR`), core math (`ADD`, `SUB`, `MUL`, `DIV`, `MOD`, `ABS`, `MIN`, `MAX`, `CEIL`, `FLOOR`, `ROUND`, `ROOT`),
+  trig/angle conversion (`SIN`, `COS`, `TAN`, `ASIN`, `ACOS`, `ATAN`, `ATAN2`, `CTU`), logarithmic helpers (`LOG`, `LN`, `PI`, `POWER`, `RAND`),
+  and string helpers (`UPCASE`, `DOWNCASE`, `STRLEN`, `TRIM`, `LTRIM`, `RTRIM`, `LEFT`, `RIGHT`, `MID`, `REPEAT`).
 - Output formatting keeps the plain-text telnet stream but plans for opt-in HTML5/CSS templates per
   command so modern clients can render richer UI without breaking legacy users. These templates will
   be configurable in-game once the telemetry/publishing pipeline is in place.

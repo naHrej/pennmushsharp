@@ -33,6 +33,7 @@ public sealed class CommandDispatcher
 
     foreach (var invocation in invocations)
     {
+      _logger.LogTrace("Dispatching raw='{Raw}' argument='{Argument}' target='{Target}'", invocation.Raw, invocation.Argument, invocation.Target);
       if (!_catalog.TryGet(invocation.Name, out var command) || command is null)
       {
         _logger.LogWarning("Unknown command '{Command}' for actor #{Actor}", invocation.Name, context.Actor.DbRef);

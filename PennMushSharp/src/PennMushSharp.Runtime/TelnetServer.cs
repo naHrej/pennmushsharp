@@ -119,6 +119,8 @@ public sealed class TelnetServer : BackgroundService
         if (line is null)
           break;
 
+        _logger.LogTrace("Telnet raw input from {Host}: {Input}", remoteHost, line);
+
         line = line.Trim();
         if (line.Equals("QUIT", StringComparison.OrdinalIgnoreCase))
           break;

@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using PennMushSharp.Commands.Metadata;
 using PennMushSharp.Core.Persistence;
 
@@ -21,10 +22,11 @@ public static class CommandCatalogBuilder
       aliases: Array.Empty<string>(),
       switches: Array.Empty<CommandSwitchDefinition>(),
       handler: "cmd_eval",
-      typeFlags: 0,
+      typeFlags: CommandTypeFlags.NoParse | CommandTypeFlags.RsNoParse,
       flags: Array.Empty<string>(),
       powers: Array.Empty<string>()));
-    RegisterWithMetadata(catalog, new EvalCommand());
+    var evalLogger = provider.GetRequiredService<ILogger<EvalCommand>>();
+    RegisterWithMetadata(catalog, new EvalCommand(evalLogger));
     return catalog;
   }
 

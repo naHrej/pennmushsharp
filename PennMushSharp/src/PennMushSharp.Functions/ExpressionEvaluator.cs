@@ -19,9 +19,35 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
 
     var builder = new StringBuilder(input.Length);
     var firstTokenProcessed = false;
+    var escaped = false;
     for (var i = 0; i < input.Length; i++)
     {
       var current = input[i];
+
+      if (escaped)
+      {
+        builder.Append(current);
+        escaped = false;
+        if (!firstTokenProcessed && !char.IsWhiteSpace(current))
+          firstTokenProcessed = true;
+        continue;
+      }
+
+      if (current == '\\')
+      {
+        escaped = true;
+        continue;
+      }
+
+      if (current == '%' && !IsRegisterSpecifier(input, i))
+      {
+        if (i + 1 < input.Length && RequiresImmediatePercentEscape(input[i + 1]))
+        {
+          builder.Append(input[++i]);
+          firstTokenProcessed = true;
+          continue;
+        }
+      }
 
       if (!firstTokenProcessed)
       {
@@ -43,12 +69,6 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
         firstTokenProcessed = true;
       }
 
-      if (current == '\\' && i + 1 < input.Length)
-      {
-        builder.Append(input[++i]);
-        continue;
-      }
-
       if (current == '[')
       {
         var (inner, delta) = ExtractInnerExpression(input, i + 1);
@@ -68,6 +88,9 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
       builder.Append(current);
     }
 
+    if (escaped)
+      builder.Append('\\');
+
     return ExpandRegisters(builder.ToString(), context);
   }
 
@@ -75,12 +98,20 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
   {
     var depth = 1;
     var builder = new StringBuilder();
+    var escaped = false;
     for (var i = start; i < input.Length; i++)
     {
       var ch = input[i];
-      if (ch == '\\' && i + 1 < input.Length)
+      if (escaped)
       {
-        builder.Append(input[++i]);
+        builder.Append(ch);
+        escaped = false;
+        continue;
+      }
+
+      if (ch == '\\')
+      {
+        escaped = true;
         continue;
       }
 
@@ -112,12 +143,21 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
       return string.Empty;
 
     var builder = new StringBuilder(input.Length);
+    var escaped = false;
     for (var i = 0; i < input.Length; i++)
     {
       var ch = input[i];
-      if (ch == '\\' && i + 1 < input.Length)
+
+      if (escaped)
       {
-        builder.Append(input[++i]);
+        builder.Append(ch);
+        escaped = false;
+        continue;
+      }
+
+      if (ch == '\\')
+      {
+        escaped = true;
         continue;
       }
 
@@ -171,8 +211,13 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
         continue;
       }
 
-      builder.Append(ch);
+      builder.Append(next);
+      i++;
+      continue;
     }
+
+    if (escaped)
+      builder.Append('\\');
 
     return builder.ToString();
   }
@@ -276,5 +321,19 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
     }
 
     return (builder.ToString(), i - 1);
+  }
+
+  private static bool IsRegisterSpecifier(string input, int percentIndex)
+  {
+    if (percentIndex + 1 >= input.Length)
+      return false;
+
+    var next = input[percentIndex + 1];
+    return next == 'q' || next == 'Q' || char.IsDigit(next);
+  }
+
+  private static bool RequiresImmediatePercentEscape(char ch)
+  {
+    return ch is '[' or ']' or '(' or ')';
   }
 }

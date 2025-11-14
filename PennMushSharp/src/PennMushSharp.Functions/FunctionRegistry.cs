@@ -1,19 +1,20 @@
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
+using PennMushSharp.Core.Functions;
 
 namespace PennMushSharp.Functions;
 
 public sealed class FunctionRegistry
 {
-  private readonly ImmutableDictionary<string, IFunction> _functions;
+  private readonly IReadOnlyDictionary<string, IFunction> _functions;
 
-  internal FunctionRegistry(ImmutableDictionary<string, IFunction> functions)
+  internal FunctionRegistry(IReadOnlyDictionary<string, IFunction> functions)
   {
     _functions = functions;
   }
 
-  public static FunctionRegistry Empty { get; } = new(FunctionRegistryBuilder.Empty);
+  public static FunctionRegistry Empty { get; } =
+    new Dictionary<string, IFunction>(StringComparer.OrdinalIgnoreCase).AsReadOnlyRegistry();
 
   public bool TryGet(string name, out IFunction? function) => _functions.TryGetValue(name, out function);
 }
@@ -26,10 +27,70 @@ public interface IFunction
 
 public sealed class FunctionRegistryBuilder
 {
-  internal static readonly ImmutableDictionary<string, IFunction> Empty = ImmutableDictionary<string, IFunction>.Empty;
   private readonly Dictionary<string, IFunction> _functions = new(StringComparer.OrdinalIgnoreCase);
+  private readonly Dictionary<string, FunctionDefinition> _definitionsByName;
+  private readonly Dictionary<string, IReadOnlyList<string>> _aliasesByFunction;
 
-  public void Add(IFunction function) => _functions[function.Name] = function;
+  public FunctionRegistryBuilder(FunctionCatalog? metadata = null)
+  {
+    _definitionsByName = new Dictionary<string, FunctionDefinition>(StringComparer.OrdinalIgnoreCase);
+    if (metadata is not null)
+    {
+      foreach (var definition in metadata.Functions)
+      {
+        if (!_definitionsByName.ContainsKey(definition.Name))
+          _definitionsByName[definition.Name] = definition;
+      }
+    }
 
-  public FunctionRegistry Build() => new(_functions.ToImmutableDictionary(StringComparer.OrdinalIgnoreCase));
+    _aliasesByFunction = metadata?.Aliases
+        .GroupBy(a => a.FunctionName, StringComparer.OrdinalIgnoreCase)
+        .ToDictionary(
+          g => g.Key,
+          g => (IReadOnlyList<string>)g.Select(a => a.Alias).ToList(),
+          StringComparer.OrdinalIgnoreCase)
+      ?? new Dictionary<string, IReadOnlyList<string>>(StringComparer.OrdinalIgnoreCase);
+  }
+
+  public void Add(IFunction function, IEnumerable<string>? additionalAliases = null)
+  {
+    var instance = WrapWithMetadata(function);
+    Register(function.Name, instance);
+
+    if (_aliasesByFunction.TryGetValue(function.Name, out var metadataAliases))
+    {
+      foreach (var alias in metadataAliases)
+        Register(alias, instance);
+    }
+
+    if (additionalAliases is not null)
+    {
+      foreach (var alias in additionalAliases)
+      {
+        if (!string.IsNullOrWhiteSpace(alias))
+          Register(alias, instance);
+      }
+    }
+  }
+
+  public FunctionRegistry Build() =>
+    new Dictionary<string, IFunction>(_functions, StringComparer.OrdinalIgnoreCase).AsReadOnlyRegistry();
+
+  private IFunction WrapWithMetadata(IFunction function)
+  {
+    if (_definitionsByName.TryGetValue(function.Name, out var definition))
+      return new MetadataValidatedFunction(function, definition);
+    return function;
+  }
+
+  private void Register(string name, IFunction function)
+  {
+    _functions[name] = function;
+  }
+}
+
+internal static class FunctionRegistryExtensions
+{
+  public static FunctionRegistry AsReadOnlyRegistry(this Dictionary<string, IFunction> source) =>
+    new(source);
 }

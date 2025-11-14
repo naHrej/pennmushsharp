@@ -102,6 +102,8 @@ public sealed class CommandParser
     {
       if (escape)
       {
+        if (ch != ';' && ch != '&')
+          builder.Append('\\');
         builder.Append(ch);
         escape = false;
         continue;
@@ -131,6 +133,9 @@ public sealed class CommandParser
 
       builder.Append(ch);
     }
+
+    if (escape)
+      builder.Append('\\');
 
     var last = builder.ToString().Trim();
     if (last.Length > 0)

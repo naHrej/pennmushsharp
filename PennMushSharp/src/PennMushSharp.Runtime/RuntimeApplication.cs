@@ -10,6 +10,7 @@ using PennMushSharp.Core.Locks.Runtime;
 using PennMushSharp.Core.Metadata;
 using PennMushSharp.Core.Persistence;
 using PennMushSharp.Functions;
+using PennMushSharp.Functions.Builtins;
 
 namespace PennMushSharp.Runtime;
 
@@ -60,8 +61,45 @@ public static class RuntimeApplication
 
   private static FunctionRegistry CreateFunctionRegistry()
   {
-    var builder = new FunctionRegistryBuilder();
-    builder.Add(new PennMushSharp.Functions.Builtins.SetqFunction());
+    var metadata = MetadataCatalogs.Default.Functions;
+    var builder = new FunctionRegistryBuilder(metadata);
+    builder.Add(new SetqFunction());
+    builder.Add(new SetrFunction());
+    builder.Add(new AddFunction());
+    builder.Add(new SubFunction());
+    builder.Add(new MulFunction());
+    builder.Add(new DivFunction());
+    builder.Add(new ModFunction());
+    builder.Add(new AbsFunction());
+    builder.Add(new MinFunction());
+    builder.Add(new MaxFunction());
+    builder.Add(new CeilFunction());
+    builder.Add(new FloorFunction());
+    builder.Add(new PiFunction());
+    builder.Add(new PowerFunction());
+    builder.Add(new SqrtFunction());
+    builder.Add(new UpcaseFunction());
+    builder.Add(new DowncaseFunction());
+    builder.Add(new StrlenFunction());
+    builder.Add(new TrimFunction());
+    builder.Add(new LeftTrimFunction());
+    builder.Add(new RightTrimFunction());
+    builder.Add(new LeftFunction());
+    builder.Add(new RightFunction());
+    builder.Add(new MidFunction());
+    builder.Add(new RepeatFunction());
+    builder.Add(new RandFunction());
+    builder.Add(new SinFunction());
+    builder.Add(new CosFunction());
+    builder.Add(new TanFunction());
+    builder.Add(new AsinFunction());
+    builder.Add(new AcosFunction());
+    builder.Add(new AtanFunction());
+    builder.Add(new Atan2Function());
+    builder.Add(new LogFunction());
+    builder.Add(new LnFunction());
+    builder.Add(new RootFunction());
+    builder.Add(new CtuFunction());
     return builder.Build();
   }
 
