@@ -12,7 +12,10 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
     _functionEvaluator = functionEvaluator;
   }
 
-  public async ValueTask<string> EvaluateAsync(FunctionExecutionContext context, string input, CancellationToken cancellationToken = default)
+  public ValueTask<string> EvaluateAsync(FunctionExecutionContext context, string input, CancellationToken cancellationToken = default)
+    => EvaluateInternalAsync(context, input, cancellationToken, allowLeadingInvocation: true);
+
+  private async ValueTask<string> EvaluateInternalAsync(FunctionExecutionContext context, string input, CancellationToken cancellationToken, bool allowLeadingInvocation)
   {
     if (string.IsNullOrEmpty(input))
       return input ?? string.Empty;
@@ -57,9 +60,10 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
           continue;
         }
 
-        if (TryExtractInvocation(input, i, out var invocation, out var nextIndex))
+        if (allowLeadingInvocation && TryExtractInvocation(input, i, out var invocation, out var nextIndex))
         {
-          var evaluated = await _functionEvaluator.EvaluateAsync(context, invocation, cancellationToken);
+          var preprocessedInvocation = await EvaluateInternalAsync(context, invocation, cancellationToken, allowLeadingInvocation: false);
+          var evaluated = await _functionEvaluator.EvaluateAsync(context, preprocessedInvocation, cancellationToken);
           builder.Append(evaluated);
           i = nextIndex - 1;
           firstTokenProcessed = true;
@@ -78,7 +82,7 @@ public sealed class ExpressionEvaluator : IExpressionEvaluator
           continue;
         }
 
-        var preprocessed = await EvaluateAsync(context, inner, cancellationToken);
+        var preprocessed = await EvaluateInternalAsync(context, inner, cancellationToken, allowLeadingInvocation: true);
         var evaluated = await _functionEvaluator.EvaluateAsync(context, preprocessed, cancellationToken);
         builder.Append(evaluated);
         i = delta;

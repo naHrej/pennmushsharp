@@ -152,8 +152,14 @@ start_server() {
   trap cleanup EXIT INT TERM
 }
 
+is_port_listening() {
+  nc -z "$HOST" "$PORT" >/dev/null 2>&1
+}
+
 if [[ -n "${SERVER_EXEC:-}" ]]; then
-  if [[ -x "$SERVER_EXEC" ]]; then
+  if is_port_listening; then
+    echo "Detected service already listening on $HOST:$PORT. Skipping legacy server startup."
+  elif [[ -x "$SERVER_EXEC" ]]; then
     start_server
   else
     echo "SERVER_EXEC '$SERVER_EXEC' is not executable. Skipping server startup." >&2

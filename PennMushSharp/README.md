@@ -85,6 +85,11 @@ persistence.
   so canonical names and aliases point to the same handler.
 - `LookCommand`/`WhoCommand` now consume the real dump data (room descriptions, WHO columns) and the
   dispatcher performs basic permission/switch validation via the metadata catalog ahead of command execution.
+- Social commands are online: `SAY`, `POSE`, `SEMIPOSE`, `WHISPER`, `PAGE`, `@EMIT`, and `@PEMIT` mirror the
+  legacy broadcast semantics, honor `Speech`/`Page` locks plus `HAVEN`, emit PennMUSH-style error strings, and
+  use the session registry so room occupants receive output.
+  The parser also recognizes classic shorthand tokens (`'`, `"`, `:`, `;`, `\`) so typing `'Hello` or `:waves`
+  routes straight to the appropriate handler, just like the C server.
 - `TelnetServer` (hosted background service) listens on `PennMushSharp:ListenAddress/ListenPort`
   (default `127.0.0.1:4201`). Clients log in via `CONNECT <name> [<password>]` (the stock dump ships
   with `One` and a blank password) or `CREATE <name> <password>`. Sessions record host/idle/command
@@ -120,3 +125,10 @@ By default the script clones `https://github.com/pennmush/pennmush` and
 See `docs/coding-conventions.md` for formatting, naming, and test expectations. CI runs
 `dotnet format` and the characterization checks, so ensure local changes follow those
 guidelines before opening a pull request.
+- Attribute system is read-only: no `&attr obj=value`, `@lock`, `@set`, or `$command` attribute handlers yet. Building out full attribute persistence and tying attribute triggers into the command processor (including MASTER_ROOM/global attr sourcing and zone inheritance) is the top priority.
+- MUSHcode execution helpers such as `ufun()`, `eval()`, and `get()` are not implemented, so stored attribute programs cannot run in-line.
+- Aliases extracted from `cmds.c`/`function.c` are not enforced—commands/functions currently only respond to their primary names.
+- Movement/building are still stubbed: there are no `go`/exit commands, automatic exit alias binding, `@dig`, `@link`, etc.
+- Zone mechanics, command/function inheritance, and event hooks (`@aconnect`, movement triggers, etc.) are not wired up yet.
+- Parentage/inheritance (`@parent`, attribute lookup up the ancestry chain) is unimplemented, so builders cannot share commands/functions via parents; future enhancements may include an opt-in “extended inheritance” mode that purposely breaks dump compatibility.
+- Communication subsystems beyond basic SAY/WHISPER/PAGE remain TODO (`@conformat`, the full chat service, bespoke mail persistence compatible with PennMUSH semantics).

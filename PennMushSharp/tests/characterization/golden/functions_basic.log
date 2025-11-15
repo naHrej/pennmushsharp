@@ -1,0 +1,37 @@
+*** PennMUSH Legacy :: functions_basic ***
+ÿý"<This is where you announce that they've connected to your MUSH>
+<It's a good idea to include the version/patchlevel of MUSH you're running>
+<It's a good idea to include an email address for questions about the MUSH>
+-----------------------------------------------------------------------------
+Use create <name> <password> to create a character.
+Use connect <name> <password> to connect to your existing character.
+Use 'ch <name> <pass>' to connect hidden, and cd to connect DARK (admin)
+Use QUIT to logout.
+Use the WHO command to find out who is online currently.
+-----------------------------------------------------------------------------
+Yell at your local god to personalize this file!
+
+Welcome to PennMUSH!
+--------------------------------------------------------------------------
+Yell at your god to personalize this file
+
+Wizards, tell your friendly neighborhood god to personalize this file!
+
+ 
+
+
+MAIL: You have no mail.
+
+Room Zero(#0RL)
+You are in Room Zero.
+FUNC_SIMPLE:----------
+FUNC_NESTED:16
+FUNC_TRIG:1
+FUNC_CONVERT:3.141593
+FUNC_STRING:nnMUnnMU
+Thank you for visiting.
+
+Please return soon.
+
+*********** D I S C O N N E C T E D ***********
+

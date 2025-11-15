@@ -34,7 +34,8 @@ public sealed class WhoCommandTests
         LastCommandUtc = now.AddSeconds(-2),
         CommandCount = 3,
         DescriptorCount = 20,
-        Host = "test.host"
+        Host = "test.host",
+        Output = new TestOutput()
       }
     });
 

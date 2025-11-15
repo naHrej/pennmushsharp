@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging.Abstractions;
 using PennMushSharp.Commands;
 using PennMushSharp.Commands.Parsing;
 using PennMushSharp.Core;
+using PennMushSharp.Core.Locks.Runtime;
+using PennMushSharp.Core.Persistence;
 using PennMushSharp.Functions;
 using PennMushSharp.Runtime;
 using Xunit;
@@ -19,10 +21,12 @@ public sealed class CommandDispatcherTests
     catalog.Register(command);
     catalog.RegisterAlias("cap", command);
     var parser = new CommandParser();
+    var attributeCommand = new AttributeAssignmentCommand(new AttributeService(new InMemoryGameState(new InMemoryLockStore())));
     var dispatcher = new CommandDispatcher(
       catalog,
       parser,
       new PassThroughExpressionEvaluator(),
+      attributeCommand,
       NullLogger<CommandDispatcher>.Instance);
 
     var actor = new GameObject(

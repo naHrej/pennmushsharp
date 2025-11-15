@@ -31,7 +31,7 @@ public sealed class CharacterizationGoldenTests
       if (!Directory.Exists(GoldenDirectory))
         yield break;
 
-      foreach (var path in Directory.EnumerateFiles(GoldenDirectory, "*.log"))
+      foreach (var path in Directory.EnumerateFiles(GoldenDirectory, "*.log").OrderBy(p => p, StringComparer.OrdinalIgnoreCase))
         yield return new object[] { path };
     }
   }

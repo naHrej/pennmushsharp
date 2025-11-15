@@ -170,7 +170,7 @@ public sealed class ExpressionEvaluatorTests
     Assert.Equal("3", logBase);
     Assert.Equal("0", ln);
     Assert.Equal("3", root);
-    Assert.Equal("1.5707963267949", ctu);
+    Assert.Equal("1.570796", ctu);
   }
 
   [Fact]
@@ -182,6 +182,28 @@ public sealed class ExpressionEvaluatorTests
     var output = await evaluator.EvaluateAsync(context, @"-\[Test\] [repeat(-,3)]");
 
     Assert.StartsWith("-[Test]", output);
+  }
+
+  [Fact]
+  public async Task EvaluateAsync_EvaluatesNestedFunctionsInsideBareInvocation()
+  {
+    var evaluator = CreateEvaluator();
+    var context = CreateContext();
+
+    var output = await evaluator.EvaluateAsync(context, "repeat([mid(PennMUSH,2,4)],2)");
+
+    Assert.Equal("nnMUnnMU", output);
+  }
+
+  [Fact]
+  public async Task EvaluateAsync_EvaluatesNestedMathInsideBareInvocation()
+  {
+    var evaluator = CreateEvaluator();
+    var context = CreateContext();
+
+    var output = await evaluator.EvaluateAsync(context, "add(1,[mul([sub(10,7)],5)])");
+
+    Assert.Equal("16", output);
   }
 
   private static ExpressionEvaluator CreateEvaluator()
@@ -213,6 +235,7 @@ public sealed class ExpressionEvaluatorTests
     registryBuilder.Add(new RightFunction());
     registryBuilder.Add(new MidFunction());
     registryBuilder.Add(new RepeatFunction());
+    registryBuilder.Add(new RandFunction());
     registryBuilder.Add(new SinFunction());
     registryBuilder.Add(new CosFunction());
     registryBuilder.Add(new TanFunction());
@@ -242,7 +265,7 @@ public sealed class ExpressionEvaluatorTests
 
     return FunctionExecutionContext.FromArguments(actor, "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu");
   }
-}
+
   [Fact]
   public async Task EvaluateAsync_RandProducesValuesInRange()
   {
@@ -268,3 +291,5 @@ public sealed class ExpressionEvaluatorTests
       Assert.InRange(ranged, 2, 4);
     }
   }
+
+}

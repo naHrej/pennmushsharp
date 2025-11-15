@@ -1,0 +1,15 @@
+NAME="functions_basic"
+HOST="127.0.0.1"
+PORT=4201
+USER="One"
+PASSWORD=""
+COMMANDS=(
+  "@pemit me=FUNC_SIMPLE:[repeat(-,10)]"
+  "@pemit me=FUNC_NESTED:[add(1,[mul([sub(10,7)],5)])]"
+  "@pemit me=FUNC_TRIG:[sin(90,d)]"
+  "@pemit me=FUNC_CONVERT:[ctu(180,d,r)]"
+  "@pemit me=FUNC_STRING:[repeat([mid(PennMUSH,2,4)],2)]"
+)
+DISCONNECT_COMMAND="QUIT"
+SERVER_EXEC="$(pwd)/scripts/start-legacy-mush.sh"
+SERVER_WORKDIR="../pennmush/game"

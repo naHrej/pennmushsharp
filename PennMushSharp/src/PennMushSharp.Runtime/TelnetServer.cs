@@ -171,7 +171,7 @@ public sealed class TelnetServer : BackgroundService
         if (_accountService.TryConnect(parts[1], suppliedPassword, out var connected))
         {
           actor = connected;
-          sessionId = _sessionRegistry.Register(actor, remoteHost);
+          sessionId = _sessionRegistry.Register(actor, remoteHost, output);
           await writerInner.WriteLineAsync($"Welcome, {actor.Name}!");
           return true;
         }
@@ -195,7 +195,7 @@ public sealed class TelnetServer : BackgroundService
         }
 
         actor = _accountService.Create(parts[1], parts[2]);
-        sessionId = _sessionRegistry.Register(actor, remoteHost);
+        sessionId = _sessionRegistry.Register(actor, remoteHost, output);
         await writerInner.WriteLineAsync($"Created {actor.Name}. Welcome!");
         return true;
       }
@@ -207,15 +207,24 @@ public sealed class TelnetServer : BackgroundService
   private sealed class TelnetOutputWriter : IOutputWriter
   {
     private readonly StreamWriter _writer;
+    private readonly SemaphoreSlim _mutex = new(1, 1);
 
     public TelnetOutputWriter(StreamWriter writer)
     {
       _writer = writer;
     }
 
-    public ValueTask WriteLineAsync(string text, CancellationToken cancellationToken = default)
+    public async ValueTask WriteLineAsync(string text, CancellationToken cancellationToken = default)
     {
-      return new ValueTask(_writer.WriteLineAsync(text.AsMemory(), cancellationToken));
+      await _mutex.WaitAsync(cancellationToken).ConfigureAwait(false);
+      try
+      {
+        await _writer.WriteLineAsync(text.AsMemory(), cancellationToken).ConfigureAwait(false);
+      }
+      finally
+      {
+        _mutex.Release();
+      }
     }
   }
 

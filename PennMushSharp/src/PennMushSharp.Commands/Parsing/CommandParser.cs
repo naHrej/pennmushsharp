@@ -10,6 +10,10 @@ public sealed class CommandParser
     if (string.IsNullOrWhiteSpace(input))
       return Array.Empty<CommandInvocation>();
 
+    var trimmed = input.TrimStart();
+    if (TryParseShorthand(trimmed, out var shorthandInvocation))
+      return new[] { shorthandInvocation };
+
     var segments = SplitSegments(input);
     var results = new List<CommandInvocation>(segments.Count);
     foreach (var segment in segments)
@@ -27,6 +31,9 @@ public sealed class CommandParser
     var raw = segment.Trim();
     if (raw.Length == 0)
       return false;
+
+    if (TryParseShorthand(raw, out invocation))
+      return true;
 
     var index = 0;
     var name = ReadToken(raw, ref index, stopChars: new[] { ' ', '\t', '/', '=' });
@@ -73,6 +80,42 @@ public sealed class CommandParser
     }
 
     invocation = new CommandInvocation(name, switches, target, argument, raw);
+    return true;
+  }
+
+  private static bool TryParseShorthand(string raw, out CommandInvocation invocation)
+  {
+    invocation = default!;
+    var leader = raw[0];
+    string commandName;
+    var preserveLeadingWhitespace = false;
+
+    switch (leader)
+    {
+      case '\'':
+      case '"':
+        commandName = "SAY";
+        break;
+      case ':':
+        commandName = "POSE";
+        break;
+      case ';':
+        commandName = "SEMIPOSE";
+        preserveLeadingWhitespace = true;
+        break;
+      case '\\':
+        commandName = "@EMIT";
+        break;
+      default:
+        return false;
+    }
+
+    var remainder = raw.Length > 1 ? raw[1..] : string.Empty;
+    if (!preserveLeadingWhitespace)
+      remainder = remainder.TrimStart();
+
+    var argument = string.IsNullOrWhiteSpace(remainder) ? null : remainder;
+    invocation = new CommandInvocation(commandName, Array.Empty<CommandSwitch>(), target: null, argument, raw);
     return true;
   }
 

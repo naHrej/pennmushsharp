@@ -8,7 +8,7 @@ public sealed class SessionRegistry : ISessionRegistry
 {
   private readonly ConcurrentDictionary<Guid, SessionInfo> _sessions = new();
 
-  public Guid Register(GameObject actor, string host)
+  public Guid Register(GameObject actor, string host, IOutputWriter output)
   {
     var id = Guid.NewGuid();
     _sessions[id] = new SessionInfo
@@ -17,6 +17,7 @@ public sealed class SessionRegistry : ISessionRegistry
       ConnectedAtUtc = DateTime.UtcNow,
       LastCommandUtc = DateTime.UtcNow,
       Host = host,
+      Output = output,
       DescriptorCount = 1,
       CommandCount = 0
     };
@@ -42,4 +43,3 @@ public sealed class SessionRegistry : ISessionRegistry
     return _sessions.Values.ToList();
   }
 }
-

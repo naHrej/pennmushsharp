@@ -68,10 +68,12 @@ internal static class FunctionEvaluationUtils
     if (double.IsNaN(value) || double.IsInfinity(value))
       return ValueOutOfRangeError;
 
-    if (Math.Abs(value % 1) < double.Epsilon)
-      return Math.Round(value).ToString(CultureInfo.InvariantCulture);
+    var nearestInteger = Math.Round(value);
+    if (Math.Abs(value - nearestInteger) < 1e-9)
+      return nearestInteger.ToString(CultureInfo.InvariantCulture);
 
-    return value.ToString("0.###############", CultureInfo.InvariantCulture);
+    var rounded = Math.Round(value, 6, MidpointRounding.AwayFromZero);
+    return rounded.ToString("0.######", CultureInfo.InvariantCulture);
   }
 
   public static string EnsureNumeric(long value) => value.ToString(CultureInfo.InvariantCulture);

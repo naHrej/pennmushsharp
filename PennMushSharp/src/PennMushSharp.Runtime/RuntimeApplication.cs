@@ -51,7 +51,10 @@ public static class RuntimeApplication
     services.AddSingleton<CommandParser>();
     services.AddSingleton(sp => CommandCatalogBuilder.CreateDefault(sp));
     services.AddSingleton<CommandDispatcher>();
-    services.AddSingleton(CreateFunctionRegistry());
+    services.AddSingleton<SpeechService>();
+    services.AddSingleton<AttributeService>();
+    services.AddSingleton<AttributeAssignmentCommand>();
+    services.AddSingleton(sp => CreateFunctionRegistry(sp));
     services.AddSingleton<IFunctionEvaluator, FunctionEvaluator>();
     services.AddSingleton<IExpressionEvaluator, ExpressionEvaluator>();
     services.AddSingleton<TelnetServer>();
@@ -59,9 +62,11 @@ public static class RuntimeApplication
     services.AddSingleton<IServerBootstrapper, DefaultServerBootstrapper>();
   }
 
-  private static FunctionRegistry CreateFunctionRegistry()
+  private static FunctionRegistry CreateFunctionRegistry(IServiceProvider provider)
   {
     var metadata = MetadataCatalogs.Default.Functions;
+    var gameState = provider.GetRequiredService<InMemoryGameState>();
+    var attributeService = provider.GetRequiredService<AttributeService>();
     var builder = new FunctionRegistryBuilder(metadata);
     builder.Add(new SetqFunction());
     builder.Add(new SetrFunction());
@@ -100,6 +105,8 @@ public static class RuntimeApplication
     builder.Add(new LnFunction());
     builder.Add(new RootFunction());
     builder.Add(new CtuFunction());
+    builder.Add(new GetFunction(gameState));
+    builder.Add(new XGetFunction(gameState));
     return builder.Build();
   }
 

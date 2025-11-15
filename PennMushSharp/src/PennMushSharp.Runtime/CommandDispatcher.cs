@@ -10,6 +10,7 @@ public sealed class CommandDispatcher
 {
   private readonly CommandCatalog _catalog;
   private readonly CommandParser _parser;
+  private readonly AttributeAssignmentCommand _attributeCommand;
   private readonly ILogger<CommandDispatcher> _logger;
   private readonly IExpressionEvaluator _expressionEvaluator;
 
@@ -17,11 +18,13 @@ public sealed class CommandDispatcher
     CommandCatalog catalog,
     CommandParser parser,
     IExpressionEvaluator expressionEvaluator,
+    AttributeAssignmentCommand attributeCommand,
     ILogger<CommandDispatcher> logger)
   {
     _catalog = catalog;
     _parser = parser;
     _expressionEvaluator = expressionEvaluator;
+    _attributeCommand = attributeCommand;
     _logger = logger;
   }
 
@@ -36,9 +39,16 @@ public sealed class CommandDispatcher
       _logger.LogTrace("Dispatching raw='{Raw}' argument='{Argument}' target='{Target}'", invocation.Raw, invocation.Argument, invocation.Target);
       if (!_catalog.TryGet(invocation.Name, out var command) || command is null)
       {
-        _logger.LogWarning("Unknown command '{Command}' for actor #{Actor}", invocation.Name, context.Actor.DbRef);
-        await context.Output.WriteLineAsync("Huh? (Try HELP)", cancellationToken);
-        continue;
+        if (_attributeCommand.CanHandle(invocation))
+        {
+          command = _attributeCommand;
+        }
+        else
+        {
+          _logger.LogWarning("Unknown command '{Command}' for actor #{Actor}", invocation.Name, context.Actor.DbRef);
+          await context.Output.WriteLineAsync("Huh? (Try HELP)", cancellationToken);
+          continue;
+        }
       }
 
       CommandDefinition? metadata = null;

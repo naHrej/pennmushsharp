@@ -14,6 +14,7 @@ public sealed class SessionInfo
   public required GameObject Actor { get; init; }
   public required DateTime ConnectedAtUtc { get; init; }
   public required string Host { get; init; }
+  public required IOutputWriter Output { get; init; }
   public int DescriptorCount { get; init; } = 1;
   public int CommandCount { get; set; }
   public DateTime LastCommandUtc { get; set; }
